@@ -1,4 +1,10 @@
+package com;
+
+import com.FileNumberFilter;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -31,10 +37,12 @@ public class TestMDCEDISpiltter {
         //PNGSC/data/MDC/ISF_N5119 => splitXML.sct
         //PNGSC/data/MDC/ISF       => splitEDI.sct (最原始的)
 
+
+
 //        共16971個檔案
-        newMethodByFileList();
+//        newMethodByFileList();
         System.out.println("==================================");
-        oldMethodByListFiles();
+//        oldMethodByListFiles();
 
     }
 
