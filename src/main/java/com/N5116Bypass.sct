@@ -1,0 +1,139 @@
+#!/bin/ksh
+#######################################
+# N5116 splitEDI 自動分流作業
+# 一定要遵守下面規則!!!!!!!!
+# Script命名:
+# ${文件別}Bypass.sct
+#
+# TargetFolder.lst命名:
+# ${文件別}TargetFolder.lst
+#
+#######################################
+# 事前作業:
+# Step1.製作splitEDI處理分流的Script
+#	ex. 假設分流Script => /APNGSC/SCT/MDC/splitEDI_N5116_1.sct
+# Step2.建立splitEDI的分流檔案資料夾
+#	ex. mkdir -p /PNGSC/data/MDC/ISF_N5116_1
+# Step3.建立自動分流丟檔資料夾清單(${文件別}TargetFolder.lst)
+#	ex. touch /APNGSC/def/MDC/N5116TargetFolder.lst (內容是分流檔案資料夾 ex./PNGSC/data/MDC/ISF_N5116_1)
+#
+#
+# 調整監控:
+# Step1.增加監控Scritp /APNGSC/def/MON_MDC_SCT.lst
+#       => 監控 ${文件別}Bypass.sct
+#       => 監控 splitEDI_N5116_1.sct (有幾個分身就要監控幾個)
+# Step2.增加監控分流資料夾 /APNGSC/SCT/MDC/monMDC.sct (搜尋Check Work Direcotry)
+#       => chkDirPending ${NGSC_DB_DIR}/data/MDC/${新增加的資料夾} ${新增加的資料夾}
+#
+# 啟動程式:
+# /APNGSC/SCT/start_MDC_AP.sct
+#
+# 確認服務
+# ps -ef |grep ${文件別}Bypass.sct
+# tail -100f /PNGSC/log/MDC/${文件別}Bypass.sct.log
+#
+#######################################
+
+. $NGSC_AP_DIR/def/PNGSC.env
+
+#取的自己的名稱(Get my name)
+SCRIPT_NAME=$0
+
+#根據Script名稱取出文件別 (Get message type by script name)
+MSG_TYPE=$(echo $SCRIPT_NAME | cut -d 'Bypass' -f1 | cut -d '/' -f2)
+
+#準備分流的來源資料夾  (Ready to bypass folder source)
+INPUT_DIR=${MDC_DATA_DIR}/ISF_${MSG_TYPE}
+
+#splitEDI丟檔位置清單 (splitEDI throws Folder target)
+LIST_TARGET_FOLDER=${NGSC_AP_DIR}/def/MDC/${MSG_TYPE}TargetFolder.lst
+
+#log位置 (Log path)
+LOG_FILE=${MDC_LOG_DIR}/${SCRIPT_NAME}.log
+
+#每次搬檔數量 (Number of each move)
+MV_NUMBER_FILES=50
+
+#Process睡的秒數 (When mv done , will sleep second)
+SLEEP_SECOND=1
+
+#資料夾檔案最大限制(Folder file max limit)
+TARGET_FOLDER_TOTAL_FILES_COUNT_SIZE=3000
+
+### Write Log Method ###
+msgToLog() {
+  time_mark=$(date +%D_%T)
+  echo "$time_mark  $MSG"
+}
+
+# KB
+#LOG_MAX_SIZE=4096
+LOG_MAX_SIZE=1024
+LOG_BACKUP_INDEX=3
+
+### Log Rolling ###
+LogRollingByIndex() {
+  touch ${LOG_FILE}
+  #Get size in KB
+  file_size=$(du -k ${LOG_FILE} | tr -s '\t' ' ' | cut -d' ' -f1)
+
+  # Check whether logfile size is greater than ${LOG_MAX_SIZE}
+  if [ ${file_size} -gt ${LOG_MAX_SIZE} ]; then
+    # Rolling Log File
+    i=$((${LOG_BACKUP_INDEX} - 1))
+    while [ ${i} -gt 0 ]; do
+      if [ -f ${LOG_FILE}.${i} ]; then
+        mv ${LOG_FILE}.${i} ${LOG_FILE}.$((${i} + 1))
+        echo "mv ${LOG_FILE}.${i} ${LOG_FILE}.$((${i} + 1))" >>${LOG_FILE}
+      fi
+      i=$((${i} - 1))
+    done
+
+    echo "mv ${LOG_FILE} ${LOG_FILE}.1" >>${LOG_FILE}
+    mv ${LOG_FILE} ${LOG_FILE}.1
+    touch ${LOG_FILE}
+  fi
+}
+
+#### Main ###
+while :; do
+  exec 1>>$LOG_FILE 2>&1
+
+  #check Log rolling
+  LogRollingByIndex
+
+  cat ${LIST_TARGET_FOLDER} | grep -v "#" |
+    while read line; do
+
+      #防止空字串
+      if test -z "${line}"; then
+        continue
+      fi
+
+      #Step1.讀取splitEDI丟檔資料夾清單
+      targetFolder=$(echo $line)
+      MSG="Start to bypass. TargetFolder :  $targetFolder"
+      msgToLog
+
+      #Step2.確認目標資料夾檔案是否過多
+      targetFolderTotalFiles=$(find $targetFolder -type f | wc -l)
+      MSG="targetFolderTotalFiles : $targetFolderTotalFiles"
+      msgToLog
+
+      if [[ $targetFolderTotalFiles -ge $TARGET_FOLDER_TOTAL_FILES_COUNT_SIZE ]]; then
+        MSG="Files is too many , Don't mv file"
+        msgToLog
+        continue
+      fi
+
+      #Step3.開始分流丟檔
+      MSG="find ${INPUT_DIR} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder  start!!"
+      echo "INPUT_DIR => ${INPUT_DIR}"
+      find ${INPUT_DIR} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder
+      MSG="find ${INPUT_DIR} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder  done!!"
+      msgToLog
+
+      #睡10秒
+      sleep ${SLEEP_SECOND}
+    done
+done #while loop

@@ -1,0 +1,50 @@
+#!/bin/bash
+shopt -s extglob
+
+### 此處專案自行撰寫傳送至主機的對應目錄
+### $1 為jenkins進行編譯後的工作目錄
+### $2 為登入遠端的位置及帳號，會在Jenkins Job進行設定並傳入此script
+
+
+
+ymd=`date +%Y%m%d`
+
+
+### 建立目錄
+#ssh $2 "
+#mkdir /APNVAN/LIB/ReportRest
+#mkdir /APNVAN/JAVA/conf/ReportRest
+#mkdir /APNVAN/SCT/ReportRest
+#"
+#echo  "mkdir success!"
+
+sleep 10
+
+ssh $2 "
+###備份
+cp -rf /APNVAN/LIB/ReportRest/restGenXls.jar /APNVAN/LIB/ReportRest/restGenXls.jar.$ymd
+"
+
+### 上傳jar檔 ###
+scp -r $1/restGenXls.jar $2:/APNVAN/LIB/ReportRest/;
+### 上傳conf檔 ###
+scp -r $1/classes/conf/* $2:/APNVAN/JAVA/conf/ReportRest/;
+scp -r $1/classes/conf/springRSkeyStore $2:/APNVAN/JAVA/conf/;
+### 上傳SCT檔 ###
+#scp -r $1/classes/SCT/* $2:/APNVAN/SCT/ReportRest/;
+### 上傳def檔 ###
+#scp -r $1/classes/def/* $2:/APNVAN/def/;
+
+echo  "scp file success!"
+
+### chmod ###
+ssh $2 "
+chmod u+x /APNVAN/SCT/ReportRest/*.sct
+"
+echo  "chmod success!"
+
+### 呼叫updown.sct重啟服務 ###
+ssh -t -t $2 "
+/APNVAN/SCT/ReportRest/updown.sct;
+"
+echo "Finish!!"

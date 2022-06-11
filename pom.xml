@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tradevan</groupId>
+    <artifactId>report.rest</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <name>report.rest</name>
+    <description>gen 5135 report</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <com.oracle.ojdbc8.version>12.2.0.1</com.oracle.ojdbc8.version>
+        <com.tradevan.util.version>1.0.1</com.tradevan.util.version>
+        <com.tradevan.commons.tv-commons.version>1.0.9</com.tradevan.commons.tv-commons.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${com.oracle.ojdbc8.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tradevan.util</groupId>
+            <artifactId>B64Hash</artifactId>
+            <version>${com.tradevan.util.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.tradevan.narc</groupId>
+            <artifactId>narcRS-client</artifactId>
+            <version>3.3.beta3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.tradevan</groupId>
+                    <artifactId>userAuth</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>restGenXls</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.tradevan.ngsc.MqRestApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/jks</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/jks</directory>
+                                    <includes>
+                                        <include>JenkinsJobScript.sct</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>SCT/**</exclude>
+                        <exclude>conf/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!-- 上線請移除註解 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>business.properties</exclude>
+                    <exclude>logback.xml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 使用excludes去排除不需要打包的檔案 -->
+                <excludes>
+                    <!-- 因env下有其他環境的設定檔案，因此先全部排除之後再加入需要的檔案 -->
+                    <exclude>env/**</exclude>
+                </excludes>
+            </resource>
+            <!-- 依照profile的environment導入不同環境設定並放置resources/conf下 -->
+            <resource>
+                <directory>profiles/${environment}/conf/</directory>
+                <targetPath>conf</targetPath>
+            </resource>
+            <!-- 依照profile的environment導入不同環境設定並放置resources/def下 -->
+            <resource>
+                <directory>profiles/${environment}/def/</directory>
+                <targetPath>def</targetPath>
+            </resource>
+            <!-- 增加將SCT放置target下，同步至正式主機 -->
+            <resource>
+                <directory>${project.basedir}/SCT/</directory>
+                <targetPath>SCT</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+    <!-- 搭配profile，去配置不同環境設定 -->
+    <profiles>
+        <!-- 本機使用 -->
+        <profile>
+            <!-- id為執行maven指令時指定的profile名稱， 本機為 -Plocal， 但下方有使用activeByDefault因此可以不用指定也沒關係 -->
+            <id>local</id>
+            <activation>
+                <!-- activeByDefault的作用為，如果執行maven cmd未指定profile，則使用此預設的profile -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- 環境參數 -->
+                <environment>local</environment>
+            </properties>
+        </profile>
+        <!-- 測試環境使用 -->
+        <profile>
+            <!-- id為執行maven指令時指定的profile名稱，測試環境為 -Ptest -->
+            <id>test</id>
+            <properties>
+                <!-- 環境參數 -->
+                <environment>test</environment>
+            </properties>
+        </profile>
+        <!-- 驗證環境使用 -->
+        <profile>
+            <!-- id為執行maven指令時指定的profile名稱，驗證環境為 -Pver -->
+            <id>ver</id>
+            <properties>
+                <!-- 環境參數 -->
+                <environment>ver</environment>
+            </properties>
+        </profile>
+        <!-- 正式環境使用 -->
+        <profile>
+            <!-- id為執行maven指令時指定的profile名稱，正式環境為 -Ppro -->
+            <id>pro</id>
+            <properties>
+                <!-- 環境參數 -->
+                <environment>pro</environment>
+            </properties>
+        </profile>
+    </profiles>
+
+
+</project>

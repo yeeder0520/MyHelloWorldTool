@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<!-- To enable JMX Management -->
+	<jmxConfigurator />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5level][%thread][%logger{0}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/PNVAN/log/report_rest_genxls.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>report_rest_genxls.log.%i.bak</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>5</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>20MB</maxFileSize>
+		</triggeringPolicy>
+
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%-5level][%thread][%logger{0}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- <logger name="org.springframework.ws.client.MessageTracing.sent" level="TRACE" />
+	<logger name="org.springframework.ws.client.MessageTracing.received" level="TRACE" /> -->
+<!-- 	<logger name="org.springframework.ws.server.MessageTracing" level="TRACE" />
+	<logger name="org.springframework.web" level="debug" /> -->
+	<logger name="com.tradevan" level="INFO" />
+<!-- 	<logger name="org.hibernate.type" level="TRACE" /> -->
+
+
+	<root level="info">
+	<!-- 	 <appender-ref ref="console" />-->
+		  <appender-ref ref="FILE"/> 
+	</root>
+</configuration>
