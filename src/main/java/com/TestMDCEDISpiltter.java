@@ -13,6 +13,26 @@ public class TestMDCEDISpiltter {
 
 
     public static void main(String[] args) throws IOException {
+
+
+        /*
+         * 參數
+         * INDIRORFILE => /PNGSC/data/MDC/ISF_N5116_3
+         * OUTDIR => /PNGSC/data/MDC/ICF
+         * BKPDIR => /PNGSC/data/MDC/HISF
+         * ERRDIR => /PNGSC/data/MDC/EISF
+         * XML_OUTDIR => /PNGSC/data/UTC/IXF/SMALL
+         * XML_OUTDIR_LARGE => /PNGSC/data/UTC/IXF/LARGE
+         * CC2UTC_LST => /APNGSC/def/MDC_CC2UTC.lst
+         * ELIMINATE_LST => /APNGSC/def/MDC_ELIMINATE.lst
+         * PEDI_OUTDIR => /PNGSC/data/UTC/IEF_TDM/PEDI
+         * SLEEPTIME => 1
+         * /APNGSC/def/XML_NEW_LINE_NODE.lst
+         * TXT_OUTDIR => /PNGSC/data/UTC/IFF/SMALL
+         * TXT_OUTDIR_LARGE => /PNGSC/data/UTC/IFF/LARGE
+         */
+
+
         /* PNGSC/data/MDC/ISF_N5116   => splitEDI_N5116.sct => 起java => 派檔
          * PNGSC/data/MDC/ISF_N5116_1 => splitEDI_N5116_1.sct => 起java => 派檔
          * PNGSC/data/MDC/ISF_N5117   => splitEDI_N5117.sct => 起java => 派檔
