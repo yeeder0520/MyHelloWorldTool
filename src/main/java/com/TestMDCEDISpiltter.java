@@ -5,6 +5,7 @@ import com.FileNumberFilter;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -12,6 +13,26 @@ public class TestMDCEDISpiltter {
 
 
     public static void main(String[] args) throws IOException {
+
+
+        /*
+         * 參數
+         * INDIRORFILE => /PNGSC/data/MDC/ISF_N5116_3
+         * OUTDIR => /PNGSC/data/MDC/ICF
+         * BKPDIR => /PNGSC/data/MDC/HISF
+         * ERRDIR => /PNGSC/data/MDC/EISF
+         * XML_OUTDIR => /PNGSC/data/UTC/IXF/SMALL
+         * XML_OUTDIR_LARGE => /PNGSC/data/UTC/IXF/LARGE
+         * CC2UTC_LST => /APNGSC/def/MDC_CC2UTC.lst
+         * ELIMINATE_LST => /APNGSC/def/MDC_ELIMINATE.lst
+         * PEDI_OUTDIR => /PNGSC/data/UTC/IEF_TDM/PEDI
+         * SLEEPTIME => 1
+         * /APNGSC/def/XML_NEW_LINE_NODE.lst
+         * TXT_OUTDIR => /PNGSC/data/UTC/IFF/SMALL
+         * TXT_OUTDIR_LARGE => /PNGSC/data/UTC/IFF/LARGE
+         */
+
+
         /* PNGSC/data/MDC/ISF_N5116   => splitEDI_N5116.sct => 起java => 派檔
          * PNGSC/data/MDC/ISF_N5116_1 => splitEDI_N5116_1.sct => 起java => 派檔
          * PNGSC/data/MDC/ISF_N5117   => splitEDI_N5117.sct => 起java => 派檔
@@ -38,11 +59,10 @@ public class TestMDCEDISpiltter {
         //PNGSC/data/MDC/ISF       => splitEDI.sct (最原始的)
 
 
-
 //        共16971個檔案
-//        newMethodByFileList();
+        newMethodByFileList();
         System.out.println("==================================");
-//        oldMethodByListFiles();
+        oldMethodByListFiles();
 
     }
 
@@ -50,12 +70,11 @@ public class TestMDCEDISpiltter {
         FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\新方法查找結果.txt");
         StringBuffer sb = new StringBuffer();
 
+        /*開始時間*/
         LocalTime startTime = LocalDateTime.now().toLocalTime();
-        System.out.println(startTime + " Start new method");
-        int startTimeInt = Integer.parseInt(startTime.toString().substring(9, 12));
 
         File file = new File("C:\\Users\\6620\\Desktop\\測試資料集散地\\N5116MDC測試用轉檔檔案\\20220528\\00");
-        String[] fileList = file.list(new FileNumberFilter(6));
+        String[] fileList = file.list(new FileNumberFilter(1000));
 
         for (String aaa : fileList) {
             File file1 = new File(aaa);
@@ -64,11 +83,12 @@ public class TestMDCEDISpiltter {
         fw.write(String.valueOf(sb));
         fw.flush();
         fw.close();
+
+        /*結束時間*/
         LocalTime endTime = LocalDateTime.now().toLocalTime();
-        System.out.println(endTime + " End new method");
-        int endTimeInt = Integer.parseInt(endTime.toString().substring(9, 12));
-        int totalTime =  endTimeInt - startTimeInt;
-        System.out.println("Total Time : " + totalTime);
+        Duration duration = Duration.between(startTime, endTime);
+
+        System.out.println("New method Total Time : " + duration.toMillis() + " Millis");
     }
 
     private static void oldMethodByListFiles() throws IOException {
@@ -76,9 +96,9 @@ public class TestMDCEDISpiltter {
         FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\舊方法查找結果.txt");
         StringBuffer sb = new StringBuffer();
 
+        /*開始時間*/
         LocalTime startTime = LocalDateTime.now().toLocalTime();
-        System.out.println(startTime + " Start old method");
-        int startTimeInt = Integer.parseInt(startTime.toString().substring(9, 12));
+
         File file2 = new File("C:\\Users\\6620\\Desktop\\測試資料集散地\\N5116MDC測試用轉檔檔案\\20220528\\00");
         File[] files = file2.listFiles();
         System.out.println("files.length = " + files.length);
@@ -88,12 +108,12 @@ public class TestMDCEDISpiltter {
         fw.write(String.valueOf(sb));
         fw.flush();
         fw.close();
-        LocalTime endTime = LocalDateTime.now().toLocalTime();
-        int endTimeInt = Integer.parseInt(endTime.toString().substring(9, 12));
-        System.out.println(endTime + " End old method");
 
-        int totalTime =  endTimeInt - startTimeInt;
-        System.out.println("Total Time : " + totalTime);
+        /*結束時間*/
+        LocalTime endTime = LocalDateTime.now().toLocalTime();
+        Duration duration = Duration.between(startTime, endTime);
+
+        System.out.println("Old method Total Time : " + duration.toMillis() + " Millis");
     }
 
 }
