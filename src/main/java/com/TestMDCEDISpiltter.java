@@ -1,13 +1,14 @@
 package com;
 
-import com.FileNumberFilter;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class TestMDCEDISpiltter {
 
@@ -58,31 +59,64 @@ public class TestMDCEDISpiltter {
         //PNGSC/data/MDC/ISF_N5119 => splitXML.sct
         //PNGSC/data/MDC/ISF       => splitEDI.sct (最原始的)
 
+        File file = new File("C:\\Users\\6620\\Desktop\\123\\123");
+        for (File listFile : file.listFiles()) {
+            System.out.println("file = " +  listFile.getName());
+            System.out.println("file = " +  listFile.lastModified());
 
+        }
 //        共16971個檔案
-        newMethodByFileList();
+//        newMethodByFileList();
         System.out.println("==================================");
-        oldMethodByListFiles();
+//        oldMethodByListFiles();
 
     }
 
     private static void newMethodByFileList() throws IOException {
-        FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\新方法查找結果.txt");
+//        FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\新方法查找結果.txt");
         StringBuffer sb = new StringBuffer();
 
         /*開始時間*/
         LocalTime startTime = LocalDateTime.now().toLocalTime();
 
-        File file = new File("C:\\Users\\6620\\Desktop\\測試資料集散地\\N5116MDC測試用轉檔檔案\\20220528\\00");
+        File file = new File("/PNGSC/data/6620/01/");
         String[] fileList = file.list(new FileNumberFilter(1000));
+
+        List<File> ifiles = new ArrayList<>();
 
         for (String aaa : fileList) {
             File file1 = new File(aaa);
             sb.append(file1.getName()).append("\r\n");
+            ifiles.add(file1);
         }
-        fw.write(String.valueOf(sb));
-        fw.flush();
-        fw.close();
+
+        File[] itemsArray = new File[ifiles.size()];
+        itemsArray = ifiles.toArray(itemsArray);
+
+
+        /*開始時間*/
+        LocalTime startTimeForSort = LocalDateTime.now().toLocalTime();
+        Arrays.sort(itemsArray, new Comparator<File>() {
+            public int compare(File f1, File f2) {
+                long diffDate = f1.lastModified() - f2.lastModified();
+                if (diffDate > 0)
+                    return 1;
+                else if (diffDate == 0)
+                    return 0;
+                else
+                    return -1;
+            }
+            public boolean equals(Object obj) {
+                return true;
+            }
+        });
+        LocalTime endTimeForSort = LocalDateTime.now().toLocalTime();
+        Duration durationForSort = Duration.between(startTimeForSort, endTimeForSort);
+        System.out.println("New method Sort Total Time : " + durationForSort.toMillis() + " Millis");
+
+//        fw.write(String.valueOf(sb));
+//        fw.flush();
+//        fw.close();
 
         /*結束時間*/
         LocalTime endTime = LocalDateTime.now().toLocalTime();
@@ -93,21 +127,41 @@ public class TestMDCEDISpiltter {
 
     private static void oldMethodByListFiles() throws IOException {
 
-        FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\舊方法查找結果.txt");
+//        FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\舊方法查找結果.txt");
         StringBuffer sb = new StringBuffer();
 
         /*開始時間*/
         LocalTime startTime = LocalDateTime.now().toLocalTime();
 
-        File file2 = new File("C:\\Users\\6620\\Desktop\\測試資料集散地\\N5116MDC測試用轉檔檔案\\20220528\\00");
+        File file2 = new File("/PNGSC/data/6620/01/");
         File[] files = file2.listFiles();
         System.out.println("files.length = " + files.length);
-        for (File file : files) {
-            sb.append(file.getName()).append("\r\n");
-        }
-        fw.write(String.valueOf(sb));
-        fw.flush();
-        fw.close();
+//        for (File file : files) {
+//            sb.append(file.getName()).append("\r\n");
+//        }
+
+        /*開始時間*/
+        LocalTime startTimeForSort = LocalDateTime.now().toLocalTime();
+        Arrays.sort(files, new Comparator<File>() {
+            public int compare(File f1, File f2) {
+                long diffDate = f1.lastModified() - f2.lastModified();
+                if (diffDate > 0)
+                    return 1;
+                else if (diffDate == 0)
+                    return 0;
+                else
+                    return -1;
+            }
+            public boolean equals(Object obj) {
+                return true;
+            }
+        });
+        LocalTime endTimeForSort = LocalDateTime.now().toLocalTime();
+        Duration durationForSort = Duration.between(startTimeForSort, endTimeForSort);
+        System.out.println("Old method Sort Total Time : " + durationForSort.toMillis() + " Millis");
+//        fw.write(String.valueOf(sb));
+//        fw.flush();
+//        fw.close();
 
         /*結束時間*/
         LocalTime endTime = LocalDateTime.now().toLocalTime();

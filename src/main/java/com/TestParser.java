@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author YeeDer
  * @version 1.0.0
- * @since 2021/7/23 §W§» 11:18
+ * @since 2021/7/23 ‰∏äÂçà 11:18
  **/
 public class TestParser {
 
@@ -17,9 +17,9 @@ public class TestParser {
         } catch (UnsupportedEncodingException e) {
             msgBig5Byte = msg.getBytes();
         }
-        final int subLen = len + 1; // ¶h®˙§@≠”byte
+        final int subLen = len + 1; // Â§öÂèñ‰∏ÄÂÄãbyte
         if ((msgBig5Byte.length) >= subLen) {
-            // §¡big5™¯´◊
+            // Âàábig5Èï∑Â∫¶
             byte[] tmpBig5Mag = new byte[subLen];
             System.arraycopy(msgBig5Byte, 0, tmpBig5Mag, 0, subLen);
 
@@ -29,7 +29,7 @@ public class TestParser {
             } catch (UnsupportedEncodingException e) {
                 tmpMsg = new String(tmpBig5Mag);
             }
-            tmpMsg = tmpMsg.substring(0, tmpMsg.length() - 1); // ≤æ∞£¶h®˙™∫¶r
+            tmpMsg = tmpMsg.substring(0, tmpMsg.length() - 1); // ÁßªÈô§Â§öÂèñÁöÑÂ≠ó
             msg = tmpMsg;
         }
         return msg;
@@ -39,7 +39,7 @@ public class TestParser {
     public static void main(String[] args) throws Exception {
 
 //        String getGoodsDesc1 = "'SBF3-ANTIMONY TRIFLUORIDE MAKE";
-        String getGoodsDesc1 = "SBF3-ANTIMONY TRIFLUORIDE MAKE        ¥˙∏’";
+        String getGoodsDesc1 = "SBF3-ANTIMONY TRIFLUORIDE MAKE        Ê∏¨Ë©¶";
         String getGoodsDesc2 = "R                             ";
         String getGoodsDesc3 = ":ALFA AES                     ";
         String getGoodsDesc4 = "IMP.0000180518-01-00001       ";
@@ -63,7 +63,7 @@ public class TestParser {
                 + placeOutOfLine(getGoodsDesc12) + placeOutOfLine(getGoodsDesc13));
 
         for (String s : allGoodsDesc) {
-            System.out.println("µ≤™G =" + s);
+            System.out.println("ÁµêÊûú =" + s);
         }
 
     }
@@ -86,11 +86,11 @@ public class TestParser {
      */
     private static List<String> handleGoodsDesc(String allGoodsDesc) {
         List<String> goodsDescList = new ArrayList();
-        String borrowing = ""; // ≠…¶Ï
+        String borrowing = ""; // ÂÄü‰Ωç
         int padLength = 40;
         for (int i = 0; i < 13; i++) {
             String tmp = getSubBig5(allGoodsDesc, 40, "msg950");
-            System.out.println("™¯´◊ :" + tmp.length());
+            System.out.println("Èï∑Â∫¶ :" + tmp.length());
             allGoodsDesc = allGoodsDesc.substring(tmp.length());
             goodsDescList.add(tmp);
         }
@@ -120,10 +120,10 @@ public class TestParser {
     }
 
     /**
-     * ±N∞TÆß§¡≥Œ¶®´¸©w™∫™¯´◊
-     * ¶]Big5•e®‚≠”byte°A©“•H•˝¶h§¡1≠”byte°A≥Ã´·¶Aß‚¶h§¡™∫¶r¶ÍsubString±º
-     * @param msg ≠n§¡≥Œ™∫∞TÆß
-     * @param msg ≠n§¡≥Œ™∫∞TÆß
+     * Â∞áË®äÊÅØÂàáÂâ≤ÊàêÊåáÂÆöÁöÑÈï∑Â∫¶
+     * Âõ†Big5Âç†ÂÖ©ÂÄãbyteÔºåÊâÄ‰ª•ÂÖàÂ§öÂàá1ÂÄãbyteÔºåÊúÄÂæåÂÜçÊääÂ§öÂàáÁöÑÂ≠ó‰∏≤subStringÊéâ
+     * @param msg Ë¶ÅÂàáÂâ≤ÁöÑË®äÊÅØ
+     * @param msg Ë¶ÅÂàáÂâ≤ÁöÑË®äÊÅØ
      * @return
      */
     public static String getSubMsg(String msg, int reallength) {
@@ -132,14 +132,14 @@ public class TestParser {
         String msgField = msg;
         byte[] msgBig5Byte = msg.getBytes();
         int cnt = 0;
-        final int subLen = reallength + 1; // ¶h®˙§@≠”byte
+        final int subLen = reallength + 1; // Â§öÂèñ‰∏ÄÂÄãbyte
         if ((msgBig5Byte.length - cnt) >= subLen) {
-            // §¡big5™¯´◊
+            // Âàábig5Èï∑Â∫¶
             byte[] tmpBig5Mag = new byte[subLen];
             System.arraycopy(msgBig5Byte, cnt, tmpBig5Mag, 0, subLen);
 
             String tmpMsg = new String(tmpBig5Mag);
-            tmpMsg = tmpMsg.substring(0, tmpMsg.length()-1); // ≤æ∞£¶h®˙™∫¶r
+            tmpMsg = tmpMsg.substring(0, tmpMsg.length()-1); // ÁßªÈô§Â§öÂèñÁöÑÂ≠ó
             msgField = tmpMsg;
             cnt += tmpMsg.getBytes().length;
         }
@@ -164,9 +164,9 @@ public class TestParser {
         } catch (UnsupportedEncodingException e) {
             msgBig5Byte = msg.getBytes();
         }
-        final int subLen = len + 1; // ¶h®˙§@≠”byte
+        final int subLen = len + 1; // Â§öÂèñ‰∏ÄÂÄãbyte
         if ((msgBig5Byte.length) >= subLen) {
-            // §¡big5™¯´◊
+            // Âàábig5Èï∑Â∫¶
             byte[] tmpBig5Mag = new byte[subLen];
             System.arraycopy(msgBig5Byte, 0, tmpBig5Mag, 0, subLen);
             String tmpMsg = "";
@@ -175,7 +175,7 @@ public class TestParser {
             } catch (UnsupportedEncodingException e) {
                 tmpMsg = new String(tmpBig5Mag);
             }
-            tmpMsg = tmpMsg.substring(0, tmpMsg.length() - 1); // ≤æ∞£¶h®˙™∫¶r
+            tmpMsg = tmpMsg.substring(0, tmpMsg.length() - 1); // ÁßªÈô§Â§öÂèñÁöÑÂ≠ó
             msg = tmpMsg;
         }
         return msg;
