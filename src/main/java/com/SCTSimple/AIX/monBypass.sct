@@ -63,8 +63,7 @@ msgToLog() {
   echo "$time_mark  $MSG"
 }
 
-# KB
-#LOG_MAX_SIZE=4096
+#KB
 LOG_MAX_SIZE=1024
 LOG_BACKUP_INDEX=3
 
@@ -113,11 +112,11 @@ while :; do
       if [ ! -f ${SCT_PATH}${scriptName} ]; then
         MSG="scriptName = ${scriptName} not exist!! ready to create one"
         msgToLog
-        #Step1.用JAVA做一隻SCT
+        #Step1.用JAVA做一隻SCT+產出logging.xml
 #        java $CLASSPATH
-#        #Step2.建立目錄
+        #Step2.建立目錄
         mkdir -p ${targetFolder}
-#        #Step3.啟動SCT
+        #Step3.啟動SCT
 #        nohup ${SCT_PATH}${scriptName}
       fi
 
