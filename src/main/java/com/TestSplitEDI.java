@@ -1,10 +1,7 @@
 package com;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.*;
 
 /**
  * 自動產生SplitEDI.sct
