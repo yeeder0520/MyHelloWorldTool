@@ -1,37 +1,10 @@
 #!/bin/ksh
 #######################################
-# N5116 splitEDI 自動分流作業
-# 一定要遵守下面規則!!!!!!!!
-# Script命名:
-# Bypass${文件別}.sct
-#
-# TargetFolder.lst命名:
-# ${文件別}TargetFolder.lst
-#
-#######################################
-# 事前作業:
-# Step1.製作splitEDI處理分流的Script
-#	ex. 假設分流Script => /APNGSC/SCT/MDC/splitEDI_N5116_1.sct
-# Step2.建立splitEDI的分流檔案資料夾
-#	ex. mkdir -p /PNGSC/data/MDC/ISF_N5116_1
-# Step3.建立自動分流丟檔資料夾清單(${文件別}TargetFolder.lst)
-#	ex. touch /APNGSC/def/MDC/N5116TargetFolder.lst (內容是分流檔案資料夾 ex./PNGSC/data/MDC/ISF_N5116_1)
-#
-#
-# 調整監控:
-# Step1.增加監控Scritp /APNGSC/def/MON_MDC_SCT.lst
-#       => 監控 ${文件別}Bypass.sct
-#       => 監控 splitEDI_N5116_1.sct (有幾個分身就要監控幾個)
-# Step2.增加監控分流資料夾 /APNGSC/SCT/MDC/monMDC.sct (搜尋Check Work Direcotry)
-#       => chkDirPending ${NGSC_DB_DIR}/data/MDC/${新增加的資料夾} ${新增加的資料夾}
-#
-# 啟動程式:
-# /APNGSC/SCT/start_MDC_AP.sct
-#
-# 確認服務
-# ps -ef |grep ${文件別}Bypass.sct
-# tail -100f /PNGSC/log/MDC/${文件別}Bypass.sct.log
-#
+#  自動分流作業步驟：
+#  調整 /APNGSC/def/MDC/MON_BYPASS.lst
+#  增加 => {ScriptName}:{SourceFolder}:{TargetFolder}
+#  ForExample => splitEDI_N6620_1.sct:/PNGSC/data/MDC/ISF_N5116:/PNGSC/data/MDC/ISF_N6620_1
+#  完成！！
 #######################################
 
 . $NGSC_AP_DIR/def/PNGSC.env
@@ -49,7 +22,7 @@ SCT_PATH=${NGSC_AP_DIR}/SCT/MDC/
 MON_BYPASS_LST=${NGSC_AP_DIR}/def/MDC/MON_BYPASS.lst
 
 #每次搬檔數量 (Number of each move)
-MV_NUMBER_FILES=50
+MV_NUMBER_FILES=500
 
 #Process睡的秒數 (When mv done , will sleep second)
 SLEEP_SECOND=5
@@ -113,11 +86,11 @@ while :; do
         MSG="scriptName = ${scriptName} not exist!! ready to create one"
         msgToLog
         #Step1.用JAVA做一隻SCT+產出logging.xml
-#        java $CLASSPATH
+        nohup java -cp /APNGSC/SCT/MDC/UTIL/java:$CLASSPATH CreateNewSplitEDIFactory ${scriptName} &
         #Step2.建立目錄
         mkdir -p ${targetFolder}
         #Step3.啟動SCT
-#        nohup ${SCT_PATH}${scriptName}
+        nohup ${SCT_PATH}${scriptName}
       fi
 
       #防止空字串
@@ -141,14 +114,12 @@ while :; do
       fi
 
       #Step3.開始分流丟檔
-      MSG="find ${sourceFolder} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder  start!!"
+      MSG="find ${sourceFolder} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder"
       msgToLog
-      find ${sourceFolder} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder
-      MSG="find ${sourceFolder} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder  done!!"
-      msgToLog
+      nohup find ${sourceFolder} -type f | grep -v "tmp" | head -$MV_NUMBER_FILES | xargs -i mv {} $targetFolder &
 
       echo "------------------------------------"
-      #睡10秒
+      #Sleep
       sleep ${SLEEP_SECOND}
     done
 done #while loop

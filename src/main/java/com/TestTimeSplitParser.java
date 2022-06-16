@@ -14,15 +14,16 @@ import java.util.*;
 public class TestTimeSplitParser {
     public static final long TIME_LIMIT = 1000; // ms
     public static final String EACH_TIME = "20220614";
-    public static final String SPACE = " ";
+    public static final String SPACE = "    ";
 
 
     public static void main(String[] args) throws IOException {
-
-        DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get("C:\\Users\\6620\\Desktop\\MDC相關\\spliteEDI的log (0614 1740異常時段)"));
+        System.out.println("GO");
+        DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get("C:\\Users\\6620\\Desktop\\新增資料夾 (2)"));
         Map<String, Integer> minuteMaps = new HashMap<>();
 
         paths.forEach(file -> {
+            System.out.println("file = " + file);
             try (BufferedReader bufferedReader = Files.newBufferedReader(file);) {
                 String line;
 
@@ -31,7 +32,7 @@ public class TestTimeSplitParser {
                 while ((line = bufferedReader.readLine()) != null) {
 
                     /*我只要含有 "[INFO][EDISplitter][main]  - From:" 的資料*/
-                    if (!line.contains("[INFO][EDISplitter][main]  - From:") || !line.startsWith("[2022-06-14 17:")) {
+                    if (!line.contains("[INFO][EDISplitter][main]  - From:") ) {
                         continue;
                     }
                     /*時間格式分割*/
