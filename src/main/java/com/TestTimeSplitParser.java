@@ -19,11 +19,10 @@ public class TestTimeSplitParser {
 
     public static void main(String[] args) throws IOException {
         System.out.println("GO");
-        DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get("C:\\Users\\6620\\Desktop\\新增資料夾 (2)"));
+        DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get("C:\\Users\\6620\\Desktop\\新增資料夾 (3)"));
         Map<String, Integer> minuteMaps = new HashMap<>();
 
         paths.forEach(file -> {
-            System.out.println("file = " + file);
             try (BufferedReader bufferedReader = Files.newBufferedReader(file);) {
                 String line;
 
