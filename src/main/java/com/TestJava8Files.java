@@ -13,7 +13,15 @@ import java.util.stream.Stream;
 
 public class TestJava8Files {
 
-    final static String MY_PATH = "C:\\Users\\yeeder\\Desktop\\楓之谷測試\\";
+    static String MY_PATH = "C:\\Users\\yeeder\\Desktop\\楓之谷測試\\";
+
+    public static String getMyPath() {
+        return MY_PATH;
+    }
+
+    public static void setMyPath(String myPath) {
+        MY_PATH = myPath;
+    }
 
     public static void main(String[] args) throws IOException {
 
