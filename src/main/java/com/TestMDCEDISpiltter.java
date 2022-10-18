@@ -72,6 +72,7 @@ public class TestMDCEDISpiltter {
 
     }
 
+    
     private static void newMethodByFileList() throws IOException {
 //        FileWriter fw = new FileWriter("C:\\Users\\6620\\Desktop\\新增資料夾\\新方法查找結果.txt");
         StringBuffer sb = new StringBuffer();

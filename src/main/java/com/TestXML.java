@@ -1,4 +1,4 @@
-package main.java.com;
+package com;
 
 
 import org.w3c.dom.Document;
