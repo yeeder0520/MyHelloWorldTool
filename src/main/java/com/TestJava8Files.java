@@ -3,17 +3,15 @@ package com;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestJava8Files {
 
-    static String MY_PATH = "C:\\Users\\yeeder\\Desktop\\楓之谷測試\\";
+    static String MY_PATH = "C:\\Users\\6620\\Desktop\\測試資料集散地\\儲存雲JMeter\\";
+    static String MY_PATH2 = "C:\\Users\\6620\\Desktop\\測試資料集散地\\電商月底CryptoSercver Busy\\發票檔\\a2aTestFile\\INV2\\";
 
     public static String getMyPath() {
         return MY_PATH;
@@ -36,18 +34,34 @@ public class TestJava8Files {
         /*建立資料夾*/
 //        testCreateDirectories();
         /*掃描目錄*/
-//        testNewDirectoryStream();
+        testNewDirectoryStream();
         /*掃描目錄 -> Files.walk*/
-        testWalk();
+//        testWalk();
         /*移動檔案*/
 //        testMove();
+        /*複製檔案*/
+//        testCopyFile();
+    }
 
+    /**
+     * 複製檔案
+     *
+     * @throws IOException IOException
+     */
+    private static void testCopyFile() throws IOException {
+        Path source = Paths.get("C:\\Users\\6620\\Desktop\\測試資料集散地\\儲存雲JMeter\\a.txt");
+        Path destination = Paths.get("C:\\Users\\6620\\Desktop\\測試資料集散地\\儲存雲JMeter\\b.txt");
+        try {
+            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 移動檔案
      *
-     * @throws IOException
+     * @throws IOException IOException
      */
     private static void testMove() throws IOException {
         Files.move(Paths.get(MY_PATH + "B.txt"), Paths.get(MY_PATH, "changeB.txy"));
@@ -116,7 +130,8 @@ public class TestJava8Files {
     private static void testNewDirectoryStream() throws IOException {
         DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get(MY_PATH));
         for (Path path : paths) {
-            System.out.println("path.getFileName() = " + path.getFileName());
+            if (path.getFileName().toString().contains(".bat") || path.getFileName().toString().contains("template")) continue;
+            System.out.println("path.getFileName() = " + path.getFileName().toString());
         }
     }
 
@@ -137,4 +152,5 @@ public class TestJava8Files {
     private static void testCreateDirectories() throws IOException {
         Files.createDirectories(Paths.get(MY_PATH + "createDirectories"));
     }
+
 }
