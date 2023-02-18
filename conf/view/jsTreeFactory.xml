@@ -1,0 +1,178 @@
+<tvTree class="array">
+	<treeConfig class="object">
+		<treeId type="string">jsTreeDefault</treeId>
+		<implement type="string">com.tradevan.saab.view.SaabRoleTreeComponentImpl</implement>
+		<data class="object">
+			<async type="boolean">false</async>
+			<type type="string">json</type>
+		</data>
+		<!-- 
+			theme_name maybe can be default,apple,checkbox
+		
+		 -->	
+		<ui class="object">
+			<theme_name type="string">default</theme_name>
+		</ui>
+		<rules class="object">				
+			<use_inline type="boolean">true</use_inline>
+			<clickable class="array">
+				<e type="string">all</e>
+			</clickable>
+			<deletable class="array">
+				<e type="string">all</e>
+			</deletable>
+			<renameable class="array">
+				<e type="string">all</e>
+			</renameable>
+			<creatable class="array">
+				<e type="string">all</e>
+			</creatable>
+			<editable class="array">
+				<e type="string">all</e>
+			</editable>
+			<draggable class="array">
+				<e type="string">all</e>
+			</draggable>
+			<createat class="array">
+				<e type="string">top</e>
+			</createat>
+			<drag_button type="boolean">left</drag_button>
+			<droppable class="array">
+				<e type="string">tree-drop</e>
+			</droppable>
+		</rules>
+	</treeConfig>	
+	<treeConfig class="object">
+		<treeId type="string">jsTreeCheckbox</treeId>
+		<implement type="string">com.tradevan.saab.view.SaabMenuTreeComponentImpl</implement>
+		<data class="object">
+			<async type="boolean">false</async>
+			<type type="string">json</type>
+		</data>
+		<!-- 
+			theme_name maybe can be default,apple,checkbox
+		
+		 -->	
+		<ui class="object">
+			<theme_name type="string">checkbox</theme_name>
+			<context class="array">	
+			</context>
+		</ui>
+		<rules class="object">				
+			<use_inline type="boolean">true</use_inline>
+			<clickable class="array">
+				<e type="string">all</e>
+			</clickable>
+			<deletable class="array">
+				<e type="string">none</e>
+			</deletable>
+			<renameable class="array">
+				<e type="string">none</e>
+			</renameable>
+			<creatable class="array">
+				<e type="string">none</e>
+			</creatable>
+			<editable class="array">
+				<e type="string">none</e>
+			</editable>
+			<draggable class="array">
+				<e type="string">none</e>
+			</draggable>
+			<createat class="array">
+				<e type="string">none</e>
+			</createat>
+			<drag_button type="boolean">left</drag_button>
+			<droppable class="array">
+				<e type="string">tree-drop</e>
+			</droppable>
+		</rules>
+	</treeConfig>
+	<treeConfig class="object">
+		<treeId type="string">jsTreeCheckboxForRoleMenu</treeId>
+		<implement type="string">com.tradevan.saab.view.SaabRoleMenuTreeComponentImpl</implement>
+		<data class="object">
+			<async type="boolean">false</async>
+			<type type="string">json</type>
+		</data>
+		<!-- 
+			theme_name maybe can be default,apple,checkbox
+		
+		 -->	
+		<ui class="object">
+			<theme_name type="string">checkbox</theme_name>
+			<context class="array">	
+			</context>
+		</ui>
+		<rules class="object">				
+			<use_inline type="boolean">true</use_inline>
+			<clickable class="array">
+				<e type="string">all</e>
+			</clickable>
+			<deletable class="array">
+				<e type="string">none</e>
+			</deletable>
+			<renameable class="array">
+				<e type="string">none</e>
+			</renameable>
+			<creatable class="array">
+				<e type="string">none</e>
+			</creatable>
+			<editable class="array">
+				<e type="string">none</e>
+			</editable>
+			<draggable class="array">
+				<e type="string">none</e>
+			</draggable>
+			<createat class="array">
+				<e type="string">none</e>
+			</createat>
+			<drag_button type="boolean">left</drag_button>
+			<droppable class="array">
+				<e type="string">tree-drop</e>
+			</droppable>
+		</rules>
+	</treeConfig>	
+	<treeConfig class="object">
+		<treeId type="string">menuTreeDefault</treeId>
+		<implement type="string">com.tradevan.saab.view.SaabMenuTreeComponent2Impl</implement>
+		<data class="object">
+			<async type="boolean">false</async>
+			<type type="string">json</type>
+		</data>
+		<!-- 
+			theme_name maybe can be default,apple,checkbox
+		
+		 -->	
+		<ui class="object">
+			<theme_name type="string">default</theme_name>
+		</ui>
+		<rules class="object">				
+			<use_inline type="boolean">true</use_inline>
+			<clickable class="array">
+				<e type="string">all</e>
+			</clickable>
+			<deletable class="array">
+				<e type="string">all</e>
+			</deletable>
+			<renameable class="array">
+				<e type="string">all</e>
+			</renameable>
+			<creatable class="array">
+				<e type="string">all</e>
+			</creatable>
+			<editable class="array">
+				<e type="string">all</e>
+			</editable>
+			<draggable class="array">
+				<e type="string">all</e>
+			</draggable>
+			<createat class="array">
+				<e type="string">top</e>
+			</createat>
+			<drag_button type="boolean">left</drag_button>
+			<droppable class="array">
+				<e type="string">tree-drop</e>
+			</droppable>
+		</rules>
+	</treeConfig>		
+</tvTree>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="default" namespace="/" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+
+		    
+    	<action name="Sample_*" method="{1}" class="com.tradevan.helpdesk.action.SampleAction">    		              
+    		<!-- 
+    		<result>/pages/main.jsp</result>
+    		 -->
+			<result type="chain">
+				<param name="namespace ">/modules/system</param>
+				<param name="actionName">Notification</param>
+				<param name="method">show</param>
+			</result>
+			<result name="listlogs" type="chain">
+				<param name="namespace ">/modules/message</param>
+				<param name="actionName">NewMsrs</param>
+			</result>
+			  <!--   //20171207 系統開發人員 直接轉至process status頁面 -->
+			 <result name="monitorstatus" type="chain">
+                <param name="namespace ">/modules/monitor</param>
+                <param name="actionName">MonitorProcessStatus</param>
+            </result>
+    	</action>
+    	 
+    	
+    	<!-- Login -->
+    	<action name="Login_*" method="{1}" class="com.tradevan.helpdesk.action.LoginAction">
+    		<!-- 
+    		<result>/pages/main.jsp</result>
+    		<result name="input" type="dispatcher" >/pages/user/login.jsp</result>
+    		 -->
+			<result type="chain">
+				<param name="namespace ">/modules/system</param>
+				<param name="actionName">Notification</param>
+				<param name="method">show</param>
+			</result>
+			<result name="listlogs" type="chain">
+				<param name="namespace ">/modules/message</param>
+				<param name="actionName">NewMsrs</param>
+			</result>
+			  <!--   //20171207 系統開發人員 直接轉至process status頁面 -->
+			 <result name="monitorstatus" type="chain">
+                <param name="namespace ">/modules/monitor</param>
+                <param name="actionName">MonitorProcessStatus</param>
+            </result>
+    	</action>
+    	
+    	<!-- Logout -->
+    	<action name="Logout" method="logout" class="com.tradevan.helpdesk.action.LoginAction">
+    		<interceptor-ref name="guest"/>
+    		 <!-- 
+    		<result type="dispatcher">/pages/user/login.jsp</result>
+    		 -->	 
+			<result type="redirect">https://vngschelp.tradevan.com.tw/APNVAN_SAAB/Logout</result>
+			    
+		</action> 
+    	   
+    </package>
+    
+   
+</struts>

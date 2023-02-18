@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="user" namespace="/modules/user" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+                
+        <action name="MainVanPartyProf" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartyProfAction">
+            <result name="mainvanpartyprof" >/modules/user/pages/MainVanPartyProf.jsp</result>
+            <result name="next" type="chain">
+                <param name="actionName">MainVanPartyAltn</param>
+                <param name="method">search</param>
+            </result>
+        </action>
+        
+        <action name="QryVanPartyProf" class="com.tradevan.helpdesk.action.pmcuser.QryVanPartyProfAction">
+            <result name="listpartyprofs">/modules/user/pages/QryVanPartyProf.jsp</result>
+            <result name="listpartyprofdetails">/modules/user/pages/QryVanPartyProfDtl.jsp</result>
+            <result name="listpartydetails" >/modules/user/pages/ListVanPartyAllInfo.jsp</result>
+        </action>
+        
+        <action name="MainVanPartyAltn" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartyAltnAction">                        
+            <result name="mainpartyaltn" >/modules/user/pages/MainVanPartyAltn.jsp</result>
+            <result name="next2" type="chain">
+                <param name="actionName">MainVanPartyProf</param>
+                <param name="method">execute</param>
+            </result>
+            <result name="next" type="chain">
+                <param name="actionName">MainVanPartyExtN</param>
+                <param name="method">execute</param>
+            </result>
+            <result name="back" type="chain">
+                <param name="actionName">MainVanPartyProf</param>
+                <param name="method">search</param>
+            </result>
+        </action>
+        
+        <action name="QryVanPartyAltn" class="com.tradevan.helpdesk.action.pmcuser.QryVanPartyAltnAction">            
+            <result name="listpartyaltns" >/modules/user/pages/QryVanPartyAltn.jsp</result>
+            <result name="listpartyaltndetails">/modules/user/pages/QryVanPartyAltnDtl.jsp</result>
+            <result name="opresult" >/modules/user/pages/OpVanPartyAltn.jsp</result>
+        </action>        
+                
+        <action name="MainVanPartySpProcess" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartySpProcessAction">    
+            <result name="mainPartySpProcess" >/modules/user/pages/MainVanPartySpProcess.jsp</result>
+            <result name="listPartySpProcess" >/modules/user/pages/ListVanPartySpProcess.jsp</result>
+            <result name="back" type="chain">
+                <param name="actionName">MainVanPartyExtN</param>
+                <param name="method">execute</param>
+            </result>
+            <result name="next" type="chain">
+                <param name="actionName">MainVanServiceRouting</param>
+                <param name="method">search</param>
+            </result>
+        </action>
+        <action name="MainPartyExt" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartyExtAction">
+            <result name="mainPartyExt">/modules/user/pages/MainVanPartyExt.jsp</result>
+        </action>
+                
+        <action name="QryVanPartySpProcess" class="com.tradevan.helpdesk.action.pmcuser.QryVanPartySpProcessAction">            
+            <result name="listpartyspprocesses" >/modules/user/pages/QryVanPartySpProcess.jsp</result>
+            <result name="listpartyspdetails" >/modules/user/pages/QryVanPartySpProcessDtl.jsp</result> 
+        </action>
+        
+        <!-- 9010.09.20 新增 -->
+        <action name="MainVanPartyTransport" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartyTransportAction">         
+            <result name="mainvanpartytransport" >/modules/user/pages/MainVanPartyTransport.jsp</result>
+        </action>
+        
+            <!-- 2010.10.06 修改 -->
+        <action name="MainVanServiceRouting" class="com.tradevan.helpdesk.action.pmcuser.MainVanServiceRoutingAction">         
+            <result name="systemselect"  type="emptyFoot-layout">/modules/user/pages/MainVanServiceRouting.jsp</result>
+            <result name="mainebmsservicerouting" >/modules/user/pages/MainEBMSServiceRouting.jsp</result>
+            <result name="mainb2biservicerouting" >/modules/user/pages/MainB2BIServiceRouting.jsp</result>
+            <result name="mainjmsservicerouting" >/modules/user/pages/MainJMSServiceRouting.jsp</result>
+            <result name="maindshubservicerouting" >/modules/user/pages/MainDSHUBServiceRouting.jsp</result>
+            <result name="mainedimapservicerouting" >/modules/user/pages/MainEDIMapServiceRouting.jsp</result>
+            <result name="mainspcopyservicerouting" >/modules/user/pages/MainSpCopyServiceRouting.jsp</result>
+            <result name="next2" type="chain">
+                <param name="actionName">MainVanServiceRoutingExt</param>
+                <param name="method">execute</param>
+            </result>
+            <result name="next" type="chain">
+                <!-- <param name="actionName">${actionName}</param> -->
+                <param name="namespace ">/modules/system</param>
+                <param name="actionName">VanSysObjMtd</param>
+                <param name="method">search</param>
+            </result>
+            <result name="back" type="chain">
+                <param name="actionName">MainVanPartySpProcess</param>
+                <param name="method">search</param>
+            </result>
+        </action>
+        
+        <!-- 2010.09.28 新增 -->
+        <action name="MainVanPartySubscribe" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartySubscribeAction">         
+            <result name="mainvanpartysubscribe" >/modules/user/pages/MainVanPartySubscribe.jsp</result>
+            <result name="listPartySpProcess" >/modules/user/pages/ListVanPartySubscribe.jsp</result>
+        </action>
+        
+        <!-- 2012.02.20 新增 -->
+        <action name="MainJscapeFtpAccount" class="com.tradevan.helpdesk.action.pmcuser.MainJscapeFtpAccountAction">         
+            <result name="mainjscapeftpaccount" >/modules/user/pages/MainJscapeFtpAccount.jsp</result>
+        </action>
+          <!-- 2013.07.08 新增 -->
+        <action name="MainVanFTPConf" class="com.tradevan.helpdesk.action.ccs.MainVanFTPConfAction">
+            <result name="mainvanftpconf" >/modules/user/pages/MainVanFTPConf.jsp</result>
+        </action>
+        <action name="MainVanMATIPConf" class="com.tradevan.helpdesk.action.ccs.MainVanMATIPConfAction">
+            <result name="mainvanmatipconf">/modules/user/pages/MainVanMATIPConf.jsp</result>
+        </action>
+        <!-- 2013.07.18 新增 -->
+        <action name="MainVanCCS" class="com.tradevan.helpdesk.action.ccs.MainVanCCSAction">
+            <result name="mainvanccs">/modules/user/pages/MainVanCCS.jsp</result>
+        </action>
+        <!-- 2013.07.26 新增 -->
+        <action name="MainVanCustCCSLine" class="com.tradevan.helpdesk.action.pmcuser.MainVanCustCCSLineAction">
+            <result name="mainvancustccsline">/modules/user/pages/MainVanCustCCSLine.jsp</result>
+        </action>
+        <!-- 2013.08.15 新增 -->
+        <action name="MainVanPartyExtN" class="com.tradevan.helpdesk.action.pmcuser.MainVanPartyExtNAction">
+            <result name="mainvanpartyextn">/modules/user/pages/MainVanPartyExtN.jsp</result>
+        </action>     
+        
+             <!-- 2014.01.08 新增 -->
+        <action name="MainVanServiceRoutingExt" class="com.tradevan.helpdesk.action.pmcuser.MainVanServiceRoutingExtAction">
+            <result name="mainvanserviceroutingext">/modules/user/pages/MainVanServiceRoutingExt.jsp</result>
+               <result name="next" type="chain">
+                <!-- <param name="actionName">${actionName}</param> -->
+                <param name="namespace ">/modules/system</param>
+                <param name="actionName">VanSysObjMtd</param>
+                <param name="method">search</param>
+            </result>
+        </action>     
+        
+         <!-- 2013.12.03 新增 -->
+        <action name="MainVanMatipSwitch" class="com.tradevan.helpdesk.action.ccs.MainVanMatipSwitchAction">
+            <result name="mainvanmatipswitch">/modules/user/pages/MainVanMatipSwitch.jsp</result>
+        </action> 
+          
+        <!-- 20150129 新增海關郵箱狀態切換功能 -->  
+        <action name="QryVanCustomSwitch" class="com.tradevan.helpdesk.action.pmcuser.QryVanCustomSwitchAction">
+            <result name="listcustoms">/modules/user/pages/QryVanCustomSwitch.jsp</result>
+        </action>  
+        
+          <!-- 2015091529 新增單一訊息狀態切換功能 -->  
+        <action name="QryVanSWMsgHold" class="com.tradevan.helpdesk.action.pmcuser.QryVanSWMsgHoldAction">
+            <result name="listswhold">/modules/user/pages/QryVanSWMsgHold.jsp</result>
+        </action>  
+        
+            <!-- 20161212 新增海關備援作業儀表板 -->  
+        <action name="VanCustomDashborad" class="com.tradevan.helpdesk.action.pmcuser.VanCustomDashboradAction">
+            <result name="listcustomdashborad">/modules/user/pages/VanCustomDashboard.jsp</result>
+            <result name="ajaxQry" type="json">
+                <param name="root">vanPartyProfList</param>
+            </result>
+            <result name="ajaxQrySWMsgSwitch" type="json">
+                <param name="root">vanSWMsgHoldList</param>
+            </result>
+            <result name="ajaxQryVanPartyAltn" type="json">
+                <param name="root">vanPartyAltnList</param>
+            </result>
+            <result name="ajaxUpd" type="json"></result>
+        </action>
+		
+		<!-- 20180327 新增加值服務識別碼匯入頁面 --> 
+        <action name="JMSImport" class="com.tradevan.helpdesk.action.pmcuser.JMSImportAction">
+            <result name="listjms">/modules/user/pages/JMSImport.jsp</result>
+       		<result name="ajaxQry" type="json">
+            	<param name="root">vanServiceRoutingList</param>
+       		</result>
+       		<result name="ajaxQryDtl" type="json">
+            	<param name="root">jsonObj</param>
+       		</result>
+       		<result name="ajaxAnalyze" type="json">
+               <param name="contentType">text/html</param>
+           </result>
+           <result name="ajaxImport" type="json">
+               <param name="contentType">text/html</param>
+           </result>
+        </action>
+    </package>
+    
+</struts>

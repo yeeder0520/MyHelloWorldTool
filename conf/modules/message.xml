@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="message" namespace="/modules/message" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        		
+        <action name="QryVanConnLog" class="com.tradevan.helpdesk.action.message.QryVanConnectionLogAction">
+            <result name="listvanconnlogs" >/modules/message/pages/QryVanConnLog.jsp</result>
+            <result name="listObvanconnlogs" >/modules/message/pages/QryObConLog.jsp</result>
+			<result name="dnldvanconnlogs" type="stream">
+       			<param name="contentType">application/octet-stream</param>
+       			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+            	
+            	<param name="inputName">docFile</param>
+            	<param name="bufferSize">1024</param>       	
+       		</result>
+            
+        </action>
+        
+		<action name="QryVanSysEventLog" class="com.tradevan.helpdesk.action.message.QryVanSysEventLogAction">
+            <result name="listsysevtlogs" >/modules/message/pages/QryVanSysEventLog.jsp</result>
+            <result name="listsysevtlogdtls" >/modules/message/pages/QryVanSysEventLogDtl.jsp</result>
+        </action>
+        
+        <action name="QryMdcIdxLog" class="com.tradevan.helpdesk.action.message.QryMdcIdxLogAction">
+            <result name="listmdclogs" >/modules/message/pages/QryMDCLog.jsp</result>
+            <result name="dnldmdclogs" type="redirect">${url}</result>
+            <result name="listmdclogdetails" >/modules/message/pages/QryMDCLogDtl.jsp</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstMdcIdxLog.jsp</result>
+ 		  <!-- 
+            <interceptor-ref name="fileUpload"> 
+                <param name="allowedTypes">csv</param> 
+                <param name="maximumSize">2048000</param> 
+            </interceptor-ref> 
+            <param name="savePath">/upload</param>
+             --> 
+        </action>
+        
+		<action name="QryVanMsgLogExt" class="com.tradevan.helpdesk.action.message.QryVanMsgLogExtAction">
+            <result name="listvanmsglogext" >/modules/message/pages/QryVanMsgLogExt.jsp</result>
+            <result name="dnldvanmsglogext" >/modules/message/pages/DnldVanMsgLogExt.jsp</result>
+            <result name="listvanmsglogextdetails" >/modules/message/pages/QryVanMsgLogExtDtl.jsp</result>
+        </action>         
+        
+        <action name="QryVanDsmsMailbox" class="com.tradevan.helpdesk.action.message.QryVanDsmsMailboxAction">
+            <result name="listvandsmsmailbox" >/modules/message/pages/QryVanDsmsMailBox.jsp</result>          
+            <result name="dnldvandsmsmailbox" type="redirect">${url}</result>
+            <result name="listvandsmsmailboxdetails" >/modules/message/pages/QryVanDsmsMailBoxDtl.jsp</result>
+            <result name="viewvandsmsmailbox" >/modules/message/pages/ViewVanDsmsMailBox.jsp</result>
+            <result name="viewhexvandsmsmailbox" >/modules/message/pages/ViewHexVanDsmsMailBox.jsp</result>
+            <result name="editvandsmsmailbox" >/modules/message/pages/EditVanDsmsMailBox.jsp</result>
+            <result name="listObvanconnlogs" >/modules/message/pages/QryVanConObLog.jsp</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstVanDsmsMailBox.jsp</result>         
+            <result name="preupdate" >/modules/message/pages/QryVanDsmsMailBoxForUpdate.jsp</result>
+            <result name="saveRedoResult" type="stream">
+                <param name="contentType">text/csv;charset=utf-8</param> 
+                <param name="inputName">inputStream</param>  
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        
+        <action name="QryRedoResult" class="com.tradevan.helpdesk.action.message.QryRedoResultAction">
+            <result name="listredoresult" >/modules/message/pages/QryRedoResult.jsp</result>
+            <result name="ajaxQry" type="json">
+                <param name="root">dataObjectList</param>
+            </result>
+            <result name="download" type="stream">
+                <param name="contentType">text/csv;charset=utf-8</param> 
+                <param name="inputName">inputStream</param>  
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        
+        <action name="QryMultiVanDsmsMailbox" class="com.tradevan.helpdesk.action.message.QryMultiVanDsmsMailboxAction">
+            <result name="listvandsmsmailbox" >/modules/message/pages/QryMultiVanDsmsMailBox.jsp</result>          
+        </action>
+        
+		<action name="QryVanIVCCMsgLog" class="com.tradevan.helpdesk.action.message.QryVanIVCCMsgLogAction">
+        	<result name="vanivccmsglog">/modules/message/pages/QryVanIVCCMsgLog.jsp</result>
+        	<result name="dnldvanivccmsglog">${url}</result>
+        	<result name="viewvanivccmsglog">/modules/message/pages/ViewVanIVCCMsgLog.jsp</result>
+            <result name="viewhexvanivccmsglog" >/modules/message/pages/ViewHexVanIVCCMsgLog.jsp</result>
+            <result name="editvanivccmsglog" >/modules/message/pages/EditVanIVCCMsgLog.jsp</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstVanIVCCMsgLog.jsp</result>
+        </action>
+        
+        <action name="QryMSHMsgLog" class="com.tradevan.helpdesk.action.message.QryMSHMsgLogAction">
+        	<result name="qrymshmsglog">/modules/message/pages/QryMSHMsgLog.jsp</result>
+        	<result name="viewmshmsglog">/modules/message/pages/ViewMSHMsgLog.jsp</result>
+     
+            <result name="dnldmshmsglog" type="redirect">${url}</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstVanDsmsMailBox.jsp</result>
+<!-- 
+        	<result name="dnldmshmsglog" type="stream">
+                <param name="contentType">application/zip</param>
+        	    <param name="bufferSize">2048</param>
+        	    <param name="inputName">InputStream</param>
+        	    <param name="contentDisposition">attachment;filename="${filename}"</param>
+            </result>
+             -->
+        </action>
+        
+          <action name="QryMSHAPKey" class="com.tradevan.helpdesk.action.message.QryMSHAPKeyAction">
+        	<result name="qrymshapkey">/modules/message/pages/QryMSHAPKey.jsp</result>
+        	<result name="viewmshapkey">/modules/message/pages/ViewMSHAPKey.jsp</result>
+            <result name="dnldmshapkey" type="redirect">${url}</result>   
+            <!-- 
+        	<result name="dnldmshapkey" type="stream">
+        	    <param name="contentType">application/zip</param>
+        	    <param name="bufferSize">2048</param>
+        	    <param name="inputName">InputStream</param>
+        	    <param name="contentDisposition">attachment;filename="${filename}"</param>
+        	</result>
+        	 -->
+        	<result name="listmsglogdtls">/modules/message/pages/QryMSHMsgLogDtl.jsp</result>
+        	<result name="viewMsg">/modules/message/pages/ViewIVCCMsg.jsp</result>
+        	
+            <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstVanDsmsMailBox.jsp</result>
+        	<result name="listwsinfo">/modules/message/pages/QryWSInfo.jsp</result>
+          </action>
+          
+          <action name="QryMSHNonReply" class="com.tradevan.helpdesk.action.message.QryMSHNonReplyAction">
+        	<result name="listmsglogs">/modules/message/pages/QryMSHNonReply.jsp</result>
+         </action>
+          <action name="QryCustomDB" class="com.tradevan.helpdesk.action.message.QryCustomDBAction">
+          	<result name="qrycustomdb" type="emptyFoot-layout">/modules/message/pages/QryCustomDBInfo.jsp</result>
+          </action>
+   
+         <action name="QryDSConnLog" class="com.tradevan.helpdesk.action.message.QryDSConnLogAction">
+          <result name="listconnlogs">/modules/message/pages/QryDSConnLog.jsp</result>
+          <result name="dnldconnlogs" type="stream">
+            <param name="contentType">application/octet-stream</param>
+            <param name="contentDisposition">attachment;filename="${fileName}"</param>
+            <param name="inputName">docFile</param>
+            <param name="bufferSize">1024</param>         
+          </result>
+            
+         </action>
+        
+         <action name="QryDSMsgLog" class="com.tradevan.helpdesk.action.message.QryDSMsgLogAction">
+	          <result name="listmsglogs">/modules/message/pages/QryDSMsgLog.jsp</result>
+	          <result name="listmsglogdtls">/modules/message/pages/QryDSMsgLogDtl.jsp</result>
+            	<result name="dnldmsg" type="redirect">${url}</result>
+	          <result name="viewmsg">/modules/message/pages/ViewDSMsg.jsp</result>
+	          <result name="viewhexmsg">/modules/message/pages/ViewDSHexMsg.jsp</result>
+	          <result name="editmsg">/modules/message/pages/EditDSMsg.jsp</result>
+	          <result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstDSMsg.jsp</result>
+	          <result name="preupdate">/modules/message/pages/QryDSMsgLogForUpdate.jsp</result>
+         </action>
+         
+         <action name="QryDSSysEventLog" class="com.tradevan.helpdesk.action.message.QryDSSysEventLogAction">
+	          <result name="listsysevtlogs">/modules/message/pages/QryDSSysEventLog.jsp</result>
+	          <result name="listsysevtlogdtls">/modules/message/pages/QryDSSysEventLogDtl.jsp</result>
+         </action>
+          
+          <action name="QryARCMsgLog" class="com.tradevan.helpdesk.action.archive.QryARCMsgLogAction">
+          	<result name="srcselect" type="emptyFoot-layout">/modules/message/pages/QryARCMsg.jsp</result>
+          	<result name="qryarcmsglog" type="emptyFoot-layout">/modules/message/pages/QryARCMsgLog.jsp</result>
+          	<result name="listarcmsglog">/modules/message/pages/RstARCMsgLog.jsp</result>
+          	<result name="arcmsgdetail">/modules/message/pages/RstARCMsgLogDtl.jsp</result>
+          	<result name="viewmsg">/modules/message/pages/ViewARCMsg.jsp</result>
+          	<result name="viewhexmsg">/modules/message/pages/ViewARCHexMsg.jsp</result>
+          	<result name="dlndarcmsglog" type="redirect">${url}</result>
+          	<result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstARCMsg.jsp</result>
+          </action>
+          <action name="QryARCAuditLog" class="com.tradevan.helpdesk.action.archive.QryARCAuditLogAction">
+          	<result name="qryauditlog">/modules/message/pages/QryARCAuditLog.jsp</result>
+          </action>
+          <action name="QryARCSysEventLog" class="com.tradevan.helpdesk.action.archive.QryARCSysEventLogAction">
+          	<result name="qryarcsyseventlog">/modules/message/pages/QryARCSysEventLog.jsp</result>
+          	<result name="detailarcsyseventlog" type="emptyFoot-layout">/modules/message/pages/QryARCSysEventLogDtl.jsp</result>
+          </action>
+          <action name="QryARCProcLog" class="com.tradevan.helpdesk.action.archive.QryARCProcLogAction">
+          	<result name="qryarcproclog">/modules/message/pages/QryARCProcLog.jsp</result>
+          	<result name="detailarcproclog">/modules/message/pages/QryARCProcLogDtl.jsp</result>
+          </action>
+          <action name="QryHubSystem" class="com.tradevan.helpdesk.action.message.QryHubSystemAction">
+          	<result name="qryHubSystem">/modules/message/pages/QryHubSystem.jsp</result>
+          	<result name="detailHubSystem">/modules/message/pages/QryHubSystemDtl.jsp</result>
+          	<result name="viewHubSystem">/modules/message/pages/ViewHubSystem.jsp</result>
+          	<result name="hexHubSystem">/modules/message/pages/ViewHubSystemHex.jsp</result>
+          	<result name="dlndHubSystem" type="redirect">${url}</result>
+          	<result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstHubSystem.jsp</result>
+          </action>
+          <action name="QryNewHubSystem" class="com.tradevan.helpdesk.action.message.QryNewHubSystemAction">
+          	<result name="qryHubSystem">/modules/message/pages/QryNewHubSystem.jsp</result>
+          	<result name="detailHubSystem">/modules/message/pages/QryNewHubSystemDtl.jsp</result>
+          	<result name="viewHubSystem">/modules/message/pages/ViewNewHubSystem.jsp</result>
+          	<result name="hexHubSystem">/modules/message/pages/ViewNewHexHubSystem.jsp</result>
+          	<result name="dlndHubSystem" type="redirect">${url}</result>
+          	<result name="opresult" type="emptyFoot-layout">/modules/message/pages/NewOpRstHubSystem.jsp</result>
+          </action>
+          <action name="QryCCSConnLog" class="com.tradevan.helpdesk.action.message.QryCCSConnLogAction">
+          	<result name="qryccsconnlog">/modules/message/pages/QryCCSConnLog.jsp</result>
+          	<result name="dnldccsconnlog" type="stream">
+       			<param name="contentType">application/octet-stream</param>
+       			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+            	<param name="inputName">docFile</param>
+            	<param name="bufferSize">1024</param>       	
+       		</result>
+          </action>
+	<action name="QryPMSGConnLog" class="com.tradevan.helpdesk.action.pmsg.QryPMSGConnLogAction">
+			<result name="listconnlogs">/modules/message/pages/QryPMSGConnLog.jsp</result>
+		</action>
+		
+		<action name="PMSGMailboxStat" class="com.tradevan.helpdesk.action.pmsg.PMSGMailboxStatAction">
+			<result name="showpmsgmailboxstat">/modules/message/pages/PMSGMailboxStat.jsp</result>
+		</action>
+		
+		<action name="QryPMSGSysEventLog" class="com.tradevan.helpdesk.action.pmsg.QryPMSGSysEventLogAction">
+			<result name="listpmsgevtlogs">/modules/message/pages/QryPMSGSysEventLog.jsp</result>
+			<result name="listpmsgevtlogdtls">/modules/message/pages/QryPMSGSysEventLogDtl.jsp</result>
+		</action>
+		
+		<action name="QryPMSGMsgBillingLog" class="com.tradevan.helpdesk.action.pmsg.QryPMSGMsgBillingLogAction">
+			<result name="listpmsgbilllogs">/modules/message/pages/QryPMSGMsgBillingLog.jsp</result>
+			<result name="listpmsgbilllogdtls" type="emptyFoot-layout">/modules/message/pages/QryPMSGMsgBillingLogDtl.jsp</result>
+			<result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstPMSGMsgBillingLog.jsp</result>
+			<result name="next" type="chain">
+				<param name="actionName">QryPMSGSysEventLog</param>
+				<param name="method">detail</param>
+			</result>
+		</action>
+		
+		<action name="QryPMSGMsgResend" class="com.tradevan.helpdesk.action.pmsg.QryPMSGMsgResendAction">
+			<result name="mainpmsgresend">/modules/message/pages/QryPMSGMsgResend.jsp</result>
+			<result name="mainpmsgresenddtl">/modules/message/pages/QryPMSGMsgResendDtl.jsp</result>
+			<result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstPMSGMsgResend.jsp</result>
+		</action>
+		<action name="Msrs" class="com.tradevan.helpdesk.action.message.QryMsrsAction">
+			<result name="listlogs" type="emptyFoot-layout">/modules/message/pages/Msrs.jsp</result>
+			<result name="listlogsdtl" type="emptyFoot-layout">/modules/message/pages/MsrsDtl.jsp</result>
+		</action>
+		
+		<!-- 20131001新增新通關訊息狀態查詢 -->
+		<action name="NewMsrs" class="com.tradevan.helpdesk.action.message.QryNewMsrsAction">
+			<result name="listlogs" type="emptyFoot-layout">/modules/message/pages/MsrsNew.jsp</result>
+			<result name="listlogsdtl" type="emptyFoot-layout">/modules/message/pages/MsrsNewDtl.jsp</result>
+			<result name="ajaxQry" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+		
+		<action name="QryDSConnSysLogAnys" class="com.tradevan.helpdesk.action.message.QryConnSysLogAnysAction">
+			<result name="listanyslogs">/modules/message/pages/QryConnSysAnysLog.jsp</result>
+		</action>
+
+          <action name="QryAdvMsrs" class="com.tradevan.helpdesk.action.message.QryAdvMsrsAction">
+          	<result name="qryadvmsrs">/modules/message/pages/AdvMsrs.jsp</result>
+          	<result name="listadvmsrslogdtls">/modules/message/pages/AdvMsrsDtl.jsp</result>
+          	<result name="listsysevtlogdtls">/modules/message/pages/AdvMsrsEvLogDtl.jsp</result>
+          	<result name="viewadvmsrs">/modules/message/pages/ViewAdvMsrs.jsp</result>
+          	<result name="hexadvmsrs">/modules/message/pages/ViewAdvMsrsHex.jsp</result>
+          	<result name="opresult" type="emptyFoot-layout">/modules/message/pages/OpRstAdvMsrs.jsp</result>
+          	<result name="dnldmsg" type="redirect">${url}</result>
+          </action>
+          
+          <!-- 2012.02.21 新增 -->
+          <action name="QryJscapeFtpConnLog" class="com.tradevan.helpdesk.action.message.QryJscapeFtpConnLogAction">
+              <result name="listjscapeftpconnlogs" >/modules/message/pages/QryJscapeFtpConnLog.jsp</result>
+              <result name="dtljscapeftpconnlogs" >/modules/message/pages/QryftpConnLogDtl.jsp</result>
+          </action>
+          
+        <!-- 20180508 新增文字客服轉導畫面 -->  
+        <action name="NewWindow" class="com.tradevan.helpdesk.action.message.NewWindowAction">
+            <result name="newwindow" >/modules/message/pages/RedirectCustomerService.html</result>
+        </action>
+        
+        <!-- 20200803 新增客服Hold住訊息畫面 -->  
+        <action name="UpdateMsgStatus" class="com.tradevan.helpdesk.action.message.UpdateMsgStatusAction">
+            <result name="UpdateMsgStatus" >/modules/message/pages/UpdateMsgStatus.jsp</result>
+        </action>
+        
+    </package>
+</struts>

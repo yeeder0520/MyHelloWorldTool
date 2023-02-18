@@ -1,0 +1,2071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <!-- 權限項目設定  action mapping privilegeId -->
+    <settings>
+        <!-- for customize  
+        <set name="[action]_[method]"       value="[privilegeId]"/>     
+        -->
+        
+        <!-- Login -->
+        <set name="Sample"  value="AllPermit"/>
+        <set name="Sample"      value="LoginPermit"/>
+        <set name="Login"       value="AllPermit"/>
+        <set name="Login"       value="LoginPermit"/>
+        <set name="Login_chgLocale"     value="AllPermit"/>
+        <set name="Login_chgLocale"     value="LoginPermit"/>
+        <set name="Login_chgView"       value="AllPermit"/>
+        <set name="Login_chgView"       value="LoginPermit"/>
+        <set name="Login_main"      value="AllPermit"/>
+        <set name="Login_main"      value="LoginPermit"/>
+
+        <!-- system -->
+        <set name="VanSysCode" value="AllPermit"/>
+        <set name="VanSysCode"    value="LoginPermit"/>
+        <set name="VanSysCode_search" value="AllPermit"/>
+        <set name="VanSysCode_search" value="Sys0001_Q"/>
+        <set name="VanSysCode_preUpdate" value="AllPermit"/>
+        <set name="VanSysCode_preUpdate" value="Sys0001_Q"/>
+        <set name="VanSysCode_add" value="AllPermit"/>
+        <set name="VanSysCode_add" value="Sys0001_A"/>
+        <set name="VanSysCode_update" value="AllPermit"/>
+        <set name="VanSysCode_update" value="Sys0001_U"/>
+        <set name="VanSysCode_delete" value="AllPermit"/>
+        <set name="VanSysCode_delete" value="Sys0001_D"/>
+        
+        <set name="MainMdcMsgMappingDef" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef"        value="LoginPermit"/>
+        <set name="MainMdcMsgMappingDef_search" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef_search" value="Sys0002_Q"/>
+        <set name="MainMdcMsgMappingDef_preUpdate" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef_preUpdate" value="Sys0002_Q"/>
+        <set name="MainMdcMsgMappingDef_add" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef_add" value="Sys0002_A"/>
+        <set name="MainMdcMsgMappingDef_update" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef_update" value="Sys0002_U"/>
+        <set name="MainMdcMsgMappingDef_delete" value="AllPermit"/>
+        <set name="MainMdcMsgMappingDef_delete" value="Sys0002_D"/>
+        
+        <set name="MainVanTransformerReg" value="AllPermit"/>
+        <set name="MainVanTransformerReg"       value="LoginPermit"/>
+        <set name="MainVanTransformerReg_search" value="AllPermit"/>
+        <set name="MainVanTransformerReg_search" value="Sys0003_Q"/>
+        <set name="MainVanTransformerReg_preUpdate" value="AllPermit"/>
+        <set name="MainVanTransformerReg_preUpdate" value="Sys0003_Q"/>
+        <set name="MainVanTransformerReg_add" value="AllPermit"/>
+        <set name="MainVanTransformerReg_add" value="Sys0003_A"/>       
+        <set name="MainVanTransformerReg_update" value="AllPermit"/>
+        <set name="MainVanTransformerReg_update" value="Sys0003_U"/>
+        <set name="MainVanTransformerReg_delete" value="AllPermit"/>
+        <set name="MainVanTransformerReg_delete" value="Sys0003_D"/>
+        <set name="MainVanTransformerReg_clear" value="AllPermit"/>
+        <set name="MainVanTransformerReg_clear" value="LoginPermit"/>       
+                
+        <set name="VanSysObjProf" value="AllPermit"/>
+        <set name="VanSysObjProf"       value="LoginPermit"/>
+        <set name="VanSysObjProf_search" value="AllPermit"/>
+        <set name="VanSysObjProf_search" value="Sys0004_Q"/>
+        <set name="VanSysObjProf_preUpdate" value="AllPermit"/>
+        <set name="VanSysObjProf_preUpdate" value="Sys0004_Q"/>
+        <set name="VanSysObjProf_add" value="AllPermit"/>
+        <set name="VanSysObjProf_add" value="Sys0004_A"/>
+        <set name="VanSysObjProf_update" value="AllPermit"/>
+        <set name="VanSysObjProf_update" value="Sys0004_U"/>
+        <set name="VanSysObjProf_delete" value="AllPermit"/>
+        <set name="VanSysObjProf_delete" value="Sys0004_D"/>
+        
+        <set name="VanSysObjArg" value="AllPermit"/>
+        <set name="VanSysObjArg"        value="LoginPermit"/>
+        <set name="VanSysObjArg_search" value="AllPermit"/>
+        <set name="VanSysObjArg_search" value="Sys0005_Q"/>
+        <set name="VanSysObjArg_preUpdate" value="AllPermit"/>
+        <set name="VanSysObjArg_preUpdate" value="Sys0005_Q"/>
+        <set name="VanSysObjArg_add" value="AllPermit"/>
+        <set name="VanSysObjArg_add" value="Sys0004_A"/>
+        <set name="VanSysObjArg_update" value="AllPermit"/>
+        <set name="VanSysObjArg_update" value="Sys0005_U"/>
+        <set name="VanSysObjArg_delete" value="AllPermit"/>
+        <set name="VanSysObjArg_delete" value="Sys0005_D"/>
+        
+        <set name="VanSysObjMtd" value="AllPermit"/>
+        <set name="VanSysObjMtd"        value="LoginPermit"/>
+        <set name="VanSysObjMtd_search" value="AllPermit"/>
+        <set name="VanSysObjMtd_search" value="Sys0006_Q"/>
+        <set name="VanSysObjMtd_preUpdate" value="AllPermit"/>
+        <set name="VanSysObjMtd_preUpdate" value="Sys0006_Q"/>
+        <set name="VanSysObjMtd_add" value="AllPermit"/>
+        <set name="VanSysObjMtd_add" value="Sys0006_A"/>
+        <set name="VanSysObjMtd_update" value="AllPermit"/>
+        <set name="VanSysObjMtd_update" value="Sys0006_D"/>
+        <set name="VanSysObjMtd_delete" value="AllPermit"/>
+        <set name="VanSysObjMtd_delete" value="Sys0006_U"/>
+        <set name="VanSysObjMtd_next" value="AllPermit"/>
+        
+        <set name="SysCode" value="AllPermit"/>
+        <set name="SysCode"    value="LoginPermit"/>
+        <set name="SysCode_search" value="AllPermit"/>
+        <set name="SysCode_search" value="Sys0007_Q"/>
+        <set name="SysCode_preUpdate" value="AllPermit"/>
+        <set name="SysCode_preUpdate" value="Sys0007_Q"/>
+        <set name="SysCode_add" value="AllPermit"/>
+        <set name="SysCode_add" value="Sys0007_A"/>
+        <set name="SysCode_update" value="AllPermit"/>
+        <set name="SysCode_update" value="Sys0007_U"/>
+        <set name="SysCode_delete" value="AllPermit"/>
+        <set name="SysCode_delete" value="Sys0007_D"/>
+        
+        <set name="CCSSysCode" value="AllPermit"/>
+        <set name="CCSSysCode"    value="LoginPermit"/>
+        <set name="CCSSysCode_refresh" value="AllPermit"/>
+        <set name="CCSSysCode_refresh" value="Sys0008_Q"/>
+        <set name="CCSSysCode_search" value="AllPermit"/>
+        <set name="CCSSysCode_search" value="Sys0008_Q"/>
+        <set name="CCSSysCode_preUpdate" value="AllPermit"/>
+        <set name="CCSSysCode_preUpdate" value="Sys0008_Q"/>
+        <set name="CCSSysCode_add" value="AllPermit"/>
+        <set name="CCSSysCode_add" value="Sys0008_A"/>
+        <set name="CCSSysCode_update" value="AllPermit"/>
+        <set name="CCSSysCode_update" value="Sys0008_U"/>
+        <set name="CCSSysCode_delete" value="AllPermit"/>
+        <set name="CCSSysCode_delete" value="Sys0008_D"/>
+    
+        <set name="DBSwitch" value="AllPermit"/>
+        <set name="DBSwitch" value="LoginPermit"/>  
+        <set name="DBSwitch_update" value="AllPermit"/>
+        <set name="DBSwitch_update" value="AllPermit"/>
+        
+        <set name="Notification" value="AllPermit"/> 
+        <set name="Notification" value="LoginPermit"/> 
+        <set name="Notification_show" value="AllPermit"/> 
+        <set name="Notification_show" value="LoginPermit"/> 
+        <set name="Notification_add" value="AllPermit"/>
+        <set name="Notification_add" value="Sys0009_Q"/>  
+        <set name="Notification_preUpdate" value="AllPermit"/>
+        <set name="Notification_preUpdate" value="Sys0009_Q"/>
+        <set name="Notification_update" value="AllPermit"/>
+        <set name="Notification_update" value="Sys0009_Q"/>  
+        <set name="Notification_delete" value="AllPermit"/>
+        <set name="Notification_delete" value="Sys0009_Q"/>  
+        <!-- message -->
+        <set name="QryVanConnLog"       value="AllPermit"/>
+        <set name="QryVanConnLog"       value="LoginPermit"/>
+        <set name="QryVanConnLog_search"        value="Msg0001_Q"/>
+        <set name="QryVanConnLog_search"        value="AllPermit"/>
+        <set name="QryVanConnLog_queryObConLog"      value="Msg0001_Q"/>
+        <set name="QryVanConnLog_queryObConLog"      value="AllPermit"/>
+        <set name="QryVanConnLog_download"      value="AllPermit"/>
+        <set name="QryVanConnLog_download"      value="Msg0001_L"/>
+        
+        <set name="QryVanSysEventLog"    value="AllPermit" />
+        <set name="QryVanSysEventLog"       value="LoginPermit"/>
+        <set name="QryVanSysEventLog_search"    value="AllPermit"/>
+        <set name="QryVanSysEventLog_search"        value="Msg0002_Q"/>
+        <set name="QryVanSysEventLog_download"    value="AllPermit"/>
+        <set name="QryVanSysEventLog_download"      value="Msg0002_L"/>
+        <set name="QryVanSysEventLog_detail"    value="AllPermit"/>
+        <set name="QryVanSysEventLog_detail"        value="Msg0002_Q"/>
+        
+        <set name="QryMdcIdxLog"    value="AllPermit"/>
+        <set name="QryMdcIdxLog"        value="LoginPermit"/>
+        <set name="QryMdcIdxLog_search"    value="AllPermit"/>
+        <set name="QryMdcIdxLog_search"     value="Msg0003_Q"/>
+        <set name="QryMdcIdxLog_detail"    value="AllPermit"/>
+        <set name="QryMdcIdxLog_detail"     value="Msg0003_Q"/>
+        <set name="QryMdcIdxLog_download"    value="AllPermit"/>
+        <set name="QryMdcIdxLog_download"       value="Msg0003_L"/>
+        <set name="QryMdcIdxLog_redo"    value="AllPermit"/>
+        <set name="QryMdcIdxLog_redo"       value="Msg0003_R"/>
+        
+        <set name="QryVanMsgLogExt"     value="AllPermit"/>
+        <set name="QryVanMsgLogExt"     value="LoginPermit"/>
+        <set name="QryVanMsgLogExt_search"      value="AllPermit"/>
+        <set name="QryVanMsgLogExt_search"      value="Msg0004_Q"/>
+        <set name="QryVanMsgLogExt_download"        value="AllPermit"/>
+        <set name="QryVanMsgLogExt_download"        value="Msg0004_L"/>
+        <set name="QryVanMsgLogExt_detail"      value="AllPermit"/>
+        <set name="QryVanMsgLogExt_detail"      value="Msg0004_Q"/>
+        
+        <set name="QryVanDsmsMailbox"       value="AllPermit"/>
+        <set name="QryVanDsmsMailbox"       value="LoginPermit"/>
+        <set name="QryVanDsmsMailbox_search"        value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_search"        value="Msg0005_Q"/>
+        <set name="QryVanDsmsMailbox_detail"        value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_detail"        value="Msg0005_Q"/>
+        <set name="QryVanDsmsMailbox_update"        value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_update"        value="Msg0005_U"/>
+        <set name="QryVanDsmsMailbox_view"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_view"      value="Msg0005_V"/>
+        <set name="QryVanDsmsMailbox_edit"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_edit"      value="Msg0005_E"/>
+        <set name="QryVanDsmsMailbox_download"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_download"      value="Msg0005_L"/>
+        <set name="QryVanDsmsMailbox_redo"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_redo"      value="Msg0005_R"/>
+        <set name="QryVanDsmsMailbox_saveRedoResult"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_saveRedoResult"      value="Msg0005_R"/>
+        <set name="QryVanDsmsMailbox_queryObConLog"      value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_queryObConLog"      value="Msg0005_Q"/>
+        <set name="QryVanDsmsMailbox_getAPKeyName" value="AllPermit"/>
+        <set name="QryVanDsmsMailbox_getAPKeyName" value="LoginPermit"/>
+        
+        <set name="QryRedoResult"       value="AllPermit"/>
+        <set name="QryRedoResult"       value="LoginPermit"/>
+        <set name="QryRedoResult_search"       value="AllPermit"/>
+        <set name="QryRedoResult_search"       value="Msg0005_Q"/>
+        <set name="QryRedoResult_download"       value="AllPermit"/>
+        <set name="QryRedoResult_download"       value="Msg0005_Q"/>
+        
+        <!-- 新增Hold住客戶訊息 20200804 -->
+        <set name="UpdateMsgStatus"       value="AllPermit"/>
+        <set name="UpdateMsgStatus"       value="LoginPermit"/>
+        <set name="UpdateMsgStatus_changeStatus"    value="AllPermit"/>
+        <set name="UpdateMsgStatus_changeStatus"    value="LoginPermit"/>
+         
+        <!-- 多層訊息紀錄查詢 20130801 -->
+        <set name="QryMultiVanDsmsMailbox"      value="AllPermit"/>
+        <set name="QryMultiVanDsmsMailbox"      value="LoginPermit"/>
+        <set name="QryMultiVanDsmsMailbox_search"       value="AllPermit"/>
+        <set name="QryMultiVanDsmsMailbox_search"       value="Msg0005_Q"/>
+        
+        <set name="QryVanIVCCMsgLog" value="AllPermit"/>
+        <set name="QryVanIVCCMsgLog"        value="LoginPermit"/>
+        <set name="QryVanIVCCMsgLog_search" value="Msg0006_Q"/>
+        <set name="QryVanIVCCMsgLog_search"     value="LoginPermit"/>
+        <set name="QryVanIVCCMsgLog_download" value="Msg0006_L"/>
+        <set name="QryVanIVCCMsgLog_download" value="AllPermit"/>
+        <set name="QryVanIVCCMsgLog_view" value="Msg0006_V"/>
+        <set name="QryVanIVCCMsgLog_view" value="AllPermit"/>
+        <set name="QryVanIVCCMsgLog_redo" value="AllPermit"/>
+        <set name="QryVanIVCCMsgLog_redo" value="Msg0006_R"/>
+                
+        <set name="QryMSHMsgLog" value="AllPermit"/>
+        <set name="QryMSHMsgLog" value="LoginPermit"/>
+        <set name="QryMSHMsgLog_search" value="AllPermit"/>
+        <set name="QryMSHMsgLog_search" value="Msg0007_Q"/>
+        <set name="QryMSHMsgLog_download" value="AllPermit"/>
+        <set name="QryMSHMsgLog_download" value="Msg0007_L"/>
+        <set name="QryMSHMsgLog_view" value="AllPermit"/>
+        <set name="QryMSHMsgLog_view" value="Msg0007_V"/>
+        <set name="QryMSHMsgLog_redo" value="AllPermit"/>
+        <set name="QryMSHMsgLog_redo" value="Msg0007_R"/>
+        
+        <set name="QryMSHAPKey_callWS" value="AllPermit"/>
+        <set name="QryMSHAPKey_callWS" value="Msg0007_Q"/>
+        
+        <set name="QryMSHAPKey" value="AllPermit"/>
+        <set name="QryMSHAPKey" value="LoginPermit"/>
+        <set name="QryMSHAPKey_search" value="AllPermit"/>
+        <set name="QryMSHAPKey_search" value="Msg0008_Q"/>
+        <set name="QryMSHAPKey_callWS" value="AllPermit"/>
+        <set name="QryMSHAPKey_callWS" value="Msg0008_Q"/>
+        <set name="QryMSHAPKey_detail" value="AllPermit"/>
+        <set name="QryMSHAPKey_detail" value="Msg0008_Q"/>
+        <set name="QryMSHAPKey_download" value="AllPermit"/>
+        <set name="QryMSHAPKey_download" value="Msg0008_L"/>
+        <set name="QryMSHAPKey_view" value="AllPermit"/>
+        <set name="QryMSHAPKey_view" value="Msg0008_V"/>
+        <set name="QryMSHAPKey_redo" value="AllPermit"/>
+        <set name="QryMSHAPKey_redo" value="Msg0008_R"/>
+        
+        <set name="QryMSHNonReply" value="AllPermit"/>
+        <set name="QryMSHNonReply" value="LoginPermit"/>
+        <set name="QryMSHNonReply_search" value="AllPermit"/>
+        <set name="QryMSHNonReply_search" value="Msg0009_Q"/>
+        
+        <set name="QryCustomDB" value="AllPermit"/>
+        <set name="QryCustomDB" value="LoginPermit"/>
+        <set name="QryCustomDB_search" value="AllPermit"/>
+        <set name="QryCustomDB_search" value="Msg0010_Q"/>
+    
+        <set name="QryDSConnLog" value="AllPermit"/>
+        <set name="QryDSConnLog" value="LoginPermit"/>
+        <set name="QryDSConnLog_search" value="AllPermit"/> 
+        <set name="QryDSConnLog_search" value="Msg0011_Q"/>
+        <set name="QryDSConnLog_download" value="AllPermit"/>
+        <set name="QryDSConnLog_download" value="Msg0011_L"/>
+        
+        <set name="QryDSMsgLog" value="AllPermit"/>
+        <set name="QryDSMsgLog" value="LoginPermit"/>
+        <set name="QryDSMsgLog_search" value="AllPermit"/>
+        <set name="QryDSMsgLog_search" value="Msg0012_Q"/>
+        <set name="QryDSMsgLog_detail" value="AllPermit"/>
+        <set name="QryDSMsgLog_detail" value="Msg0012_Q"/>
+        <set name="QryDSMsgLog_download" value="AllPermit"/>
+        <set name="QryDSMsgLog_download" value="Msg0012_L"/>
+        <set name="QryDSMsgLog_view" value="AllPermit"/>
+        <set name="QryDSMsgLog_view" value="Msg0012_V"/>
+        <set name="QryDSMsgLog_redo" value="AllPermit"/>
+        <set name="QryDSMsgLog_redo" value="Msg0012_R"/>
+        <set name="QryDSMsgLog_update" value="AllPermit"/>
+        <set name="QryDSMsgLog_update" value="Msg0012_U"/>
+        <set name="QryDSMsgLog_preUpdate" value="AllPermit"/>
+        <set name="QryDSMsgLog_preUpdate" value="Msg0012_Q"/>
+        <set name="QryDSMsgLog_edit" value="AllPermit"/>
+        <set name="QryDSMsgLog_edit" value="Msg0012_E"/>
+        
+        <set name="QryDSSysEventLog" value="AllPermit"/>
+        <set name="QryDSSysEventLog" value="LoginPermit"/>
+        <set name="QryDSSysEventLog_search" value="AllPermit"/>
+        <set name="QryDSSysEventLog_search" value="Msg0013_Q"/>
+        <set name="QryDSSysEventLog_detail" value="AllPermit"/>
+        <set name="QryDSSysEventLog_detail" value="Msg0013_Q"/>
+
+        <set name="Msrs" value="AllPermit"/>
+        <set name="Msrs" value="LoginPermit"/>
+        <set name="Msrs_search" value="AllPermit"/>
+        <set name="Msrs_search" value="LoginPermit"/>
+        <set name="Msrs_detail" value="AllPermit"/>
+        <set name="Msrs_detail" value="LoginPermit"/>
+        
+        <!-- 20131001新增 -->
+        <set name="NewMsrs" value="AllPermit"/>
+        <set name="NewMsrs" value="LoginPermit"/>
+        <set name="NewMsrs_search" value="AllPermit"/>
+        <set name="NewMsrs_search" value="LoginPermit"/>
+        <set name="NewMsrs_detail" value="AllPermit"/>
+        <set name="NewMsrs_detail" value="LoginPermit"/>
+    	<set name="NewMsrs_getConnectionData" value="AllPermit"/>
+        <set name="NewMsrs_getConnectionData" value="LoginPermit"/>
+    
+        <!-- PMC User -->
+        <set name="MainVanPartyProf" value="AllPermit"/>
+        <set name="MainVanPartyProf"    value="LoginPermit"/>
+        <set name="MainVanPartyProf_search" value="AllPermit"/>
+        <set name="MainVanPartyProf_search"     value="Usr0001_Q"/>
+        <set name="MainVanPartyProf_add" value="AllPermit"/>
+        <set name="MainVanPartyProf_add"        value="Usr0001_A"/>
+        <set name="MainVanPartyProf_update" value="AllPermit"/>
+        <set name="MainVanPartyProf_update"     value="Usr0001_U"/>
+        <set name="MainVanPartyProf_next" value="AllPermit"/>
+        <set name="MainVanPartyProf_next"       value="Usr0002_Q"/>
+        
+        <set name="QryVanPartyProf"    value="AllPermit"/>
+        <set name="QryVanPartyProf"     value="LoginPermit"/>
+        <set name="QryVanPartyProf_search"    value="AllPermit"/>
+        <set name="QryVanPartyProf_search"      value="Usr0002_Q"/>
+        <set name="QryVanPartyProf_selectAll"    value="AllPermit"/>
+        <set name="QryVanPartyProf_selectAll"       value="Usr0002_Q"/>
+        
+         <!-- 20150129 新增海關郵箱狀態切換功能 -->
+        <set name="QryVanCustomSwitch"    value="AllPermit"/>
+        <set name="QryVanCustomSwitch"     value="LoginPermit"/>
+        <set name="QryVanCustomSwitch_search"    value="AllPermit"/>
+        <set name="QryVanCustomSwitch_search"      value="Usr0001_Q"/>
+        <set name="QryVanCustomSwitch_update"    value="AllPermit"/>
+        <set name="QryVanCustomSwitch_update"       value="Usr0001_U"/>      
+        
+        
+          <!-- 20150915 新增單一訊息狀態切換功能 -->
+        <set name="QryVanSWMsgHold"    value="AllPermit"/>
+        <set name="QryVanSWMsgHold"     value="LoginPermit"/>
+        <set name="QryVanSWMsgHold_search"    value="AllPermit"/>
+        <set name="QryVanSWMsgHold_search"      value="Usr0001_Q"/>
+        <set name="QryVanSWMsgHold_update"    value="AllPermit"/>
+        <set name="QryVanSWMsgHold_update"       value="Usr0001_U"/>        
+        
+         <!-- 20161212 新增海關備援作業儀表板 -->
+        <set name="VanCustomDashborad"    value="AllPermit"/>
+        <set name="VanCustomDashborad"     value="LoginPermit"/>
+        <set name="VanCustomDashborad_searchMailboxStatus"    value="AllPermit"/>
+        <set name="VanCustomDashborad_searchMailboxStatus"      value="Usr0001_Q"/>
+        <set name="VanCustomDashborad_updateMailboxStatus"    value="AllPermit"/>
+        <set name="VanCustomDashborad_updateMailboxStatus"       value="Usr0001_U"/>
+        <set name="VanCustomDashborad_searchSWMsgSwitch"    value="AllPermit"/>
+        <set name="VanCustomDashborad_searchSWMsgSwitch"      value="Usr0001_Q"/>
+        <set name="VanCustomDashborad_updateSWMsgSwitch"    value="AllPermit"/>
+        <set name="VanCustomDashborad_updateSWMsgSwitch"       value="Usr0001_U"/>
+        <set name="VanCustomDashborad_searchVanPartyAltn"    value="AllPermit"/>
+        <set name="VanCustomDashborad_searchVanPartyAltn"      value="Usr0001_Q"/>
+        <set name="VanCustomDashborad_updateVanPartyAltn"    value="AllPermit"/>
+        <set name="VanCustomDashborad_updateVanPartyAltn"       value="Usr0001_U"/>      
+        
+        <set name="JMSImport"    value="AllPermit"/>
+        <set name="JMSImport"     value="LoginPermit"/>
+        <set name="JMSImport_search"    value="AllPermit"/>
+        <set name="JMSImport_search"      value="Usr0001_Q"/>
+        <set name="JMSImport_qryDtl"    value="AllPermit"/>
+        <set name="JMSImport_qryDtl"      value="Usr0001_Q"/>
+        <set name="JMSImport_analyzeFile"    value="AllPermit"/>
+        <set name="JMSImport_analyzeFile"      value="Usr0001_Q"/>    
+        <set name="JMSImport_importFile"    value="AllPermit"/>
+        <set name="JMSImport_importFile"      value="Usr0001_A"/>    
+        
+        <set name="MainVanPartyAltn" value="AllPermit"/>
+        <set name="MainVanPartyAltn"    value="LoginPermit"/>
+        <set name="MainVanPartyAltn_search" value="AllPermit"/>
+        <set name="MainVanPartyAltn_search"     value="Usr0003_Q"/>
+        <set name="MainVanPartyAltn_preUpdate" value="AllPermit"/>
+        <set name="MainVanPartyAltn_preUpdate"      value="Usr0003_Q"/>
+        <set name="MainVanPartyAltn_add" value="AllPermit"/>
+        <set name="MainVanPartyAltn_add"        value="Usr0003_A"/>
+        <set name="MainVanPartyAltn_update" value="AllPermit"/>
+        <set name="MainVanPartyAltn_update"     value="Usr0003_U"/>
+        <set name="MainVanPartyAltn_delete" value="AllPermit"/>
+        <set name="MainVanPartyAltn_delete"     value="Usr0003_D"/>
+        <set name="MainVanPartyAltn_next" value="AllPermit"/>
+        <set name="MainVanPartyAltn_next"       value="Usr0005_Q"/>
+        <set name="MainVanPartyAltn_back" value="AllPermit"/>
+        <set name="MainVanPartyAltn_back"       value="Usr0001_Q"/>
+
+        <set name="QryVanPartyAltn"    value="AllPermit"/>
+        <set name="QryVanPartyAltn"    value="LoginPermit"/>
+        <set name="QryVanPartyAltn_search"    value="AllPermit"/>
+        <set name="QryVanPartyAltn_search"      value="Usr0004_Q"/>
+        <set name="QryVanPartyAltn_detail"    value="AllPermit"/>
+        <set name="QryVanPartyAltn_detail"      value="Usr0004_Q"/>
+        <set name="QryVanPartyAltn_update"    value="AllPermit"/>
+        <set name="QryVanPartyAltn_update"      value="Usr0003_U"/>
+        
+        <set name="MainVanPartySpProcess"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess"    value="LoginPermit"/>
+        <set name="MainVanPartySpProcess_search"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_search"        value="Usr0005_Q"/>
+        <set name="MainVanPartySpProcess_preUpdate"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_preUpdate"     value="Usr0005_Q"/>
+        <set name="MainVanPartySpProcess_add"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_add"       value="Usr0005_A"/>
+        <set name="MainVanPartySpProcess_update"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_update"        value="Usr0005_U"/>
+        <set name="MainVanPartySpProcess_delete"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_delete"        value="Usr0005_D"/>
+        <set name="MainVanPartySpProcess_execute"    value="AllPermit"/>
+        <set name="MainVanPartySpProcess_execute"       value="Usr0005_Q"/>
+        <set name="MainVanPartySpProcess_back" value="AllPermit"/>
+        <set name="MainVanPartySpProcess_back"      value="Usr0004_Q"/>
+        <set name="MainVanPartySpProcess_next" value="AllPermit"/>
+        <set name="MainVanPartySpProcess_next"      value="Usr0008_Q"/>
+    
+        
+        <set name="QryVanPartySpProcess"    value="AllPermit" />
+        <set name="QryVanPartySpProcess"    value="LoginPermit"/>
+        <set name="QryVanPartySpProcess_search"   value="AllPermit"/>
+        <set name="QryVanPartySpProcess_search"     value="Usr0006_Q"/>
+        <set name="QryVanPartySpProcess_detail"   value="AllPermit"/>
+        <set name="QryVanPartySpProcess_detail"     value="Usr0006_Q"/>
+        
+        <set name="MainVanPartyTransport"   value="AllPermit"/>
+        <set name="MainVanPartyTransport"    value="LoginPermit"/>
+        <set name="MainVanPartyTransport_search"   value="AllPermit"/>
+        <set name="MainVanPartyTransport_search"   value="Usr0007_Q"/>
+        <set name="MainVanPartyTransport_preUpdate" value="AllPermit"/>
+        <set name="MainVanPartyTransport_preUpdate"     value="Usr0007_Q"/>
+        <set name="MainVanPartyTransport_add" value="AllPermit"/>
+        <set name="MainVanPartyTransport_add"       value="Usr0007_A"/>
+        <set name="MainVanPartyTransport_update" value="AllPermit"/>
+        <set name="MainVanPartyTransport_update"        value="Usr0007_U"/>
+        <set name="MainVanPartyTransport_delete" value="AllPermit"/>
+        <set name="MainVanPartyTransport_delete"        value="Usr0007_D"/>
+        
+        
+        <set name="MainVanServiceRouting"   value="AllPermit"/>
+        <set name="MainVanServiceRouting"    value="LoginPermit"/>
+        <set name="MainVanServiceRouting_select"    value="AllPermit"/>
+        <set name="MainVanServiceRouting_select"    value="Usr0008_Q"/>
+        <set name="MainVanServiceRouting_search"    value="AllPermit"/>
+        <set name="MainVanServiceRouting_search"    value="Usr0008_Q"/>
+        <set name="MainVanServiceRouting_preUpdate" value="AllPermit"/>
+        <set name="MainVanServiceRouting_preUpdate"     value="Usr0008_Q"/>
+        <set name="MainVanServiceRouting_add" value="AllPermit"/>
+        <set name="MainVanServiceRouting_add"       value="Usr0008_A"/>
+        <set name="MainVanServiceRouting_update" value="AllPermit"/>
+        <set name="MainVanServiceRouting_update"        value="Usr0008_U"/>
+        <set name="MainVanServiceRouting_delete" value="AllPermit"/>
+        <set name="MainVanServiceRouting_delete"        value="Usr0008_D"/>
+        <set name="MainVanServiceRouting_next" value="AllPermit"/>
+        <set name="MainVanServiceRouting_next"      value="Usr0008_U"/>
+        <set name="MainVanServiceRouting_next"      value="Usr0008_Q"/>
+        <set name="MainVanServiceRouting_next"      value="Usr0008_A"/>
+        <set name="MainVanServiceRouting_next"      value="Usr0008_D"/>
+        <set name="MainVanServiceRouting_back"      value="AllPermit"/>
+        <set name="MainVanServiceRouting_back"      value="Usr0004_Q"/>
+        
+        <!-- 2010.10.06 新增 -->
+        <set name="MainVanPartySubscribe"   value="AllPermit"/>
+        <set name="MainVanPartySubscribe"    value="LoginPermit"/>
+        <set name="MainVanPartySubscribe_search"    value="AllPermit"/>
+        <set name="MainVanPartySubscribe_search"    value="Usr0009_Q"/>
+        <set name="MainVanPartySubscribe_preUpdate" value="AllPermit"/>
+        <set name="MainVanPartySubscribe_preUpdate"     value="Usr0009_Q"/>
+        <set name="MainVanPartySubscribe_execute" value="AllPermit"/>
+        <set name="MainVanPartySubscribe_execute"       value="Usr0009_Q"/>
+        <set name="MainVanPartySubscribe_add" value="AllPermit"/>
+        <set name="MainVanPartySubscribe_add"       value="Usr0009_A"/>
+        <set name="MainVanPartySubscribe_update" value="AllPermit"/>
+        <set name="MainVanPartySubscribe_update"        value="Usr0009_U"/>
+        <set name="MainVanPartySubscribe_delete" value="AllPermit"/>
+        <set name="MainVanPartySubscribe_delete"        value="Usr0009_D"/>
+        
+        <!-- 2012.02.20 新增 -->
+        <set name="MainJscapeFtpAccount" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount"    value="LoginPermit"/>
+        <set name="MainJscapeFtpAccount_search"    value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_search"    value="Usr0010_Q"/>
+        <set name="MainJscapeFtpAccount_add" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_add"        value="Usr0010_A"/>
+        <set name="MainJscapeFtpAccount_update" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_update"     value="Usr0010_U"/>
+        <set name="MainJscapeFtpAccount_delete" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_delete"     value="Usr0010_D"/>
+        <set name="MainJscapeFtpAccount_edit" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_edit"       value="Usr0010_E"/>
+        <set name="MainJscapeFtpAccount_view" value="AllPermit"/>
+        <set name="MainJscapeFtpAccount_view"       value="Usr0010_V"/>
+        
+        <set name="QryJscapeFtpConnLog" value="AllPermit"/>
+        <set name="QryJscapeFtpConnLog"    value="LoginPermit"/>
+        <set name="QryJscapeFtpConnLog_search" value="AllPermit"/>
+        <set name="QryJscapeFtpConnLog_search"    value="MSG0016_Q"/>
+        <set name="QryJscapeFtpConnLog_detail" value="AllPermit"/>
+        <set name="QryJscapeFtpConnLog_detail"    value="MSG0016_Q"/>
+
+        <!-- report -->
+        <set name="QryDailyConnRpt"             value="AllPermit"/>
+        <set name="QryDailyConnRpt"             value="LoginPermit"/>
+        <set name="QryDailyConnRpt_search"      value="AllPermit"/>
+        <set name="QryDailyConnRpt_search"      value="Rpt0001_Q"/>
+        
+        <set name="QryDailyTransRpt"            value="AllPermit"/>
+        <set name="QryDailyTransRpt"            value="LoginPermit"/>
+        <set name="QryDailyTransRpt_search"     value="AllPermit"/>
+        <set name="QryDailyTransRpt_search"         value="Rpt0002_Q"/>
+        
+        <set name="QryMSHRpt" value="AllPermit"/>
+        <set name="QryMSHRpt" value="LoginPermit"/>
+        <set name="QryMSHRpt_search" value="AllPermit"/>
+        <set name="QryMSHRpt_search" value="Rpt0003_Q"/>
+            <!-- 2010.12.21新增 -->
+        <set name="RptHistory"   value="AllPermit"/>
+        <set name="RptHistory"    value="LoginPermit"/>
+        <set name="RptHistory_search"   value="AllPermit"/>
+        <set name="RptHistory_search"   value="Rpt0003_Q"/>
+        <set name="RptHistory_detail"   value="AllPermit"/>
+        <set name="RptHistory_detail"   value="Rpt0003_Q"/>
+
+        
+        <!-- b2bi -->
+        <set name="QryXENIMsgLog"           value="AllPermit"/>
+        <set name="QryXENIMsgLog"           value="LoginPermit"/>
+        <set name="QryXENIMsgLog_search"            value="AllPermit"/>
+        <set name="QryXENIMsgLog_search"            value="B2B0001_Q"/>
+        <set name="QryXENIMsgLog_status"            value="AllPermit"/>
+        <set name="QryXENIMsgLog_status"            value="B2B0001_Q"/>
+        <set name="QryXENIMsgLog_view"          value="AllPermit"/>
+        <set name="QryXENIMsgLog_view"          value="B2B0001_V"/>
+        <set name="QryXENIMsgLog_detail"            value="AllPermit"/>
+        <set name="QryXENIMsgLog_detail"            value="B2B0001_Q"/>
+        <set name="QryXENIMsgLog_callWS"            value="AllPermit"/>
+        <set name="QryXENIMsgLog_callWS"            value="B2B0001_Q"/>
+        <set name="QryXENIMsgLog_redo"          value="AllPermit"/>
+        <set name="QryXENIMsgLog_redo"          value="B2B0001_R"/>
+        
+        <set name="QryXENIAPKeys"           value="AllPermit"/>
+        <set name="QryXENIAPKeys"           value="LoginPermit"/>
+        <set name="QryXENIAPKeys_search"            value="AllPermit"/>
+        <set name="QryXENIAPKeys_search"            value="B2B0001_Q"/>
+        <set name="QryXENIAPKeys_detail"            value="AllPermit"/>
+        <set name="QryXENIAPKeys_detail"            value="B2B0001_Q"/>
+        <set name="QryXENIAPKeys_view"          value="AllPermit"/>
+        <set name="QryXENIAPKeys_view"          value="B2B0001_V"/>
+        <set name="QryXENIAPKeys_redo"          value="AllPermit"/>
+        <set name="QryXENIAPKeys_redo"          value="B2B0001_R"/>
+        <set name="QryXENIAPKeys_status"            value="AllPermit"/>
+        <set name="QryXENIAPKeys_status"            value="B2B0001_Q"/>
+        <set name="QryXENIAPKeys_callWS"            value="AllPermit"/>
+        <set name="QryXENIAPKeys_callWS"            value="B2B0001_Q"/>
+        
+        <set name="QryVBNLogSummary"        value="AllPermit"/>
+        <set name="QryVBNLogSummary"        value="LoginPermit"/>
+        <set name="QryVBNLogSummary_search"             value="AllPermit"/>
+        <set name="QryVBNLogSummary_search"             value="B2B0003_Q"/>
+        <set name="QryVBNLogSummary_detail"             value="AllPermit"/>
+        <set name="QryVBNLogSummary_detail"             value="B2B0003_Q"/>
+        <set name="QryVBNLogSummary_view"           value="AllPermit"/>
+        <set name="QryVBNLogSummary_view"           value="B2B0003_V"/>
+        <set name="QryVBNLogSummary_download" value="AllPermit"/>
+        <set name="QryVBNLogSummary_download" value="B2B0003_L"/>
+        
+        <set name="QryVBNMsgLog"            value="AllPermit"/>
+        <set name="QryVBNMsgLog"            value="LoginPermit"/>
+        <set name="QryVBNMsgLog_search"     value="AllPermit"/>
+        <set name="QryVBNMsgLog_search"     value="B2B0004_Q"/>
+        
+        <set name="QryVBNBusLog"            value="AllPermit"/>
+        <set name="QryVBNBusLog"            value="LoginPermit"/>
+        <set name="QryVBNBusLog_search"     value="AllPermit"/>
+        <set name="QryVBNBusLog_search"     value="B2B0005_Q"/>
+        
+        <set name="QryAgiMsgLog"            value="AllPermit"/>
+        <set name="QryAgiMsgLog"            value="LoginPermit"/>
+        <set name="QryAgiMsgLog_detail"     value="AllPermit"/>
+        <set name="QryAgiMsgLog_detail"     value="B2B0006_Q"/>
+        <set name="QryAgiMsgLog_view"       value="AllPermit"/>
+        <set name="QryAgiMsgLog_view"       value="B2B0006_Q"/>
+        <set name="QryAgiMsgLog_search"     value="AllPermit"/>
+        <set name="QryAgiMsgLog_search"     value="B2B0006_Q"/>
+        <set name="QryAgiMsgLog_redo"       value="AllPermit"/>
+        <set name="QryAgiMsgLog_redo"       value="B2B0006_Q"/>
+        <set name="QryAgiMsgLog_download"   value="AllPermit"/>
+        <set name="QryAgiMsgLog_download"   value="B2B0006_Q"/>
+        
+            <!-- Monitor -->
+        <set name="QryWsmPartySchdlr"    value="AllPermit"/>
+        <set name="QryWsmPartySchdlr"    value="LoginPermit"/>
+        <set name="QryWsmPartySchdlr_search"    value="AllPermit"/>
+        <set name="QryWsmPartySchdlr_search"    value="MON0001_Q"/>
+        <set name="QryWsmPartySchdlr_detail"    value="AllPermit"/>
+        <set name="QryWsmPartySchdlr_detail"    value="MON0001_Q"/>
+        <set name="QryWsmPartySchdlr_status"    value="AllPermit"/>
+        <set name="QryWsmPartySchdlr_status"    value="MON0001_Q"/>
+        <set name="QryWsmPartySchdlr_refresh"    value="AllPermit"/>
+        <set name="QryWsmPartySchdlr_refresh"    value="MON0001_Q"/>
+    
+        <set name="MainWsmPartySchdlr"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr"    value="LoginPermit"/>
+        <set name="MainWsmPartySchdlr_search"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_search"    value="MON0002_Q"/>
+        <set name="MainWsmPartySchdlr_preUpdate"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_preUpdate"    value="MON0002_Q"/>
+        <set name="MainWsmPartySchdlr_add"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_add"    value="MON0002_A"/>
+        <set name="MainWsmPartySchdlr_update"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_update"    value="MON0002_U"/>
+        <set name="MainWsmPartySchdlr_status"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_status"    value="MON0002_Q"/>
+        <set name="MainWsmPartySchdlr_refresh"    value="AllPermit"/>
+        <set name="MainWsmPartySchdlr_refresh"    value="MON0002_Q"/>
+    
+        <set name="MainWsmPartyExcluded"    value="AllPermit"/>
+        <set name="MainWsmPartyExcluded"    value="LoginPermit"/>
+        <set name="MainWsmPartyExcluded_execute"    value="AllPermit"/>
+        <set name="MainWsmPartyExcluded_execute"    value="MON0003_Q"/>
+        <set name="MainWsmPartyExcluded_add"    value="AllPermit"/>
+        <set name="MainWsmPartyExcluded_add"    value="MON0003_A"/>
+        <set name="MainWsmPartyExcluded_delete"    value="AllPermit"/>
+        <set name="MainWsmPartyExcluded_delete"    value="MON0003_D"/>
+        
+        <set name="MainWsmTransportDef"    value="AllPermit"/>
+        <set name="MainWsmTransportDef"    value="LoginPermit"/>
+        <set name="MainWsmTransportDef_next"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_next"    value="MON0004_Q"/>
+        <set name="MainWsmTransportDef_search"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_search"    value="MON0004_Q"/>
+        <set name="MainWsmTransportDef_add"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_add"    value="MON0004_A"/>
+        <set name="MainWsmTransportDef_status"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_status"    value="MON0004_Q"/>
+        <set name="MainWsmTransportDef_refresh"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_refresh"    value="MON0004_Q"/>
+        <set name="MainWsmTransportDef_preUpdate"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_preUpdate"    value="MON0004_Q"/>
+        <set name="MainWsmTransportDef_update"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_update"    value="MON0004_U"/>
+        <set name="MainWsmTransportDef_delete"    value="AllPermit"/>
+        <set name="MainWsmTransportDef_delete"    value="MON0004_D"/>
+        
+        <set name="MainWsmNotifyUser"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser"    value="LoginPermit"/>
+        <set name="MainWsmNotifyUser_search"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser_search"    value="MON0005_Q"/>
+        <set name="MainWsmNotifyUser_add"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser_add"    value="MON0005_A"/>
+        <set name="MainWsmNotifyUser_update"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser_update"    value="MON0005_U"/>
+        <set name="MainWsmNotifyUser_delete"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser_delete"    value="MON0005_D"/>
+        <set name="MainWsmNotifyUser_preUpdate"    value="AllPermit"/>
+        <set name="MainWsmNotifyUser_preUpdate"    value="MON0005_Q"/>
+    
+        <set name="MainWsmNotifyGroup"    value="AllPermit"/>
+        <set name="MainWsmNotifyGroup"    value="LoginPermit"/>
+        <set name="MainWsmNotifyGroup_search"    value="AllPermit"/>
+        <set name="MainWsmNotifyGroup_search"    value="MON0006_Q"/>
+        <set name="MainWsmNotifyGroup_add"    value="AllPermit"/>
+        <set name="MainWsmNotifyGroup_add"    value="MON0006_A"/>
+        <set name="MainWsmNotifyGroup_delete"    value="AllPermit"/>
+        <set name="MainWsmNotifyGroup_delete"    value="MON0006_D"/>
+        <set name="OvertimeCustomer"    value="AllPermit"/>
+        <set name="OvertimeCustomer"    value="LoginPermit"/>
+        <set name="OvertimeCustomer_execute"    value="AllPermit"/>
+        <set name="OvertimeCustomer_execute"    value="LoginPermit"/>
+        
+        <!-- 20130809 新增new用戶監控功能for資料庫pngscConn start  -->
+        
+        <set name="QryNewWsmPartySchdlr"    value="AllPermit"/>
+        <set name="QryNewWsmPartySchdlr"    value="LoginPermit"/>
+        <set name="QryNewWsmPartySchdlr_search"    value="AllPermit"/>
+        <set name="QryNewWsmPartySchdlr_search"    value="MON0001_Q"/>
+        <set name="QryNewWsmPartySchdlr_detail"    value="AllPermit"/>
+        <set name="QryNewWsmPartySchdlr_detail"    value="MON0001_Q"/>
+        <set name="QryNewWsmPartySchdlr_status"    value="AllPermit"/>
+        <set name="QryNewWsmPartySchdlr_status"    value="MON0001_Q"/>
+        <set name="QryNewWsmPartySchdlr_refresh"    value="AllPermit"/>
+        <set name="QryNewWsmPartySchdlr_refresh"    value="MON0001_Q"/>
+    
+        <set name="MainNewWsmPartySchdlr"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr"    value="LoginPermit"/>
+        <set name="MainNewWsmPartySchdlr_search"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_search"    value="MON0002_Q"/>
+        <set name="MainNewWsmPartySchdlr_preUpdate"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_preUpdate"    value="MON0002_Q"/>
+        <set name="MainNewWsmPartySchdlr_add"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_add"    value="MON0002_A"/>
+        <set name="MainNewWsmPartySchdlr_update"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_update"    value="MON0002_U"/>
+        <set name="MainNewWsmPartySchdlr_status"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_status"    value="MON0002_Q"/>
+        <set name="MainNewWsmPartySchdlr_refresh"    value="AllPermit"/>
+        <set name="MainNewWsmPartySchdlr_refresh"    value="MON0002_Q"/>
+    
+        <set name="MainNewWsmPartyExcluded"    value="AllPermit"/>
+        <set name="MainNewWsmPartyExcluded"    value="LoginPermit"/>
+        <set name="MainNewWsmPartyExcluded_execute"    value="AllPermit"/>
+        <set name="MainNewWsmPartyExcluded_execute"    value="MON0003_Q"/>
+        <set name="MainNewWsmPartyExcluded_add"    value="AllPermit"/>
+        <set name="MainNewWsmPartyExcluded_add"    value="MON0003_A"/>
+        <set name="MainNewWsmPartyExcluded_delete"    value="AllPermit"/>
+        <set name="MainNewWsmPartyExcluded_delete"    value="MON0003_D"/>
+        
+        <set name="MainNewWsmTransportDef"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef"    value="LoginPermit"/>
+        <set name="MainNewWsmTransportDef_next"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_next"    value="MON0004_Q"/>
+        <set name="MainNewWsmTransportDef_search"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_search"    value="MON0004_Q"/>
+        <set name="MainNewWsmTransportDef_add"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_add"    value="MON0004_A"/>
+        <set name="MainNewWsmTransportDef_status"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_status"    value="MON0004_Q"/>
+        <set name="MainNewWsmTransportDef_refresh"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_refresh"    value="MON0004_Q"/>
+        <set name="MainNewWsmTransportDef_preUpdate"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_preUpdate"    value="MON0004_Q"/>
+        <set name="MainNewWsmTransportDef_update"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_update"    value="MON0004_U"/>
+        <set name="MainNewWsmTransportDef_delete"    value="AllPermit"/>
+        <set name="MainNewWsmTransportDef_delete"    value="MON0004_D"/>
+        
+        <set name="MainNewWsmNotifyUser"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser"    value="LoginPermit"/>
+        <set name="MainNewWsmNotifyUser_search"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser_search"    value="MON0005_Q"/>
+        <set name="MainNewWsmNotifyUser_add"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser_add"    value="MON0005_A"/>
+        <set name="MainNewWsmNotifyUser_update"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser_update"    value="MON0005_U"/>
+        <set name="MainNewWsmNotifyUser_delete"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser_delete"    value="MON0005_D"/>
+        <set name="MainNewWsmNotifyUser_preUpdate"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyUser_preUpdate"    value="MON0005_Q"/>
+    
+        <set name="MainNewWsmNotifyGroup"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyGroup"    value="LoginPermit"/>
+        <set name="MainNewWsmNotifyGroup_search"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyGroup_search"    value="MON0006_Q"/>
+        <set name="MainNewWsmNotifyGroup_add"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyGroup_add"    value="MON0006_A"/>
+        <set name="MainNewWsmNotifyGroup_delete"    value="AllPermit"/>
+        <set name="MainNewWsmNotifyGroup_delete"    value="MON0006_D"/>
+        
+        <!-- 20130809 新增new用戶監控功能for資料庫pngscConn end  -->
+        
+        <set name="OvertimeCustomer"    value="AllPermit"/>
+        <set name="OvertimeCustomer"    value="LoginPermit"/>
+        <set name="OvertimeCustomer_execute"    value="AllPermit"/>
+        <set name="OvertimeCustomer_execute"    value="LoginPermit"/>
+    
+        <set name="SLACustomers"    value="AllPermit"/>
+        <set name="SLACustomers"    value="LoginPermit"/>
+        <set name="SLACustomers_execute"    value="AllPermit"/>
+        <set name="SLACustomers_execute"    value="LoginPermit"/>
+        
+        <set name="ConnectionStatus"    value="AllPermit"/>
+        <set name="ConnectionStatus"    value="LoginPermit"/>
+        <set name="ConnectionStatus_execute"    value="AllPermit"/>   
+        <set name="ConnectionStatus_execute"    value="LoginPermit"/>       
+        
+        <set name="LastestConnection"    value="AllPermit"/>
+        <set name="LastestConnection"    value="LoginPermit"/>
+        <set name="LastestConnection_execute"    value="AllPermit"/>
+        <set name="LastestConnection_execute"    value="LoginPermit"/>
+        
+        <set name="MailboxStatistices"    value="AllPermit"/>
+        <set name="MailboxStatistices"    value="LoginPermit"/>
+        <set name="MailboxStatistices_execute"    value="AllPermit"/>
+        <set name="MailboxStatistices_execute"    value="LoginPermit"/>
+        <set name="MailboxStatistices_search"    value="AllPermit"/>
+        <set name="MailboxStatistices_search"    value="LoginPermit"/>
+        
+        <!-- IVCC -->
+        <set name="MainNotifyUser"    value="AllPermit"/>
+        <set name="MainNotifyUser"    value="LoginPermit"/>
+        <set name="MainNotifyUser_search"    value="AllPermit"/>
+        <set name="MainNotifyUser_search"    value="IVC0001_Q"/>
+        <set name="MainNotifyUser_add"    value="AllPermit"/>
+        <set name="MainNotifyUser_add"    value="IVC0001_A"/>
+        <set name="MainNotifyUser_update"    value="AllPermit"/>
+        <set name="MainNotifyUser_update"    value="IVC0001_U"/>
+        <set name="MainNotifyUser_delete"    value="AllPermit"/>
+        <set name="MainNotifyUser_delete"    value="IVC0001_D"/>
+        <set name="MainNotifyUser_preupdate"    value="AllPermit"/>
+        <set name="MainNotifyUser_preupdate"    value="IVC0001_P"/> 
+        
+        
+        <set name="MainNotifyGroup"    value="AllPermit"/>
+        <set name="MainNotifyGroup"    value="LoginPermit"/>
+        <set name="MainNotifyGroup_search"    value="AllPermit"/>
+        <set name="MainNotifyGroup_search"    value="IVC0002_Q"/>
+        <set name="MainNotifyGroup_add"    value="AllPermit"/>
+        <set name="MainNotifyGroup_add"    value="IVC0002_A"/>      
+        <set name="MainNotifyGroup_delete"    value="AllPermit"/>
+        <set name="MainNotifyGroup_delete"    value="IVC0002_D"/>   
+        
+        <set name="MainNotifyList"      value="AllPermit"/>
+        <set name="MainNotifyList"      value="LoginPermit"/>
+        <set name="MainNotifyList_search"       value="AllPermit"/>
+        <set name="MainNotifyList_search"       value="IVC0003_Q"/>
+        <set name="MainNotifyList_add"      value="AllPermit"/>
+        <set name="MainNotifyList_add"      value="IVC0003_A"/>
+        <set name="MainNotifyList_update"       value="AllPermit"/>
+        <set name="MainNotifyList_update"       value="IVC0003_U"/>
+        <set name="MainNotifyList_delete"       value="AllPermit"/>
+        <set name="MainNotifyList_delete"       value="IVC0003_D"/>
+        <set name="MainNotifyList_preupdate"        value="AllPermit"/>
+        <set name="MainNotifyList_preupdate"        value="IVC0003_Q"/>
+        
+        <set name="VasHubList"          value="AllPermit"/>
+        <set name="VasHubList"          value="LoginPermit"/>
+        <set name="VasHubList_search"   value="AllPermit"/>
+        <set name="VasHubList_search"   value="IVC0004_Q"/>
+        <set name="VasHubList_add"      value="AllPermit"/>
+        <set name="VasHubList_add"      value="IVC0004_A"/>
+        <set name="VasHubList_update"   value="AllPermit"/>
+        <set name="VasHubList_update"   value="IVC0004_U"/>
+        <set name="VasHubList_delete"   value="AllPermit"/>
+        <set name="VasHubList_delete"   value="IVC0004_D"/>
+        <set name="VasHubList_preupdate"    value="AllPermit"/>
+        <set name="VasHubList_preupdate"    value="IVC0004_Q"/>
+        
+        <set name="MainDsHubInit2"              value="AllPermit"/>
+        <set name="MainDsHubInit2"              value="LoginPermit"/>
+        <set name="MainDsHubInit2_search"       value="AllPermit"/>
+        <set name="MainDsHubInit2_search"       value="IVC0005_Q"/>
+        <set name="MainDsHubInit2_add"          value="AllPermit"/>
+        <set name="MainDsHubInit2_add"          value="IVC0005_A"/>
+        <set name="MainDsHubInit2_delete"       value="AllPermit"/>
+        <set name="MainDsHubInit2_delete"       value="IVC0005_D"/>
+        <set name="MainDsHubInit2_update"       value="AllPermit"/>
+        <set name="MainDsHubInit2_update"       value="IVC0005_U"/>
+        <set name="MainDsHubInit2_preupdate"        value="AllPermit"/>
+        <set name="MainDsHubInit2_preupdate"        value="IVC0005_Q"/>
+        <set name="MainDsHubInit2_next"     value="AllPermit"/>
+        <set name="MainDsHubInit2_next"     value="IVC0006_Q"/>
+        
+        <set name="MainMsgRelTbl"       value="AllPermit"/>
+        <set name="MainMsgRelTbl"       value="LoginPermit"/>
+        <set name="MainMsgRelTbl_search"        value="AllPermit"/>
+        <set name="MainMsgRelTbl_search"        value="IVC0006_Q"/>
+        <set name="MainMsgRelTbl_searchTargetSys"       value="AllPermit"/>
+        <set name="MainMsgRelTbl_searchTargetSys"       value="IVC0006_Q"/>
+        <set name="MainMsgRelTbl_update"        value="AllPermit"/>
+        <set name="MainMsgRelTbl_update"        value="IVC0006_U"/>
+
+		<set name="MonitorHostInfo"    value="AllPermit"/>
+        <set name="MonitorHostInfo"    value="LoginPermit"/>
+        <set name="MonitorHostInfo_execute"    value="AllPermit"/>
+        <set name="MonitorHostInfo_execute"    value="LoginPermit"/>
+        <set name="MonitorHostInfo_search"    value="AllPermit"/>
+        <set name="MonitorHostInfo_search"    value="LoginPermit"/>
+		
+		<set name="MonitorProcessInfo"    value="AllPermit"/>
+        <set name="MonitorProcessInfo"    value="LoginPermit"/>
+        <set name="MonitorProcessInfo_execute"    value="AllPermit"/>
+        <set name="MonitorProcessInfo_execute"    value="LoginPermit"/>
+        <set name="MonitorProcessInfo_search"    value="AllPermit"/>
+        <set name="MonitorProcessInfo_search"    value="LoginPermit"/>
+        
+        <set name="MonitorConnectLogInfo"    value="AllPermit"/>
+        <set name="MonitorConnectLogInfo"    value="LoginPermit"/>
+        <set name="MonitorConnectLogInfo_execute"    value="AllPermit"/>
+        <set name="MonitorConnectLogInfo_execute"    value="LoginPermit"/>
+        <set name="MonitorConnectLogInfo_search"    value="AllPermit"/>
+        <set name="MonitorConnectLogInfo_search"    value="LoginPermit"/>
+		
+	    <set name="MonitorProcessStatus"    value="AllPermit"/>
+        <set name="MonitorProcessStatus"    value="LoginPermit"/>
+        <set name="MonitorProcessStatus_execute"    value="AllPermit"/>
+        <set name="MonitorProcessStatus_execute"    value="LoginPermit"/>
+        <set name="MonitorProcessStatus_search"    value="AllPermit"/>
+        <set name="MonitorProcessStatus_search"    value="LoginPermit"/>
+		<set name="MonitorProcessStatus_update"    value="AllPermit"/>
+        <set name="MonitorProcessStatus_update"    value="LoginPermit"/>
+        
+		 
+        <set name="MonitorProcessEfficiency"    value="AllPermit"/>
+        <set name="MonitorProcessEfficiency"    value="LoginPermit"/>
+        <set name="MonitorProcessEfficiency_execute"    value="AllPermit"/>
+        <set name="MonitorProcessEfficiency_execute"    value="LoginPermit"/>
+        <set name="MonitorProcessEfficiency_search"    value="AllPermit"/>
+        <set name="MonitorProcessEfficiency_search"    value="LoginPermit"/>
+		
+		 <set name="MonitorFdaInfo"    value="AllPermit"/>
+        <set name="MonitorFdaInfo"    value="LoginPermit"/>
+        <set name="MonitorFdaInfo_execute"    value="AllPermit"/>
+        <set name="MonitorFdaInfo_execute"    value="LoginPermit"/>
+        <set name="MonitorFdaInfo_search"    value="AllPermit"/>
+        <set name="MonitorFdaInfo_search"    value="LoginPermit"/>
+        
+		 <set name="Im5105"    value="AllPermit"/>
+        <set name="Im5105"    value="LoginPermit"/>
+        <set name="Im5105_execute"    value="AllPermit"/>
+        <set name="Im5105_execute"    value="LoginPermit"/>
+        <set name="Im5105_search"    value="AllPermit"/>
+        <set name="Im5105_search"    value="LoginPermit"/>
+		
+		
+		   <set name="MonitorMonthBilling"    value="AllPermit"/>
+        <set name="MonitorMonthBilling"    value="LoginPermit"/>
+        <set name="MonitorMonthBilling_execute"    value="AllPermit"/>
+        <set name="MonitorMonthBilling_execute"    value="LoginPermit"/>
+        <set name="MonitorMonthBilling_search"    value="AllPermit"/>
+        <set name="MonitorMonthBilling_search"    value="LoginPermit"/>
+        
+        
+          <set name="MonitorDayBillingTransportCash"    value="AllPermit"/>
+        <set name="MonitorDayBillingTransportCash"    value="LoginPermit"/>
+        <set name="MonitorDayBillingTransportCash_execute"    value="AllPermit"/>
+        <set name="MonitorDayBillingTransportCash_execute"    value="LoginPermit"/>
+        <set name="MonitorDayBillingTransportCash_search"    value="AllPermit"/>
+        <set name="MonitorDayBillingTransportCash_search"    value="LoginPermit"/>
+        
+        
+        
+                  <set name="MonitorDayBillingDiff"    value="AllPermit"/>
+        <set name="MonitorDayBillingDiff"    value="LoginPermit"/>
+        <set name="MonitorDayBillingDiff_execute"    value="AllPermit"/>
+        <set name="MonitorDayBillingDiff_execute"    value="LoginPermit"/>
+        <set name="MonitorDayBillingDiff_search"    value="AllPermit"/>
+        <set name="MonitorDayBillingDiff_search"    value="LoginPermit"/>
+		
+		
+		        
+                         <!-- 20170613 新增用戶預警資料訓練 -->
+        <set name="MonitorPartyAlertTrainingData"    value="AllPermit"/>
+        <set name="MonitorPartyAlertTrainingData"     value="LoginPermit"/>
+        <set name="MonitorPartyAlertTrainingData_searchPartyAlertStatus"    value="AllPermit"/>
+        <set name="MonitorPartyAlertTrainingData_searchPartyAlertStatus"      value="MON0004_Q"/>
+        <set name="MonitorPartyAlertTrainingData_updatePartyAlertStatus"    value="AllPermit"/>
+        <set name="MonitorPartyAlertTrainingData_updatePartyAlertStatus"       value="MON0004_U"/>
+    
+        
+        
+        <!-- DSUSER -->
+        <set name="MainCustProf"        value="AllPermit"/>
+        <set name="MainCustProf"        value="LoginPermit"/>
+        <set name="MainCustProf_search"     value="AllPermit"/>
+        <set name="MainCustProf_search"     value="DSU0001_Q"/>
+        <set name="MainCustProf_add"        value="AllPermit"/>
+        <set name="MainCustProf_add"        value="DSU0001_A"/>
+        <set name="MainCustProf_update"     value="AllPermit"/>
+        <set name="MainCustProf_update"     value="DSU0001_U"/>
+        <set name="MainCustProf_delete"     value="AllPermit"/>
+        <set name="MainCustProf_delete"     value="DSU0001_D"/>
+        
+        <set name="MainCustIndial"      value="AllPermit"/>
+        <set name="MainCustIndial"      value="LoginPermit"/>
+        <set name="MainCustIndial_search"       value="AllPermit"/>
+        <set name="MainCustIndial_search"       value="DSU0002_Q"/>
+        <set name="MainCustIndial_save"         value="AllPermit"/>
+        <set name="MainCustIndial_save"         value="DSU0002_S"/>
+        
+        <set name="MainCustOutdial"         value="AllPermit"/>
+        <set name="MainCustOutdial"         value="LoginPermit"/>
+        <set name="MainCustOutdial_search"      value="AllPermit"/>
+        <set name="MainCustOutdial_search"      value="DSU0003_Q"/>
+        <set name="MainCustOutdial_add"         value="AllPermit"/>
+        <set name="MainCustOutdial_add"         value="DSU0003_A"/>
+        <set name="MainCustOutdial_update"      value="AllPermit"/>
+        <set name="MainCustOutdial_update"      value="DSU0003_U"/>     
+        <set name="MainCustOutdial_preupdate"       value="AllPermit"/>
+        <set name="MainCustOutdial_preupdate"       value="DSU0003_Q"/> 
+        
+        <set name="MainCustAltn"        value="AllPermit"/>
+        <set name="MainCustAltn"        value="LoginPermit"/>   
+        <set name="MainCustAltn_search"         value="AllPermit"/>
+        <set name="MainCustAltn_search"         value="DSU0004_Q"/>
+        <set name="MainCustAltn_add"        value="AllPermit"/>
+        <set name="MainCustAltn_add"        value="DSU0004_A"/>
+        <set name="MainCustAltn_update"         value="AllPermit"/>
+        <set name="MainCustAltn_update"         value="DSU0004_U"/>
+        <set name="MainCustAltn_delete"         value="AllPermit"/>
+        <set name="MainCustAltn_delete"         value="DSU0004_D"/>
+        <set name="MainCustAltn_preupdate"      value="AllPermit"/>
+        <set name="MainCustAltn_preupdate"      value="DSU0004_Q"/>
+        
+        <set name="MainCustSpProcess"       value="AllPermit"/>
+        <set name="MainCustSpProcess"       value="LoginPermit"/>   
+        <set name="MainCustSpProcess_search"        value="AllPermit"/>
+        <set name="MainCustSpProcess_search"        value="DSU0005_Q"/>
+        <set name="MainCustSpProcess_add"       value="AllPermit"/>
+        <set name="MainCustSpProcess_add"       value="DSU0005_A"/>
+        <set name="MainCustSpProcess_update"        value="AllPermit"/>
+        <set name="MainCustSpProcess_update"        value="DSU0005_U"/>
+        <set name="MainCustSpProcess_delete"        value="AllPermit"/>
+        <set name="MainCustSpProcess_delete"        value="DSU0005_D"/>
+        <set name="MainCustSpProcess_preupdate"         value="AllPermit"/>
+        <set name="MainCustSpProcess_preupdate"         value="DSU0005_Q"/>
+        
+        <set name="QryCustProf" value="AllPermit"/>
+        <set name="QryCustProf" value="LoginPermit"/>
+        <set name="QryCustProf_selectall" value="AllPermit"/>
+        <set name="QryCustProf_selectall" value="DSU0001_Q"/>
+        <set name="QryCustProf_detail" value="AllPermit"/>
+        <set name="QryCustProf_detail" value="DSU0001_Q"/>
+        <set name="QryCustProf_search" value="AllPermit"/>
+        <set name="QryCustProf_search" value="DSU0001_Q"/>
+        
+        <set name="MainCustCCSProf" value="AllPermit"/>
+        <set name="MainCustCCSProf" value="LoginPermit"/>
+        <set name="MainCustCCSProf_search" value="AllPermit"/>
+        <set name="MainCustCCSProf_search" value="DSU0006_Q"/>
+        <set name="MainCustCCSProf_add" value="AllPermit"/>
+        <set name="MainCustCCSProf_add" value="DSU0006_A"/>
+        <set name="MainCustCCSProf_update" value="AllPermit"/>
+        <set name="MainCustCCSProf_update" value="DSU0006_U"/>
+        <set name="MainCustCCSProf_delete" value="AllPermit"/>
+        <set name="MainCustCCSProf_delete" value="DSU0006_D"/>
+        
+        <set name="MainCustCCSLine" value="AllPermit"/>
+        <set name="MainCustCCSLine" value="LoginPermit"/>
+        <set name="MainCustCCSLine_search" value="AllPermit"/>
+        <set name="MainCustCCSLine_search" value="DSU0007_Q"/>
+        <set name="MainCustCCSLine_add" value="AllPermit"/>
+        <set name="MainCustCCSLine_add" value="DSU0007_A"/>
+        <set name="MainCustCCSLine_update" value="AllPermit"/>
+        <set name="MainCustCCSLine_update" value="DSU0007_U"/>
+        <set name="MainCustCCSLine_delete" value="AllPermit"/>
+        <set name="MainCustCCSLinef_delete" value="DSU0007_D"/>
+        <set name="MainCustCCSLine_preupdate" value="AllPermit"/>
+        <set name="MainCustCCSLine_preupdate" value="DSU0007_Q"/>
+        
+        <set name="QryCustAltn" value="AllPermit"/>
+        <set name="QryCustAltn" value="LoginPermit"/>
+        <set name="QryCustAltn_search" value="AllPermit"/>
+        <set name="QryCustAltn_search" value="DSU0004_Q"/>
+        <set name="QryCustAltn_update" value="AllPermit"/>
+        <set name="QryCustAltn_update" value="DSU0004_U"/>
+        <set name="QryCustAltn_detail" value="AllPermit"/>
+        <set name="QryCustAltn_detail" value="DSU0004_Q"/>
+        
+        <set name="QryCustSpProcess" value="AllPermit"/>
+        <set name="QryCustSpProcess" value="LoginPermit"/>
+        <set name="QryCustSpProcess_search" value="AllPermit"/>
+        <set name="QryCustSpProcess_search" value="DSU0005_Q"/>
+        <set name="QryCustSpProcess_detail" value="AllPermit"/>
+        <set name="QryCustSpProcess_detail" value="DSU0005_Q"/>     
+        
+        <set name="MainCCS" value="AllPermit"/>
+        <set name="MainCCS" value="LoginPermit"/>
+        <set name="MainCCS_search" value="AllPermit"/>
+        <set name="MainCCS_search" value="CCS0001_Q"/>
+        <set name="MainCCS_add" value="AllPermit"/>
+        <set name="MainCCS_add" value="CCS0001_A"/>
+        <set name="MainCCS_update" value="AllPermit"/>
+        <set name="MainCCS_update" value="CCS0001_U"/>
+        <set name="MainCCS_preupdate" value="AllPermit"/>
+        <set name="MainCCS_preupdate" value="CCS0001_P"/>
+        <set name="MainCCS_delete" value="AllPermit"/>
+        <set name="MainCCS_delete" value="CCS0001_D"/>
+        
+        <set name="MainFTPConf" value="AllPermit"/>
+        <set name="MainFTPConf" value="LoginPermit"/>
+        <set name="MainFTPConf_search" value="AllPermit"/>
+        <set name="MainFTPConf_search" value="CCS0002_Q"/>
+        <set name="MainFTPConf_add" value="AllPermit"/>
+        <set name="MainFTPConf_add" value="CCS0002_A"/>
+        <set name="MainFTPConf_preupdate" value="AllPermit"/>
+        <set name="MainFTPConf_preupdate" value="CCS0002_P"/>
+        <set name="MainFTPConf_update" value="AllPermit"/>
+        <set name="MainFTPConf_update" value="CCS0002_U"/>
+        <set name="MainFTPConf_delete" value="AllPermit"/>
+        <set name="MainFTPConf_delete" value="CCS0002_D"/>
+        
+        <set name="MainMATIPConf" value="AllPermit"/>
+        <set name="MainMATIPConf" value="LoginPermit"/>
+        <set name="MainMATIPConf_search" value="AllPermit"/>
+        <set name="MainMATIPConf_search" value="CCS0003_Q"/>
+        <set name="MainMATIPConf_preupdate" value="AllPermit"/>
+        <set name="MainMATIPConf_preupdate" value="CCS0003_P"/>
+        <set name="MainMATIPConf_update" value="AllPermit"/>
+        <set name="MainMATIPConf_update" value="CCS0003_U"/>
+        <set name="MainMATIPConf_delete" value="AllPermit"/>
+        <set name="MainMATIPConf_delete" value="CCS0003_D"/>
+        <set name="MainMATIPConf_add" value="AllPermit"/>
+        <set name="MainMATIPConf_add" value="CCS0003_A"/>
+        
+        <set name="QryARCMsgLog" value="AllPermit"/>
+        <set name="QryARCMsgLog" value="LoginPermit"/>
+        <set name="QryARCMsgLog_afterselect" value="AllPermit"/>
+        <set name="QryARCMsgLog_afterselect" value="ARC0001_Q"/>
+        <set name="QryARCMsgLog_search" value="AllPermit"/>
+        <set name="QryARCMsgLog_search" value="ARC0001_Q"/>
+        <set name="QryARCMsgLog_detail" value="AllPermit"/>
+        <set name="QryARCMsgLog_detail" value="ARC0001_Q"/>
+        <set name="QryARCMsgLog_view" value="AllPermit"/>
+        <set name="QryARCMsgLog_view" value="ARC0001_V"/>
+        <set name="QryARCMsgLog_download" value="AllPermit"/>
+        <set name="QryARCMsgLog_download" value="ARC0001_L"/>
+        <set name="QryARCMsgLog_tojms" value="AllPermit"/>
+        <set name="QryARCMsgLog_tojms" value="ARC0001_J"/>
+        <set name="QryARCMsgLog_resend" value="AllPermit"/>
+        <set name="QryARCMsgLog_resend" value="ARC0001_R"/>
+                    
+        <set name="QryARCAuditLog" value="AllPermit"/>
+        <set name="QryARCAuditLog" value="LoginPermit"/>
+        <set name="QryARCAuditLog_search" value="AllPermit"/>
+        <set name="QryARCAuditLog_search" value="ARC0002_Q"/>   
+        
+        <set name="QryARCSysEventLog" value="AllPermit"/>
+        <set name="QryARCSysEventLog" value="LoginPermit"/>
+        <set name="QryARCSysEventLog_search" value="AllPermit"/>
+        <set name="QryARCSysEventLog_search" value="ARC0003_Q"/>    
+        <set name="QryARCSysEventLog_detail" value="AllPermit"/>
+        <set name="QryARCSysEventLog_detail" value="ARC0003_Q"/>                
+    
+        <set name="QryARCProcLog" value="AllPermit"/>
+        <set name="QryARCProcLog" value="LoginPermit"/>
+        <set name="QryARCProcLog_search" value="AllPermit"/>
+        <set name="QryARCProcLog_search" value="ARC0004_Q"/>
+        <set name="QryARCProcLog_detail" value="AllPermit"/>
+        <set name="QryARCProcLog_detail" value="ARC0004_Q"/>
+        
+        <set name="QryHubSystem" value="AllPermit"/>
+        <set name="QryHubSystem" value="LoginPermit"/>              
+        <set name="QryHubSystem_search" value="AllPermit"/>
+        <set name="QryHubSystem_search" value="MSG0015_Q"/> 
+        <set name="QryHubSystem_detail" value="AllPermit"/>
+        <set name="QryHubSystem_detail" value="MSG0015_Q"/> 
+        <set name="QryHubSystem_view" value="AllPermit"/>
+        <set name="QryHubSystem_view" value="MSG0015_V"/>
+        <set name="QryHubSystem_download" value="AllPermit"/>
+        <set name="QryHubSystem_download" value="MSG0015_L"/>
+        <set name="QryHubSystem_update" value="AllPermit"/>
+        <set name="QryHubSystem_update" value="MSG0015_E"/>         
+        <set name="QryHubSystem_redo" value="AllPermit"/>
+        <set name="QryHubSystem_redo" value="MSG0015_R"/>
+        
+        <set name="QryNewHubSystem" value="AllPermit"/>
+        <set name="QryNewHubSystem" value="LoginPermit"/>               
+        <set name="QryNewHubSystem_search" value="AllPermit"/>
+        <set name="QryNewHubSystem_search" value="MSG0015_Q"/>  
+        <set name="QryNewHubSystem_detail" value="AllPermit"/>
+        <set name="QryNewHubSystem_detail" value="MSG0015_Q"/>  
+        <set name="QryNewHubSystem_view" value="AllPermit"/>
+        <set name="QryNewHubSystem_view" value="MSG0015_V"/>
+        <set name="QryNewHubSystem_download" value="AllPermit"/>
+        <set name="QryNewHubSystem_download" value="MSG0015_L"/>
+        <set name="QryNewHubSystem_update" value="AllPermit"/>
+        <set name="QryNewHubSystem_update" value="MSG0015_E"/>          
+        <set name="QryNewHubSystem_redo" value="AllPermit"/>
+        <set name="QryNewHubSystem_redo" value="MSG0015_R"/>
+
+        <set name="QryCCSConnLog" value="AllPermit"/>
+        <set name="QryCCSConnLog" value="LoginPermit"/>
+        <set name="QryCCSConnLog_search" value="AllPermit"/>
+        <set name="QryCCSConnLog_search" value="CCS0004_Q"/>        
+        <set name="QryCCSConnLog_download" value="AllPermit"/>
+        <set name="QryCCSConnLog_download" value="CCS0004_L"/>  
+        
+        <set name="MainMsgTableDef"   value="AllPermit"/>
+        <set name="MainMsgTableDef"   value="LoginPermit"/>
+        <set name="MainMsgTableDef_search"   value="AllPermit"/>
+        <set name="MainMsgTableDef_search"   value="PMSG0001_Q"/>
+        <set name="MainMsgTableDef_add" value="AllPermit"/>
+        <set name="MainMsgTableDef_add" value="PMSG0001_A"/>
+        <set name="MainMsgTableDef_delete" value="AllPermit"/>
+        <set name="MainMsgTableDef_delete" value="PMSG0001_D"/>
+        <set name="MainMsgTableDef_preupdate" value="AllPermit"/>
+        <set name="MainMsgTableDef_preupdate" value="PMSG0001_Q"/>
+        
+        <set name="MainProtocolDef"   value="AllPermit"/>
+        <set name="MainProtocolDef"   value="LoginPermit"/>
+        <set name="MainProtocolDef_search"   value="AllPermit"/>
+        <set name="MainProtocolDef_search"   value="PMSG0002_Q"/>
+        <set name="MainProtocolDef_add" value="AllPermit"/>
+        <set name="MainProtocolDef_add" value="PMSG0002_A"/>
+        <set name="MainProtocolDef_delete" value="AllPermit"/>
+        <set name="MainProtocolDef_delete" value="PMSG0002_D"/>
+        <set name="MainProtocolDef_update"    value="AllPermit"/>
+        <set name="MainProtocolDef_update"    value="PMSG0002_U"/>
+        <set name="MainProtocolDef_preUpdate"    value="AllPermit"/>
+        <set name="MainProtocolDef_preUpdate"    value="PMSG0002_Q"/>
+        
+        <set name="MainMsgMappingDef"   value="AllPermit"/>
+        <set name="MainMsgMappingDef"   value="LoginPermit"/>
+        <set name="MainMsgMappingDef_search"   value="AllPermit"/>
+        <set name="MainMsgMappingDef_search"   value="PMSG0003_Q"/>
+        <set name="MainMsgMappingDef_add" value="AllPermit"/>
+        <set name="MainMsgMappingDef_add" value="PMSG0003_A"/>
+        <set name="MainMsgMappingDef_delete" value="AllPermit"/>
+        <set name="MainMsgMappingDef_delete" value="PMSG0003_D"/>
+        <set name="MainMsgMappingDef_update"    value="AllPermit"/>
+        <set name="MainMsgMappingDef_update"    value="PMSG0003_U"/>
+        <set name="MainMsgMappingDef_preUpdate"    value="AllPermit"/>
+        <set name="MainMsgMappingDef_preUpdate"    value="PMSG0003_Q"/>
+        
+        <set name="MainCustProfDef"   value="AllPermit"/>
+        <set name="MainCustProfDef"   value="LoginPermit"/>
+        <set name="MainCustProfDef_search"   value="AllPermit"/>
+        <set name="MainCustProfDef_search"   value="PMSG0004_Q"/>
+        <set name="MainCustProfDef_add" value="AllPermit"/>
+        <set name="MainCustProfDef_add" value="PMSG0004_A"/>
+        <set name="MainCustProfDef_delete" value="AllPermit"/>
+        <set name="MainCustProfDef_delete" value="PMSG0004_D"/>
+        <set name="MainCustProfDef_update"    value="AllPermit"/>
+        <set name="MainCustProfDef_update"    value="PMSG0004_U"/>
+        <set name="MainCustProfDef_preUpdate"    value="AllPermit"/>
+        <set name="MainCustProfDef_preUpdate"    value="PMSG0004_Q"/>
+        <set name="MainCustProfDef_next"    value="AllPermit"/>
+        <set name="MainCustProfDef_next"    value="PMSG0005_Q"/>
+        
+        <set name="MainCustTransportDef"   value="AllPermit"/>
+        <set name="MainCustTransportDef"   value="LoginPermit"/>
+        <set name="MainCustTransportDef_search"   value="AllPermit"/>
+        <set name="MainCustTransportDef_search"   value="PMSG0005_Q"/>
+        <set name="MainCustTransportDef_add" value="AllPermit"/>
+        <set name="MainCustTransportDef_add" value="PMSG0005_A"/>
+        <set name="MainCustTransportDef_delete" value="AllPermit"/>
+        <set name="MainCustTransportDef_delete" value="PMSG0005_D"/>
+        <set name="MainCustTransportDef_update"    value="AllPermit"/>
+        <set name="MainCustTransportDef_update"    value="PMSG0005_U"/>
+        <set name="MainCustTransportDef_preUpdate"    value="AllPermit"/>
+        <set name="MainCustTransportDef_preUpdate"    value="PMSG0005_Q"/>
+        <set name="MainCustTransportDef_next"    value="AllPermit"/>
+        <set name="MainCustTransportDef_next"    value="PMSG0006_Q"/>
+        <set name="MainCustTransportDef_back"    value="AllPermit"/>
+        <set name="MainCustTransportDef_back"    value="PMSG0004_Q"/>
+        <set name="MainCustTransportDef_refresh"    value="AllPermit"/>
+        <set name="MainCustTransportDef_refresh"    value="PMSG0005_Q"/>
+        
+        <set name="MainCustSubscribeDef"   value="AllPermit"/>
+        <set name="MainCustSubscribeDef"   value="LoginPermit"/>
+        <set name="MainCustSubscribeDef_search"   value="AllPermit"/>
+        <set name="MainCustSubscribeDef_search"   value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDef_add" value="AllPermit"/>
+        <set name="MainCustSubscribeDef_add" value="PMSG0006_A"/>
+        <set name="MainCustSubscribeDef_delete" value="AllPermit"/>
+        <set name="MainCustSubscribeDef_delete" value="PMSG0006_D"/>
+        <set name="MainCustSubscribeDef_update"    value="AllPermit"/>
+        <set name="MainCustSubscribeDef_update"    value="PMSG0006_U"/>
+        <set name="MainCustSubscribeDef_preUpdate"    value="AllPermit"/>
+        <set name="MainCustSubscribeDef_preUpdate"    value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDef_next"    value="AllPermit"/>
+        <set name="MainCustSubscribeDef_next"    value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDef_back"    value="AllPermit"/>
+        <set name="MainCustSubscribeDef_back"    value="PMSG0005_Q"/>
+        <set name="MainCustSubscribeDef_refresh"    value="AllPermit"/>
+        <set name="MainCustSubscribeDef_refresh"    value="PMSG0006_Q"/>
+        
+            <!-- 2014.06.05 新增 -->
+         <set name="MainCustSubscribeDefExt"   value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt"    value="LoginPermit"/>
+        <set name="MainCustSubscribeDefExt_select"    value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_select"    value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDefExt_search"    value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_search"    value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDefExt_preUpdate" value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_preUpdate"     value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDefExt_add" value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_add"       value="PMSG0006_A"/>
+        <set name="MainCustSubscribeDefExt_update" value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_update"        value="PMSG0006_U"/>
+        <set name="MainCustSubscribeDefExt_delete" value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_delete"        value="PMSG0006_D"/>
+        <set name="MainCustSubscribeDefExt_next" value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_next"      value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeDefExt_back"      value="AllPermit"/>
+        <set name="MainCustSubscribeDefExt_back"      value="PMSG0006_Q"/>
+        
+        
+        <set name="MainCustSubscribeSchedule"   value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule"   value="LoginPermit"/>
+        <set name="MainCustSubscribeSchedule_search"   value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule_search"   value="PMSG0006_Q"/>
+        <set name="MainCustSubscribeSchedule_add" value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule_add" value="PMSG0006_A"/>
+        <set name="MainCustSubscribeSchedule_delete" value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule_delete" value="PMSG0006_D"/>
+        <set name="MainCustSubscribeSchedule_update"    value="AllPeurmit"/>
+        <set name="MainCustSubscribeSchedule_update"    value="PMSG0006_U"/>
+        <set name="MainCustSubscribeSchedule_preUpdate"    value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule_preUpdate"    value="PMSG006_Q"/>
+        <set name="MainCustSubscribeSchedule_back"    value="AllPermit"/>
+        <set name="MainCustSubscribeSchedule_back"    value="PMSG006_Q"/>
+        
+        <set name="QryCustSubscribeDef"   value="AllPermit"/>
+        <set name="QryCustSubscribeDef"   value="LoginPermit"/>
+        <set name="QryCustSubscribeDef_search"   value="AllPermit"/>
+        <set name="QryCustSubscribeDef_search"   value="PMSG0006_Q"/>
+        <set name="QryCustSubscribeDef_detail"    value="AllPermit"/>
+        <set name="QryCustSubscribeDef_detail"    value="PMSG0006_Q"/>
+        <set name="QryCustSubscribeDef_next"    value="AllPermit"/>
+        <set name="QryCustSubscribeDef_next"    value="PMSG0006_Q"/>
+        
+        <set name="QryPMSGConnLog"   value="AllPermit"/>
+        <set name="QryPMSGConnLog"   value="LoginPermit"/>
+        <set name="QryPMSGConnLog_search"   value="AllPermit"/>
+        <set name="QryPMSGConnLog_search"   value="PMSG0007_Q"/>
+                
+        <set name="PMSGMailboxStat"   value="AllPermit"/>
+        <set name="PMSGMailboxStat"   value="LoginPermit"/>
+        <set name="PMSGMailboxStat_search"   value="AllPermit"/>
+        <set name="PMSGMailboxStat_search"   value="PMSG0008_Q"/>
+        <set name="PMSGMailboxStat_update"    value="AllPermit"/>
+        <set name="PMSGMailboxStat_update"    value="PMSG0008_U"/>
+        
+        <set name="QryPMSGSysEventLog"   value="AllPermit"/>
+        <set name="QryPMSGSysEventLog"   value="LoginPermit"/>
+        <set name="QryPMSGSysEventLog_search"   value="AllPermit"/>
+        <set name="QryPMSGSysEventLog_search"   value="PMSG0009_Q"/>
+        <set name="QryPMSGSysEventLog_detail"    value="AllPermit"/>
+        <set name="QryPMSGSysEventLog_detail"    value="PMSG0009_Q"/>
+        
+        <set name="QryPMSGMsgBillingLog"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog"   value="LoginPermit"/>
+        <set name="QryPMSGMsgBillingLog_search"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_search"   value="PMSG0010_Q"/>
+        <set name="QryPMSGMsgBillingLog_detail"    value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_detail"    value="PMSG0010_Q"/>
+        <set name="QryPMSGMsgBillingLog_resent"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_resent"   value="PMSG0010_R"/>
+        <set name="QryPMSGMsgBillingLog_redo"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_redo"   value="PMSG0010_R"/>
+        <set name="QryPMSGMsgBillingLog_next"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_next"   value="PMSG0010_Q"/>
+        <set name="QryPMSGMsgBillingLog_cancel"   value="AllPermit"/>
+        <set name="QryPMSGMsgBillingLog_cancel"   value="PMSG0010_Q"/>
+        
+        <set name="QryPMSGMsgResend"   value="AllPermit"/>
+        <set name="QryPMSGMsgResend"   value="LoginPermit"/>
+        <set name="QryPMSGMsgResend_search"   value="AllPermit"/>
+        <set name="QryPMSGMsgResend_search"   value="PMSG0011_Q"/>
+        <set name="QryPMSGMsgResend_status"   value="AllPermit"/>
+        <set name="QryPMSGMsgResend_status"   value="PMSG0011_Q"/>
+        <set name="QryPMSGMsgResend_resend"   value="AllPermit"/>
+        <set name="QryPMSGMsgResend_resend"   value="PMSG0011_R"/>
+        
+        
+        <set name="MainSubscribeSetting"   value="AllPermit"/>
+        <set name="MainSubscribeSetting"   value="LoginPermit"/>
+        <set name="MainSubscribeSetting_queryCustName"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_queryCustName"   value="PMSG0012_Q"/>
+        <set name="MainSubscribeSetting_search"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_search"   value="PMSG0012_Q"/>
+        <set name="MainSubscribeSetting_add"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_add"   value="PMSG0012_A"/>
+        <set name="MainSubscribeSetting_update"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_update"   value="PMSG0012_U"/>
+        <set name="MainSubscribeSetting_delete"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_delete"   value="PMSG0012_D"/>
+        <set name="MainSubscribeSetting_download"   value="AllPermit"/>
+        <set name="MainSubscribeSetting_download"   value="PMSG0012_D"/>
+        
+        <!-- archive -->
+        <set name="MainApArcProf"   value="AllPermit"/>
+        <set name="MainApArcProf"   value="LoginPermit"/>
+        <set name="MainApArcProf_search"   value="AllPermit"/>
+        <set name="MainApArcProf_search"   value="ARC0005_Q"/>
+        <set name="MainApArcProf_add" value="AllPermit"/>
+        <set name="MainApArcProf_add" value="ARC0005_A"/>
+        <set name="MainApArcProf_delete" value="AllPermit"/>
+        <set name="MainApArcProf_delete" value="ARC0005_D"/>
+        <set name="MainApArcProf_update"    value="AllPermit"/>
+        <set name="MainApArcProf_update"    value="ARC0005_U"/>
+        <set name="MainApArcProf_preUpdate"    value="AllPermit"/>
+        <set name="MainApArcProf_preUpdate"    value="ARC0005_Q"/>
+        <set name="MainApArcProf_next"    value="AllPermit"/>           
+        <set name="MainApArcProf_next"    value="ARC0005_Q"/>   
+        
+        <set name="MainApArcKeys"   value="AllPermit"/>
+        <set name="MainApArcKeys"   value="LoginPermit"/>
+        <set name="MainApArcKeys_search"   value="AllPermit"/>
+        <set name="MainApArcKeys_search"   value="ARC0005_Q"/>
+        <set name="MainApArcKeys_add" value="AllPermit"/>
+        <set name="MainApArcKeys_add" value="ARC0005_A"/>
+        <set name="MainApArcKeys_preadd"    value="AllPermit"/>
+        <set name="MainApArcKeys_preadd"    value="ARC0005_A"/>
+        <set name="MainApArcKeys_delete" value="AllPermit"/>
+        <set name="MainApArcKeys_delete" value="ARC0005_D"/>
+        <set name="MainApArcKeys_update"    value="AllPermit"/>
+        <set name="MainApArcKeys_update"    value="ARC0005_U"/>
+        <set name="MainApArcKeys_preUpdate"    value="AllPermit"/>
+        <set name="MainApArcKeys_preUpdate"    value="ARC0005_Q"/>
+        <set name="MainApArcKeys_back"    value="AllPermit"/>
+        <set name="MainApArcKeys_back"    value="ARC0005_Q"/>
+        
+        <set name="QryAdvMsrs" value="AllPermit"/>
+        <set name="QryAdvMsrs" value="LoginPermit"/>
+        <set name="QryAdvMsrs_search" value="AllPermit"/>
+        <set name="QryAdvMsrs_search" value="Msg0014_Q"/>
+        <set name="QryAdvMsrs_status" value="AllPermit"/>
+        <set name="QryAdvMsrs_status" value="Msg0014_Q"/>
+        <set name="QryAdvMsrs_detail" value="AllPermit"/>
+        <set name="QryAdvMsrs_detail" value="Msg0014_Q"/>
+        <set name="QryAdvMsrs_view" value="AllPermit"/>
+        <set name="QryAdvMsrs_view" value="Msg0014_Q"/>
+        <set name="QryAdvMsrs_update" value="AllPermit"/>
+        <set name="QryAdvMsrs_update" value="Msg0014_U"/>
+        <set name="QryAdvMsrs_redo" value="AllPermit"/>
+        <set name="QryAdvMsrs_redo" value="Msg0014_R"/>
+        <set name="QryAdvMsrs_download" value="AllPermit"/>
+        <set name="QryAdvMsrs_download" value="Msg0014_L"/>
+          
+        <set name="QryDSConnSysLogAnys"   value="AllPermit"/>
+        <set name="QryDSConnSysLogAnys"   value="LoginPermit"/>
+        <set name="QryDSConnSysLogAnys_search"   value="AllPermit"/>
+        <set name="QryDSConnSysLogAnys_search"   value="Msg0015_Q"/>
+        
+        <set name="MainMSHAgency" value="AllPermit"/>
+        <set name="MainMSHAgency" value="LoginPermit"/>
+        <set name="MainMSHAgency_search" value="AllPermit"/>
+        <set name="MainMSHAgency_search" value="DSU0008_Q"/>
+        <set name="MainMSHAgency_preupdate" value="AllPermit"/>
+        <set name="MainMSHAgency_preupdate" value="DSU0008_Q"/>
+        <set name="MainMSHAgency_add" value="AllPermit"/>
+        <set name="MainMSHAgency_add" value="DSU0008_A"/>
+        <set name="MainMSHAgency_update" value="AllPermit"/>
+        <set name="MainMSHAgency_update" value="DSU0008_U"/>
+        <set name="MainMSHAgency_delete" value="AllPermit"/>
+        <set name="MainMSHAgency_delete" value="DSU0008_D"/>
+        
+        <set name="MainMSHMonReply" value="AllPermit"/>
+        <set name="MainMSHMonReply" value="LoginPermit"/>
+        <set name="MainMSHMonReply_search" value="AllPermit"/>
+        <set name="MainMSHMonReply_search" value="DSU0008_Q"/>
+        <set name="MainMSHMonReply_add" value="AllPermit"/>
+        <set name="MainMSHMonReply_add" value="DSU0008_A"/>
+        <set name="MainMSHMonReply_preupdate" value="AllPermit"/>
+        <set name="MainMSHMonReply_preupdate" value="DSU0008_Q"/>
+        <set name="MainMSHMonReply_update" value="AllPermit"/>
+        <set name="MainMSHMonReply_update" value="DSU0008_U"/>
+        <set name="MainMSHMonReply_delete" value="AllPermit"/>
+        <set name="MainMSHMonReply_delete" value="DSU0008_D"/>
+        
+        <set name="TestReport"   value="AllPermit"/>
+        <set name="TestReport" value="LoginPermit"/>
+        <set name="TestReport_download"   value="AllPermit"/>
+        <set name="TestReport_download"   value="Rpt0001_Q"/>
+        
+         <!-- RPT 用戶記錄查詢 20150122
+        <set name="QryVanCmtMsgRpt" value="AllPermit"/>
+        <set name="QryVanCmtMsgRpt" value="LoginPermit"/>
+        <set name="QryVanCmtMsgRpt_search" value="AllPermit"/>
+        <set name="QryVanCmtMsgRpt_search" value="Rpt0001_Q"/>
+        <set name="QryVanCmtMsgRpt_download" value="AllPermit"/>
+        <set name="QryVanCmtMsgRpt_download" value="Rpt0001_Q"/>
+        <set name="QryVanCmtMsgRpt_getPartyBan" value="AllPermit"/>
+        <set name="QryVanCmtMsgRpt_getPartyBan" value="LoginPermit"/>
+        -->
+        <set name="QryVanUserMsg" value="AllPermit"/>
+        <set name="QryVanUserMsg" value="LoginPermit"/>
+        <set name="QryVanUserMsg_search" value="AllPermit"/>
+        <set name="QryVanUserMsg_search" value="Rpt0001_Q"/>
+        <set name="QryVanUserMsg_download" value="AllPermit"/>
+        <set name="QryVanUserMsg_download" value="Rpt0001_Q"/>
+        <set name="QryVanUserMsg_getPartyBan" value="AllPermit"/>
+        <set name="QryVanUserMsg_getPartyBan" value="LoginPermit"/>
+         
+        <set name="MainPartyExt" value="AllPermit"/>
+        <set name="MainPartyExt"    value="LoginPermit"/>
+        <set name="MainPartyExt_search" value="AllPermit"/>
+        <set name="MainPartyExt_search"     value="Usr0003_Q"/>
+        <set name="MainPartyExt_preUpdate" value="AllPermit"/>
+        <set name="MainPartyExt_preUpdate"      value="Usr0003_Q"/>
+        <set name="MainPartyExt_add" value="AllPermit"/>
+        <set name="MainPartyExt_add"        value="Usr0003_A"/>
+        <set name="MainPartyExt_update" value="AllPermit"/>
+        <set name="MainPartyExt_update"     value="Usr0003_U"/>
+        <set name="MainPartyExt_delete" value="AllPermit"/>
+        <set name="MainPartyExt_delete"     value="Usr0003_D"/>
+        <set name="MainPartyExt_next" value="AllPermit"/>
+        <set name="MainPartyExt_next"       value="Usr0005_Q"/>
+        <set name="MainPartyExt_back" value="AllPermit"/>
+        <set name="MainPartyExt_back"       value="Usr0001_Q"/>
+        
+        <!-- PMC user routingSeriveExt 設定 20140109-->
+        <set name="MainVanServiceRoutingExt" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt"    value="LoginPermit"/>
+        <set name="MainVanServiceRoutingExt_search" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_search"     value="Usr0003_Q"/>
+        <set name="MainVanServiceRoutingExt_preUpdate" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_preUpdate"      value="Usr0003_Q"/>
+        <set name="MainVanServiceRoutingExt_add" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_add"        value="Usr0003_A"/>
+        <set name="MainVanServiceRoutingExt_update" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_update"     value="Usr0003_U"/>
+        <set name="MainVanServiceRoutingExt_delete" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_delete"     value="Usr0003_D"/>
+        <set name="MainVanServiceRoutingExt_next" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_next"       value="Usr0005_Q"/>      
+        <set name="MainVanServiceRoutingExt_back" value="AllPermit"/>
+        <set name="MainVanServiceRoutingExt_back"       value="Usr0001_Q"/>
+        
+        <!-- PMC user CCS FTP 設定 20130708-->
+        <set name="MainVanFTPConf" value="AllPermit"/>
+        <set name="MainVanFTPConf" value="LoginPermit"/>
+        <set name="MainVanFTPConf_search" value="AllPermit"/>
+        <set name="MainVanFTPConf_search" value="CCS0002_Q"/>
+        <set name="MainVanFTPConf_add" value="AllPermit"/>
+        <set name="MainVanFTPConf_add" value="CCS0002_A"/>
+        <set name="MainVanFTPConf_preupdate" value="AllPermit"/>
+        <set name="MainVanFTPConf_preupdate" value="CCS0002_P"/>
+        <set name="MainVanFTPConf_update" value="AllPermit"/>
+        <set name="MainVanFTPConf_update" value="CCS0002_U"/>
+        <set name="MainVanFTPConf_delete" value="AllPermit"/> 
+        <set name="MainVanFTPConf_delete" value="CCS0002_D"/>
+        <set name="MainVanFTPConf_getObjName" value="AllPermit"/>
+        <set name="MainVanFTPConf_getObjName" value="LoginPermit"/>
+        
+          <!-- PMC user CCS MATIP 設定 20130708-->
+        <set name="MainVanMATIPConf" value="AllPermit"/>
+        <set name="MainVanMATIPConf" value="LoginPermit"/>
+        <set name="MainVanMATIPConf_search" value="AllPermit"/>
+        <set name="MainVanMATIPConf_search" value="CCS0003_Q"/>
+        <set name="MainVanMATIPConf_preupdate" value="AllPermit"/>
+        <set name="MainVanMATIPConf_preupdate" value="CCS0003_P"/>
+        <set name="MainVanMATIPConf_update" value="AllPermit"/>
+        <set name="MainVanMATIPConf_update" value="CCS0003_U"/>
+        <set name="MainVanMATIPConf_delete" value="AllPermit"/>
+        <set name="MainVanMATIPConf_delete" value="CCS0003_D"/>
+        <set name="MainVanMATIPConf_add" value="AllPermit"/>
+        <set name="MainVanMATIPConf_add" value="CCS0003_A"/>        
+        <set name="MainVanMATIPConf_getObjName" value="AllPermit"/>
+        <set name="MainVanMATIPConf_getObjName" value="LoginPermit"/>
+        
+         <!-- PMC user CCS 交易夥伴線路開關設定 20130718-->
+        <set name="MainVanCCS" value="AllPermit"/>
+        <set name="MainVanCCS" value="LoginPermit"/>
+        <set name="MainVanCCS_search" value="AllPermit"/>
+        <set name="MainVanCCS_search" value="CCS0001_Q"/>
+        <set name="MainVanCCS_preupdate" value="AllPermit"/>
+        <set name="MainVanCCS_preupdate" value="CCS0001_P"/>
+        <set name="MainVanCCS_update" value="AllPermit"/>
+        <set name="MainVanCCS_update" value="CCS0001_U"/>
+        <set name="MainVanCCS_delete" value="AllPermit"/>
+        <set name="MainVanCCS_delete" value="CCS0001_D"/>
+        <set name="MainVanCCS_add" value="AllPermit"/>
+        <set name="MainVanCCS_add" value="CCS0001_A"/>  
+        <set name="MainVanCCS_multiupdate" value="AllPermit"/>
+        <set name="MainVanCCS_multiupdate" value="CCS0001_U"/>
+        
+        <!-- PMC user CCS用戶線路設定 20130726-->        
+        <set name="MainVanCustCCSLine" value="AllPermit"/>
+        <set name="MainVanCustCCSLine" value="LoginPermit"/>
+        <set name="MainVanCustCCSLine_search" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_search" value="DSU0007_Q"/>
+        <set name="MainVanCustCCSLine_add" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_add" value="DSU0007_A"/>
+        <set name="MainVanCustCCSLine_update" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_update" value="DSU0007_U"/>
+        <set name="MainVanCustCCSLine_delete" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_delete" value="DSU0007_D"/>
+        <set name="MainVanCustCCSLine_preupdate" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_preupdate" value="DSU0007_Q"/>
+        <set name="MainVanCustCCSLine_updatein" value="AllPermit"/>
+        <set name="MainVanCustCCSLine_updatein" value="DSU0007_U"/>
+        
+        <!-- PMC user 用戶延伸設定 20130815-->        
+        <set name="MainVanPartyExtN" value="AllPermit"/>
+        <set name="MainVanPartyExtN" value="LoginPermit"/>
+        <set name="MainVanPartyExtN_search" value="AllPermit"/>
+        <set name="MainVanPartyExtN_search" value="Usr0011_Q"/>
+        <set name="MainVanPartyExtN_add" value="AllPermit"/>
+        <set name="MainVanPartyExtN_add" value="Usr0011_A"/>
+        <set name="MainVanPartyExtN_update" value="AllPermit"/>
+        <set name="MainVanPartyExtN_update" value="Usr0011_U"/>
+        <set name="MainVanPartyExtN_delete" value="AllPermit"/>
+        <set name="MainVanPartyExtN_delete" value="Usr0011_D"/>
+        <set name="MainVanPartyExtN_preupdate" value="AllPermit"/>
+        <set name="MainVanPartyExtN_preupdate" value="Usr0011_Q"/>
+        
+        <!-- PMC user Matip備援線路開關-->        
+        <set name="MainVanMatipSwitch" value="AllPermit"/>
+        <set name="MainVanMatipSwitch" value="LoginPermit"/>
+        <set name="MainVanMatipSwitch_update" value="AllPermit"/>
+        <set name="MainVanMatipSwitch_update" value="Usr0012_U"/>
+		
+	             <!-- MQ切換腳本執行 寄信  -->
+        <set name="DoScript" value="AllPermit" />
+        <set name="DoScript" value="LoginPermit" />
+        <set name="DoScript_sendNotifyMail" value="AllPermit" />
+        <set name="DoScript_sendNotifyMail" value="LoginPermit" />
+        <set name="DoScript_authToken" value="AllPermit" />
+        <set name="DoScript_authToken" value="LoginPermit" />
+        <set name="DoScript_execScript" value="AllPermit" />
+        <set name="DoScript_execScript" value="LoginPermit" />
+        <set name="DoScript_execScriptAjax" value="AllPermit" />
+        <set name="DoScript_execScriptAjax" value="LoginPermit" />
+        <set name="DoScript_queryScriptStep" value="AllPermit" />
+        <set name="DoScript_queryScriptStep" value="LoginPermit" />
+        <set name="DoScript_callDoScript" value="AllPermit" />
+        <set name="DoScript_callDoScript" value="LoginPermit" />
+		<set name="DoScript_returnAuth" value="AllPermit" />
+        <set name="DoScript_returnAuth" value="LoginPermit" />
+        <set name="DoScript_checkIsExecReturnAuth" value="AllPermit" />
+        <set name="DoScript_checkIsExecReturnAuth" value="LoginPermit" />
+		<set name="DoScript_checkNotifyMailReceiver" value="AllPermit" />
+        <set name="DoScript_checkNotifyMailReceiver" value="LoginPermit" />
+		<set name="DoScript_cancelDoScript" value="AllPermit" />
+        <set name="DoScript_cancelDoScript" value="LoginPermit" />
+		<set name="DoScript_doFinishReturnAuth" value="AllPermit" />
+        <set name="DoScript_doFinishReturnAuth" value="LoginPermit" />
+    
+        
+        <!-- for SAAB 後台權限項目  請勿修改 ，若合併saab_system才打開
+        <set name="Application"             value="P1000000"/>
+        <set name="Application_query"       value="P1000002"/>
+        <set name="Application_pageView"    value="P1000002"/>
+        <set name="Application_divView"     value="P1000002"/>
+        <set name="Application_add"             value="P1000001"/>
+        <set name="Application_generateAppId"   value="P1000001"/>
+        <set name="Application_checkAppId"      value="P1000001"/>      
+        <set name="Application_edit"        value="P1000003"/>      
+        <set name="Application_del"         value="P1000004"/>
+        <set name="Application_delChecked"  value="P1000004"/>
+        
+        <set name="User"            value="P2000000"/>
+        <set name="User_input"      value="P2000001"/>
+        <set name="User_add"        value="P2000001"/>
+        <set name="User_checkId"    value="P2000001"/>
+        <set name="User_resetUser"  value="P2000001"/>
+        <set name="User_query"      value="P2000002"/>
+        <set name="User_reset"      value="P2000002"/>
+        <set name="User_chgPage"    value="P2000002"/>
+        <set name="User_view"       value="P2000002"/>
+        <set name="User_edit"       value="P2000003"/>
+        <set name="User_update"     value="P2000003"/>      
+        <set name="User_del"        value="P2000004"/>
+        <set name="User_grant"      value="P2000005"/>
+        <set name="User_updGrant"   value="P2000005"/>      
+        <set name="User_viewTree"   value="P2000005"/>
+        
+        <set name="Role"                value="P3000000"/>
+        <set name="Role_add"            value="P3000001"/>
+        <set name="Role_generateRoleId" value="P3000001"/>
+        <set name="Role_checkRoleId"    value="P3000001"/>
+        <set name="Role_divAddView"     value="P3000001"/>
+        <set name="Role_divAdd"         value="P3000001"/>
+        <set name="Role_getSpecificRoles"   value="P3000001" />
+        <set name="Role_query"          value="P3000002"/>
+        <set name="Role_pageView"       value="P3000002"/>
+        <set name="Role_divView"        value="P3000002"/>
+        <set name="Role_viewRoleTree"   value="P3000003"/>  
+        <set name="Role_viewJsTree"     value="P3000003"/>  
+        <set name="Role_treeSaveHiearchy" value="P3000004"/>
+        <set name="Role_edit"           value="P3000004"/>
+        <set name="Role_divEditView"    value="P3000004"/>
+        <set name="Role_divEdit"        value="P3000004"/>
+        
+        <set name="Role_del"            value="P3000005"/>
+        <set name="Role_delChecked"     value="P3000005"/>
+        <set name="Role_treeDelete"     value="P3000005"/>
+        <set name="Role_grant"          value="P3000006"/>
+        <set name="Role_grantMenuTree"      value="P3000006"/>
+        
+                                
+        <set name="Privilege"                   value="P4000000"/>
+        <set name="Privilege_add"               value="P4000001"/>
+        <set name="Privilege_generateRoleId"    value="P4000001"/>
+        <set name="Privilege_checkPrivilegeId"      value="P4000001"/>
+        <set name="Privilege_getSpecificMenus"      value="P4000001"/>
+        <set name="Privilege_generatePrivilegeId"   value="P4000001"/>
+        <set name="Privilege_treeDivAddView"        value="P4000001"/>  
+        <set name="Privilege_treeAdd"       value="P4000001"/>  
+        <set name="Privilege_query"         value="P4000002"/>
+        <set name="Privilege_pageView"      value="P4000002"/>
+        <set name="Privilege_divView"       value="P4000002"/>  
+        <set name="Privilege_getSpecificPrivileges" value="P4000002"/>
+        <set name="Privilege_viewMenuTree"  value="P4000003"/>  
+        <set name="Privilege_viewJsTree"    value="P4000003"/>
+        <set name="Privilege_treeSaveHiearchy"  value="P4000004"/>
+        <set name="Privilege_edit"              value="P4000004"/>
+        <set name="Privilege_update"        value="P4000004"/>
+        <set name="Privilege_treeEdit"      value="P4000004"/>
+        <set name="Privilege_treeUpdate"    value="P4000004"/>
+        <set name="Privilege_del"           value="P4000005"/>
+        <set name="Privilege_delChecked"    value="P4000005"/>  
+        <set name="Privilege_delete"        value="P4000005"/>
+        <set name="Privilege_treeDelete"    value="P4000005"/>
+        
+        
+        <set name="Log"         value="P5000000"/>
+        <set name="Log_query"   value="P5000001"/>
+        <set name="Log_reset"   value="P5000001"/>
+        <set name="Log_chgPage" value="P5000001"/>
+        --> 
+        
+        <!-- UTS -->
+        <set name="UTSIOLog"                 value="AllPermit"/>
+        <set name="UTSIOLog"                 value="LoginPermit"/>
+        <set name="UTSIOLog_search"          value="AllPermit"/>
+        <set name="UTSIOLog_search"          value="UTS0001_Q"/>
+        <set name="UTSSysLog"                 value="AllPermit"/>
+        <set name="UTSSysLog"                 value="LoginPermit"/>
+        <set name="UTSSysLog_search"          value="AllPermit"/>
+        <set name="UTSSysLog_search"          value="UTS0001_Q"/>
+        <set name="UTSSysLog_packFile"          value="AllPermit"/>
+        <set name="UTSSysLog_packFile"          value="UTS0001_Q"/>
+        <set name="UTSSysLog_download"          value="AllPermit"/>
+        <set name="UTSSysLog_download"          value="UTS0001_Q"/>
+        <set name="UTSEventLog"                 value="AllPermit"/>
+        <set name="UTSEventLog"                 value="LoginPermit"/>
+        <set name="UTSEventLog_search"          value="AllPermit"/>
+        <set name="UTSEventLog_search"          value="UTS0001_Q"/>
+
+        <set name="UTSImportMain"             value="AllPermit"/>
+        <set name="UTSImportMain"             value="LoginPermit"/>
+        <set name="UTSImportMain_search"      value="AllPermit"/>
+        <set name="UTSImportMain_search"      value="UTS0002_Q"/>
+        <set name="UTSImportMain_delete"      value="AllPermit"/>
+        <set name="UTSImportMain_delete"      value="UTS0002_D"/>
+        <set name="UTSImportMain_copy"         value="AllPermit"/>
+        <set name="UTSImportMain_copy"         value="UTS0002_A"/>
+        <set name="UTSImportMain_save"         value="AllPermit"/>
+        <set name="UTSImportMain_save"         value="UTS0002_A"/>
+        <set name="UTSImportMain_download"         value="AllPermit"/>
+        <set name="UTSImportMain_download"         value="UTS0002_A"/>
+        <set name="UTSImportMain_load"         value="AllPermit"/>
+        <set name="UTSImportMain_load"         value="UTS0002_A"/>
+        <set name="UTSImportMain_active"         value="AllPermit"/>
+        <set name="UTSImportMain_active"         value="UTS0002_U"/>
+        <set name="UTSImportMain_override"     value="AllPermit"/>
+        <set name="UTSImportMain_override"     value="UTS0002_A"/>
+        <set name="UTSImportMain_searchFor"      value="AllPermit"/>
+        <set name="UTSImportMain_searchFor"      value="UTS0002_Q"/>
+        
+        <set name="UTSImportFrame"             value="AllPermit"/>
+        <set name="UTSImportFrame"             value="LoginPermit"/>
+        <set name="UTSImportFrame_loadTree"      value="AllPermit"/>
+        <set name="UTSImportFrame_loadTree"      value="UTS0002_Q"/>
+        <set name="UTSImportFrame_copy"        value="AllPermit"/>
+        <set name="UTSImportFrame_copy"        value="UTS0002_A"/>
+        <set name="UTSImportFrame_updateMain"      value="AllPermit"/>
+        <set name="UTSImportFrame_updateMain"      value="UTS0002_U"/>
+        <set name="UTSImportFrame_updateLayer"      value="AllPermit"/>
+        <set name="UTSImportFrame_updateLayer"      value="UTS0002_U"/>
+        <set name="UTSImportFrame_updateItem"      value="AllPermit"/>
+        <set name="UTSImportFrame_updateItem"      value="UTS0002_U"/>
+        <set name="UTSImportFrame_qryMain"      value="AllPermit"/>
+        <set name="UTSImportFrame_qryMain"      value="UTS0002_Q"/>
+        <set name="UTSImportFrame_qryLayer"      value="AllPermit"/>
+        <set name="UTSImportFrame_qryLayer"      value="UTS0002_Q"/>
+        <set name="UTSImportFrame_qryItem"      value="AllPermit"/>
+        <set name="UTSImportFrame_qryItem"      value="UTS0002_Q"/>
+        <set name="UTSImportFrame_addMain"      value="AllPermit"/>
+        <set name="UTSImportFrame_addMain"      value="UTS0002_A"/>
+        <set name="UTSImportFrame_addLayer"      value="AllPermit"/>
+        <set name="UTSImportFrame_addLayer"      value="UTS0002_A"/>
+        <set name="UTSImportFrame_addItem"      value="AllPermit"/>
+        <set name="UTSImportFrame_addItem"      value="UTS0002_A"/>
+        <set name="UTSImportFrame_moveUpdate"        value="AllPermit"/>
+        <set name="UTSImportFrame_moveUpdate"        value="UTS0002_U"/>
+        <set name="UTSImportFrame_deleteMain"      value="AllPermit"/>
+        <set name="UTSImportFrame_deleteMain"      value="UTS0002_D"/>
+        <set name="UTSImportFrame_deleteLayer"      value="AllPermit"/>
+        <set name="UTSImportFrame_deleteLayer"      value="UTS0002_D"/>
+        <set name="UTSImportFrame_deleteItem"      value="AllPermit"/>
+        <set name="UTSImportFrame_deleteItem"      value="UTS0002_D"/>
+        <set name="UTSImportFrame_commitVersion"      value="AllPermit"/>
+        <set name="UTSImportFrame_commitVersion"      value="UTS0002_A"/>
+        <set name="UTSImportFrame_updatePosUnit"      value="AllPermit"/>
+        <set name="UTSImportFrame_updatePosUnit"      value="UTS0002_U"/>
+        <set name="UTSImportFrame_qryMapperExtArg"      value="UTS0002_Q"/>
+                        
+        <set name="UTSExportMain"             value="AllPermit"/>
+        <set name="UTSExportMain"             value="LoginPermit"/>
+        <set name="UTSExportMain_search"      value="AllPermit"/>
+        <set name="UTSExportMain_search"      value="UTS0003_Q"/>
+        <set name="UTSExportMain_delete"      value="AllPermit"/>
+        <set name="UTSExportMain_delete"      value="UTS0003_D"/>
+        <set name="UTSExportMain_templateSearch"      value="AllPermit"/>
+        <set name="UTSExportMain_templateSearch"      value="UTS0003_Q"/> 
+        <set name="UTSExportMain_templateAdd"         value="AllPermit"/>
+        <set name="UTSExportMain_templateAdd"         value="UTS0003_A"/>
+        <set name="UTSExportMain_templateUpdate"      value="AllPermit"/>
+        <set name="UTSExportMain_templateUpdate"      value="UTS0003_U"/>
+        <set name="UTSExportMain_templateDelete"      value="AllPermit"/>
+        <set name="UTSExportMain_templateDelete"      value="UTS0003_D"/>
+        <set name="UTSExportMain_copy"         value="AllPermit"/>
+        <set name="UTSExportMain_copy"         value="UTS0003_A"/>
+        <set name="UTSExportMain_load"         value="AllPermit"/>
+        <set name="UTSExportMain_load"         value="UTS0003_A"/>
+		<set name="UTSExportMain_chkExportTemplate"         value="AllPermit"/>
+        <set name="UTSExportMain_chkExportTemplate"         value="UTS0003_A"/>
+        <set name="UTSExportMain_uploadTemplate"         value="AllPermit"/>
+        <set name="UTSExportMain_uploadTemplate"         value="UTS0003_A"/>      
+        <set name="UTSExportMain_startTemplate"         value="AllPermit"/>
+        <set name="UTSExportMain_startTemplate"         value="UTS0003_A"/>         
+        <set name="UTSExportMain_save"         value="AllPermit"/>
+        <set name="UTSExportMain_save"         value="UTS0003_A"/>
+        <set name="UTSExportMain_download"         value="AllPermit"/>
+        <set name="UTSExportMain_download"         value="UTS0003_A"/>
+        <set name="UTSExportMain_active"         value="AllPermit"/>
+        <set name="UTSExportMain_active"         value="UTS0003_U"/>
+        <set name="UTSExportMain_override"     value="AllPermit"/>
+        <set name="UTSExportMain_override"     value="UTS0003_A"/>
+        <set name="UTSExportMain_searchFor"      value="AllPermit"/>
+        <set name="UTSExportMain_searchFor"      value="UTS0003_Q"/>
+
+        <set name="UTSExportFrame"             value="AllPermit"/>
+        <set name="UTSExportFrame"             value="LoginPermit"/>
+        <set name="UTSExportFrame_loadTree"      value="AllPermit"/>
+        <set name="UTSExportFrame_loadTree"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_copy"         value="AllPermit"/>
+        <set name="UTSExportFrame_copy"         value="UTS0003_A"/>
+        <set name="UTSExportFrame_updateMain"      value="AllPermit"/>
+        <set name="UTSExportFrame_updateMain"      value="UTS0003_U"/>
+        <set name="UTSExportFrame_updateLayer"      value="AllPermit"/>
+        <set name="UTSExportFrame_updateLayer"      value="UTS0003_U"/>
+        <set name="UTSExportFrame_updateItem"      value="AllPermit"/>
+        <set name="UTSExportFrame_updateItem"      value="UTS0003_U"/>
+        <set name="UTSExportFrame_qryMain"      value="AllPermit"/>
+        <set name="UTSExportFrame_qryMain"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_qryLayer"      value="AllPermit"/>
+        <set name="UTSExportFrame_qryLayer"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_qryItem"      value="AllPermit"/>
+        <set name="UTSExportFrame_qryItem"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_addMain"      value="AllPermit"/>
+        <set name="UTSExportFrame_addMain"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_addLayer"      value="AllPermit"/>
+        <set name="UTSExportFrame_addLayer"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_addItem"      value="AllPermit"/>
+        <set name="UTSExportFrame_addItem"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_moveUpdate"        value="AllPermit"/>
+        <set name="UTSExportFrame_moveUpdate"        value="UTS0003_U"/>
+        <set name="UTSExportFrame_deleteMain"      value="AllPermit"/>
+        <set name="UTSExportFrame_deleteMain"      value="UTS0003_D"/>
+        <set name="UTSExportFrame_deleteLayer"      value="AllPermit"/>
+        <set name="UTSExportFrame_deleteLayer"      value="UTS0003_D"/>
+        <set name="UTSExportFrame_deleteItem"      value="AllPermit"/>
+        <set name="UTSExportFrame_deleteItem"      value="UTS0003_D"/>
+        <set name="UTSExportFrame_commitVersion"      value="AllPermit"/>
+        <set name="UTSExportFrame_commitVersion"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_updatePosUnit"      value="AllPermit"/>
+        <set name="UTSExportFrame_updatePosUnit"      value="UTS0003_U"/>
+        
+        <set name="UTSExportFrame_goExcel"      value="AllPermit"/>
+        <set name="UTSExportFrame_goExcel"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_qryExcel"      value="AllPermit"/>
+        <set name="UTSExportFrame_qryExcel"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_settingExcel"      value="AllPermit"/>
+        <set name="UTSExportFrame_settingExcel"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_qryItemExtForExcel"      value="AllPermit"/>
+        <set name="UTSExportFrame_qryItemExtForExcel"      value="UTS0003_A"/>
+        <set name="UTSExportFrame_searchTemplate"      value="AllPermit"/>
+        <set name="UTSExportFrame_searchTemplate"      value="UTS0003_Q"/>
+        <set name="UTSExportFrame_uploadTemplate"      value="AllPermit"/>
+        <set name="UTSExportFrame_uploadTemplate"      value="UTS0003_U"/>
+        <set name="UTSExportFrame_updateTemplate"      value="AllPermit"/>
+        <set name="UTSExportFrame_updateTemplate"      value="UTS0003_D"/>
+        <set name="UTSExportFrame_deleteTemplate"      value="AllPermit"/>
+        <set name="UTSExportFrame_deleteTemplate"      value="UTS0003_D"/>     
+        <set name="UTSExportFrame_qryMapperExtArg"      value="UTS0003_Q"/>
+        
+        <set name="UTSMapperMain"             value="AllPermit"/>
+        <set name="UTSMapperMain"             value="LoginPermit"/>
+        <set name="UTSMapperMain_search"      value="AllPermit"/>
+        <set name="UTSMapperMain_search"      value="UTS0004_Q"/> 
+        <set name="UTSMapperMain_back"        value="AllPermit"/>
+        <set name="UTSMapperMain_back"        value="UTS0004_Q"/>
+        <set name="UTSMapperMain_qryMapper"   value="UTS0004_Q"/>
+        <set name="UTSMapperMain_qryMapper"   value="UTS0004_Q"/>
+        <set name="UTSMapperMain_edit"        value="AllPermit"/>
+        <set name="UTSMapperMain_edit"        value="UTS0004_U"/>
+        <set name="UTSMapperMain_delete"      value="AllPermit"/>
+        <set name="UTSMapperMain_delete"      value="UTS0004_D"/>
+        <set name="UTSMapperMain_copy"      value="AllPermit"/>
+        <set name="UTSMapperMain_copy"      value="UTS0004_A"/>
+        <set name="UTSMapperMain_save"      value="AllPermit"/>
+        <set name="UTSMapperMain_save"      value="UTS0004_A"/>
+        <set name="UTSMapperMain_download"     value="AllPermit"/>
+        <set name="UTSMapperMain_download"     value="UTS0004_A"/>
+        <set name="UTSMapperMain_load"         value="AllPermit"/>
+        <set name="UTSMapperMain_load"         value="UTS0004_A"/>
+        <set name="UTSMapperMain_updateStatus"         value="AllPermit"/>
+        <set name="UTSMapperMain_updateStatus"         value="UTS0004_U"/>
+        <set name="UTSMapperMain_override"     value="AllPermit"/>
+        <set name="UTSMapperMain_override"     value="UTS0004_A"/>
+		<set name="UTSMapperMain_qryMapperInform"      value="AllPermit"/>
+        <set name="UTSMapperMain_qryMapperInform"      value="UTS0004_Q"/> 
+        <set name="UTSMapperMain_multiSave"      value="AllPermit"/>
+        <set name="UTSMapperMain_multiSave"      value="UTS0004_A"/> 
+		<set name="UTSMapperMain_multiCopy"      value="AllPermit"/>
+        <set name="UTSMapperMain_multiCopy"      value="UTS0004_A"/>
+        <set name="UTSMapperMain_chkExistedId"      value="AllPermit"/>
+        <set name="UTSMapperMain_chkExistedId"      value="UTS0004_A"/>     
+               
+        <set name="UTSMapperMapping"          value="AllPermit"/>
+        <set name="UTSMapperMapping"          value="LoginPermit"/>
+        <set name="UTSMapperMapping_qryMapping"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryMapping"   value="UTS0004_Q"/> 
+        <set name="UTSMapperMapping_qryMapper"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryMapper"   value="UTS0004_Q"/> 
+        <set name="UTSMapperMapping_addMapper"         value="AllPermit"/>
+        <set name="UTSMapperMapping_addMapper"         value="UTS0004_A"/>
+        <set name="UTSMapperMapping_updateMapper"      value="AllPermit"/>
+        <set name="UTSMapperMapping_updateMapper"      value="UTS0004_U"/>
+        <set name="UTSMapperMapping_commitVersion"      value="AllPermit"/>
+        <set name="UTSMapperMapping_commitVersion"      value="UTS0004_U"/>
+        
+        <set name="UTSMapperMapping_addMapping"      value="AllPermit"/>
+        <set name="UTSMapperMapping_addMapping"      value="UTS0004_A"/>
+        <set name="UTSMapperMapping_smartMapping"      value="AllPermit"/>
+        <set name="UTSMapperMapping_smartMapping"      value="UTS0004_A"/>
+        <set name="UTSMapperMapping_deleteMapping"   value="AllPermit"/>
+        <set name="UTSMapperMapping_deleteMapping"   value="UTS0004_D"/>
+        <set name="UTSMapperMapping_deleteAllMapping"   value="AllPermit"/>
+        <set name="UTSMapperMapping_deleteAllMapping"   value="UTS0004_D"/>
+
+        <set name="UTSMapperMapping_qryImportTree"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryImportTree"   value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_qryExportTree"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryExportTree"   value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_qryImportTreeReload"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryImportTreeReload"   value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_qryExportTreeReload"   value="AllPermit"/>
+        <set name="UTSMapperMapping_qryExportTreeReload"   value="UTS0004_Q"/>
+        
+        <set name="UTSMapperMapping_recommendMapping" value="AllPermit"/>
+        <set name="UTSMapperMapping_recommendMapping" value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_recommendMapping" value="UTS0004_A"/>
+        
+        <set name="UTSMapperMapping_updateMappingFunction" value="AllPermit"/>
+        <set name="UTSMapperMapping_updateMappingFunction" value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_updateMappingFunction" value="UTS0004_A"/>
+        
+        <set name="UTSMapperMapping_deleteIOMapper"   value="AllPermit"/>
+        <set name="UTSMapperMapping_deleteIOMapper"   value="UTS0004_D"/>
+        <set name="UTSMapperMapping_searchForItem"   value="AllPermit"/>
+        <set name="UTSMapperMapping_searchForItem"   value="UTS0004_Q"/>
+        
+        <set name="UTSMapperMapping_modifyMapperExeSeq"      value="AllPermit"/>
+        <set name="UTSMapperMapping_modifyMapperExeSeq"      value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_addReturnValue"      value="AllPermit"/>
+        <set name="UTSMapperMapping_addReturnValue"      value="UTS0004_Q"/>
+        <set name="UTSMapperMapping_deleteReturnValue"      value="AllPermit"/>
+        <set name="UTSMapperMapping_deleteReturnValue"      value="UTS0004_Q"/>
+      
+        <set name="TestTransform"           value="AllPermit"/>
+        <set name="TestTransform"           value="LoginPermit"/>
+        <set name="TestTransform_browse"    value="AllPermit"/>
+        <set name="TestTransform_browse"    value="UTS0005_Q"/>
+        <set name="TestTransform_transform"     value="AllPermit"/>
+        <set name="TestTransform_transform"     value="UTS0005_Q"/>
+        <set name="TestTransform_tree"     value="AllPermit"/>
+        <set name="TestTransform_tree"     value="UTS0005_Q"/>     
+        <set name="TestTransform_download"     value="AllPermit"/>
+        <set name="TestTransform_download"     value="UTS0005_Q"/>     
+        
+        <set name="UTSMapperCompare"           value="AllPermit"/>
+        <set name="UTSMapperCompare"           value="LoginPermit"/>
+        <set name="UTSMapperCompare_compare"     value="AllPermit"/>
+        <set name="UTSMapperCompare_compare"     value="UTS0006_Q"/>
+        
+        <!-- 群組授權清單 -->
+        <set name="UTSGroupAuthMain"             value="AllPermit"/>
+        <set name="UTSGroupAuthMain"             value="LoginPermit"/>
+        <set name="UTSGroupAuthMain_search"      value="AllPermit"/>
+        <set name="UTSGroupAuthMain_search"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthMain_create"      value="AllPermit"/>
+        <set name="UTSGroupAuthMain_create"      value="UTS0007_A"/>
+        <set name="UTSGroupAuthMain_update"      value="AllPermit"/>
+        <set name="UTSGroupAuthMain_update"      value="UTS0007_U"/>
+        <set name="UTSGroupAuthMain_delete"      value="AllPermit"/>
+        <set name="UTSGroupAuthMain_delete"      value="UTS0007_D"/>
+        
+        <!-- 群組授權明細 -->
+        <set name="UTSGroupAuthFrame"             value="AllPermit"/>
+        <set name="UTSGroupAuthFrame"             value="LoginPermit"/>
+        <!-- 群組成員 -->
+        <set name="UTSGroupAuthFrame_searchMembers"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchMembers"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_searchUserList"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchUserList"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_saveMembers"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_saveMembers"      value="UTS0007_U"/>
+        <!-- 群組管理人 -->
+        <set name="UTSGroupAuthFrame_searchAdmins"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchAdmins"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_searchMemberList"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchMemberList"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_saveAdmins"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_saveAdmins"      value="UTS0007_U"/>
+        <!-- 規則授權 -->
+        <set name="UTSGroupAuthFrame_searchMappers"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchMappers"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_searchMapperList"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchMapperList"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_searchImportMapperList"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchImportMapperList"      value="UTS0007_Q"/>   
+        <set name="UTSGroupAuthFrame_searchExportMapperList"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_searchExportMapperList"      value="UTS0007_Q"/>
+        <set name="UTSGroupAuthFrame_saveMappers"      value="AllPermit"/>
+        <set name="UTSGroupAuthFrame_saveMappers"      value="UTS0007_U"/>
+        
+        <!-- 延伸參數設定 -->
+	    <set name="UTSExtArg" value="AllPermit" />
+		<set name="UTSExtArg" value="UTS0008_Q" />
+		<set name="UTSExtArg_search" value="AllPermit" />
+		<set name="UTSExtArg_search" value="UTS0008_Q" />
+		<set name="UTSExtArg_add" value="AllPermit" />
+		<set name="UTSExtArg_add" value="UTS0008_A" />
+		<set name="UTSExtArg_delete" value="AllPermit" />
+		<set name="UTSExtArg_delete" value="UTS0008_D" />
+		<set name="UTSExtArg_update" value="AllPermit" />
+		<set name="UTSExtArg_update" value="UTS0008_U" />
+		<set name="UTSExtArg_preUpdate" value="AllPermit" />
+		<set name="UTSExtArg_preUpdate" value="UTS0008_P" />
+
+
+ 	    <set name="UTSExtArg_queryTypeIdByCodeData" value="AllPermit"/>
+	    <set name="UTSExtArg_queryTypeIdByCodeData" value="UTS0008_Q"/>
+		<!-- 批次轉換設定 -->
+	    <set name="UTSBatchMapSwitch" value="AllPermit" />
+		<set name="UTSBatchMapSwitch" value="UTS0009_Q" />
+		<set name="UTSBatchMapSwitch_search" value="AllPermit" />
+		<set name="UTSBatchMapSwitch_search" value="UTS0009_Q" />
+		<set name="UTSBatchMapSwitch_add" value="AllPermit" />
+		<set name="UTSBatchMapSwitch_add" value="UTS0009_A" />
+		<set name="UTSBatchMapSwitch_update" value="AllPermit" />
+		<set name="UTSBatchMapSwitch_update" value="UTS0009_U" />
+		
+	    <set name="UTSBatchDefEdit" value="AllPermit" />
+		<set name="UTSBatchDefEdit" value="UTS0009_Q" />
+		<set name="UTSBatchDefEdit_search" value="AllPermit" />
+		<set name="UTSBatchDefEdit_search" value="UTS0009_Q" />
+		<set name="UTSBatchDefEdit_add" value="AllPermit" />
+		<set name="UTSBatchDefEdit_add" value="UTS0009_A" />
+		<set name="UTSBatchDefEdit_delete" value="AllPermit" />
+		<set name="UTSBatchDefEdit_delete" value="UTS0009_D" />
+		<set name="UTSBatchDefEdit_update" value="AllPermit" />
+		<set name="UTSBatchDefEdit_update" value="UTS0009_U" />
+		<set name="UTSBatchDefEdit_back" value="AllPermit" />
+		<set name="UTSBatchDefEdit_back" value="UTS0009_Q" />
+		
+		<!-- 轉換規則產生器 -->
+	    <set name="UTSMapperGenerator" value="AllPermit" />
+		<set name="UTSMapperGenerator" value="LoginPermit" />
+		<set name="UTSMapperGenerator_generate" value="AllPermit" />
+		<set name="UTSMapperGenerator_generate" value="UTS0010_G" />
+		
+        
+        <!-- 文字客服頁面轉導  -->
+        <set name="NewWindow" value="AllPermit"/>
+        <set name="NewWindow" value="LoginPermit"/>
+        
+        <!-- 報表產製  -->
+        <set name="AppendXls" value="AllPermit" />
+		<set name="AppendXls" value="LoginPermit" />
+		<set name="AppendXls_fileUpload" value="AllPermit" />
+		<set name="AppendXls_fileUpload" value="LoginPermit" />
+	
+    </settings>
+</permissions>

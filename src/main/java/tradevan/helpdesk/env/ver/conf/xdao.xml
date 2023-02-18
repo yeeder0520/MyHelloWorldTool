@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taurus-xdao>
+ 
+         
+	<data-source id="pngscJNDI" class="com.tradevan.taurus.xdao.ds.JndiDataSource" type="oracle" loadOnStart="false">
+		<property name="jndi-name" value="PNGSCPool"/>
+        <property name="context-factory" value="weblogic.jndi.WLInitialContextFactory"/>
+        <property name="provider-url" value="t3://localhost:8005"/>
+		<!-- Connection Pool -->
+		<property name="pool-size" value="4" />   <!-- Connection Pool大小 -->
+		<property name="wait-time" value="-1" /> <!-- 取Connection時的等待時間(秒) -->
+		<property name="validation-sql" value="select 1 from dual" /> <!-- 使用DBCP預防pool中連線已死 -->
+		<property name="test-borrow" value="true" />
+		<property name="auth-handler" value="com.tradevan.taurus.xdao.handler.EncryptAuthHandler"/>
+        <property name="encrypted" value="true"/>
+        <property name="auth-file" value="/APNVAN/def/orapass"/>
+        <property name="application-id" value="APNVAN"/>
+        <property name="auth-user" value="dsPNGSC"/>
+	</data-source>
+	
+	<!-- 2011.01.11 新增連pmsg -->
+	<data-source id="pngscPMSG" class="com.tradevan.taurus.xdao.ds.JndiDataSource" type="oracle" loadOnStart="false">
+		<property name="jndi-name" value="PPMSGPool"/>
+        <property name="context-factory" value="weblogic.jndi.WLInitialContextFactory"/>
+        <property name="provider-url" value="t3://localhost:8005"/>
+		<!-- Connection Pool -->
+		<property name="pool-size" value="4" /> 
+		<property name="wait-time" value="-1" />
+		<property name="validation-sql" value="select 1 from dual" />
+		<property name="test-borrow" value="true" />
+		<property name="auth-handler" value="com.tradevan.taurus.xdao.handler.EncryptAuthHandler"/>
+        <property name="encrypted" value="true"/>
+        <property name="auth-file" value="/APNVAN/def/orapass"/>
+        <property name="application-id" value="APNVAN"/>
+        <property name="auth-user" value="dsPPMSG"/>
+	</data-source>
+	<data-source id="pagiDS" class="com.tradevan.taurus.xdao.ds.JndiDataSource" type="oracle" loadOnStart="true">
+		<property name="jndi-name" value="PAGIPool"/>
+        <property name="context-factory" value="weblogic.jndi.WLInitialContextFactory"/>
+        <property name="provider-url" value="t3://localhost:8005"/>
+		<!-- Connection Pool -->
+		<property name="pool-size" value="4" /> 
+		<property name="wait-time" value="-1" />
+		<property name="validation-sql" value="select 1 from dual" />
+		<property name="test-borrow" value="true" />
+		<property name="auth-handler" value="com.tradevan.taurus.xdao.handler.EncryptAuthHandler"/>
+        <property name="encrypted" value="true"/>
+        <property name="auth-file" value="/APNVAN/def/orapass"/>
+        <property name="application-id" value="APNVAN"/>
+        <property name="auth-user" value="dsPAGI"/>
+	</data-source>
+   	<data-source id="putsDS" class="com.tradevan.taurus.xdao.ds.JndiDataSource" type="oracle" loadOnStart="true">
+       	<property name="jndi-name" value="PUTSPool"/>
+        <property name="context-factory" value="weblogic.jndi.WLInitialContextFactory"/>
+        <property name="provider-url" value="t3://localhost:8005"/>
+		<!-- Connection Pool -->
+		<property name="pool-size" value="4" /> 
+		<property name="wait-time" value="-1" />
+		<property name="validation-sql" value="select 1 from dual" />
+		<property name="test-borrow" value="true" />
+		<property name="auth-handler" value="com.tradevan.taurus.xdao.handler.EncryptAuthHandler"/>
+        <property name="encrypted" value="true"/>
+        <property name="auth-file" value="/APNVAN/def/orapass"/>
+        <property name="application-id" value="APNVAN"/>
+        <property name="auth-user" value="dsPUTS"/>
+    </data-source>
+	<connections defaultMaxRow="500" defaultPageSize="20" defaultSqlTimeout="90" logger="XdaoLogger" logConfig="conf/logging.xml">
+		<connection id="pngscConn" dataSource="pngscJNDI" logger="CommonLogger">
+			<property name="max-row" value="100" />
+			<property name="page-size" value="10" />
+			<property name="sql-timeout" value="180" />
+			<property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8"/>
+            <property name="jvm-encoding" value="UTF-8"/>
+			<property name="field-case-sensitive" value="false" />
+			<property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+			<property name="keep-data-type" value="false" />
+			<property name="skip-null-value" value="true" />
+			<property name="null-to-string" value="true" />
+		</connection>
+		<!-- 2013.12.04 新增for Bg程式使用 -->
+		<connection id="pngscBgConn" dataSource="pngscJNDI" logger="CommonLogger">
+			<property name="max-row" value="500" />
+			<property name="page-size" value="10" />
+			<property name="sql-timeout" value="180" />
+			<property name="show-sql" value="true" />
+			<property name="db-encoding" value="UTF-8" />
+			<property name="jvm-encoding" value="UTF-8" />
+			<property name="field-case-sensitive" value="false" />
+			<property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+			<property name="keep-data-type" value="true" />
+			<property name="skip-null-value" value="true" />
+			<property name="null-to-string" value="true" />
+		</connection>	
+		
+		<!-- 2011.01.11 新增連pmsg -->
+		<connection id="pmsgConn" dataSource="pngscPMSG" logger="CommonLogger">
+			<property name="max-row" value="100" />
+			<property name="page-size" value="10" />
+			<property name="sql-timeout" value="180" />
+			<property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8"/>
+            <property name="jvm-encoding" value="UTF-8"/>
+			<property name="field-case-sensitive" value="false" />
+			<property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+			<property name="keep-data-type" value="true" />
+			<property name="skip-null-value" value="true" />
+			<property name="null-to-string" value="true" />
+		</connection>
+		<connection id="pagiConn" dataSource="pagiDS" logger="CommonLogger">
+			<property name="max-row" value="100" />
+			<property name="page-size" value="10" />
+			<property name="sql-timeout" value="180" />
+			<property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8"/>
+            <property name="jvm-encoding" value="UTF-8"/>
+			<property name="field-case-sensitive" value="false" />
+			<property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+			<property name="keep-data-type" value="fasle" />
+			<property name="skip-null-value" value="true" />
+			<property name="null-to-string" value="true" />
+		</connection>
+        <connection id="putsConn" dataSource="putsDS" logger="CommonLogger">
+            <property name="max-row" value="2000" />
+            <property name="page-size" value="10" />
+            <property name="sql-timeout" value="180" />
+            <property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8" />
+            <property name="jvm-encoding" value="UTF-8" />
+            <property name="field-case-sensitive" value="false" />
+            <property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+            <property name="keep-data-type" value="true" />
+            <property name="skip-null-value" value="true" />
+            <property name="null-to-string" value="true" />
+        </connection>
+	</connections>
+	<template-config>
+        <template file="conf/saab_api_sql.xml"/>
+        <template file="conf/pnvan_sql.xml"/>
+    </template-config>
+</taurus-xdao>

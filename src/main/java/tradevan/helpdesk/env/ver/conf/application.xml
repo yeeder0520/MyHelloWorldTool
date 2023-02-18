@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tradevan-framework>
+    
+    <application id="APNVAN_V3">
+
+        <property name="encoding" value="UTF-8"/>
+        <property name="struts2-config" value="conf/struts2.xml"/>
+        <property name="log-config" value="conf/logging.xml"/>
+        <property name="default-logger" value="apLogger"/>
+        <property name="xdao-config" value="conf/xdao.xml"/>
+        <property name="default-conn-id" value = "pngscConn"/>
+        <property name="context-config" value="conf/saab_context.xml"/>
+        <property name="login-result" value="/"/>
+        <property name="escape-pattern" value="/*.*"/>
+		<property name="permission-config" value="conf/authorization.xml"/>
+		<property name="uts-conn-id" value = "putsConn"/>
+		
+        <settings>
+            <set name="mode" value="T" />
+            <set name="NFS_PROPERTIES" value="conf/data-path.properties" />
+            <set name="login-escape" value="/Login!login,/Logout"/>
+            <set name="login-encrypt-method" value="SHA-256" />
+            <set name="MDC_TRSFILE_IP" value="10.89.8.14" />
+            <set name="MDC_TRSFILE_PORT" value="9903" />
+            <set name="MDC_TARGET_DIR" value="/PNGSC/data/MDC/ISF/" />
+			<set name="MDC_APP_TARGET_DIR" value="/PNGSC/data/MDC/IPF/" />
+			<set name="MDC_EDI_TARGET_DIR" value="/PNGSC/data/AP/GOCS_INI/" />
+            <set name="DS_TRSFILE_IP" value="vnvanfs.intranet.com.tw" />
+            <set name="DS_TRSFILE_PORT" value="7703" />
+            <set name="DS_TRSFILE_DIR" value="/PNVANCOM/" />
+            <set name="PMC_TRSFILE_IP" value="10.89.8.14" />
+            <set name="PMC_TRSFILE_PORT" value="7703" />
+            <set name="PMC_TRSFILE_DIR" value="/PIVCCCOM/" />
+			<set name="BG_TRSFILE_IP" value="10.89.8.167" />
+            <set name="BG_TRSFILE_PORT" value="7703" />
+                 
+   	    <set name="DS_MSG_MAXROW" value="500" />
+            <set name="DS_MSG_DETAIL_MAXROW" value="5000" />
+            <set name="DOWNLOAD_DIR" value="/APNVAN/WEBLOGIC/APNVAN_V3/data/downloads/" /> 
+            <set name="NVANPRT_DIR" value="/APNVAN/WEBLOGIC/APNVAN_V3/data/report"/>
+            <set name="FILE_SLA" value="/APNVAN/WEBLOGIC/APNVAN_V3/data/CONNMONTHLYRPT.lst"/>
+		<set name="DS_JMSREDODIR" value="/TNVANCOM/TMP"/>
+            <set name="OS" value="AIX"/>
+			
+			<set name="WMQ_PROPERTIES" value="/APNVAN/def/mq.properties" />
+            <set name="WMQ_IP" value="10.89.8.14" />
+            <set name="WMQ_PORT" value="1416" />
+			<set name="WMQ_CHANNEL" value="svrconn" />
+            <set name="WMQ_QUEUE_MANAGER" value="QM_PMC" />
+			<!--  參數改連DB，SysObjMtd的MQ_SETTING
+            <set name="BGMQ_IP" value="10.89.8.162" />
+            <set name="BGMQ_PORT" value="1415" />
+			<set name="BGMQ_QUEUE_MANAGER" value="QM_NGSC_BG" />
+            <set name="NGSC_REDO_QUEUE_NAME" value="NGSC_REDO_Q" />
+           	-->
+            <set name="WMQ_QUEUE_NAME" value="ENTRY_Q" />
+            <set name="UNPACK_QUEUE_NAME" value="NGSC_UNPACK_Q" />        
+            <set name="PROC_QUEUE_NAME" value="NGSC_PROC_Q" />
+            <set name="EBMS_QUEUE_NAME" value="EBMS_Q" />
+           
+       		<set name="WMQ_QUEUE_NAME_DS_REDO" value="DS_REDO_Q" />
+            <set name="TYPEB_ADDR_CCS" value="TPETV8X" />
+            <set name="TYPEB_ADDR_ACCS" value="TPETW8X" />
+            <set name="TYPEB_ADDR_ACCSEX" value="TPEEM8X" />
+            <set name="TYPEB_ADDR_LGWN" value="TPELG8X" />
+ 
+            
+            <set name="GVRFT-X101_BAN" value="03722109.X101"/>
+            <set name="GVRFT-X101_NAME" value="國貿局"/>
+            <set name="GVRFT-X101_WS_URL" value="https://cosystem.trade.gov.tw/boftco/webservices/tradeStatusX1.asp"/>
+            <set name="GVRFT-X101_WS_ID" value="weblogic1"/>
+            <set name="GVRFT-X101_WS_PASSWORD" value="weblogic1"/>
+            <set name="GVRFT-X101_WS_ENABLED" value="true"/>
+            <set name="GVRFT-X201_BAN" value="03722109.X201"/>
+            <set name="GVRFT-X201_NAME" value="國貿局"/>
+            <set name="GVRFT-X201_WS_URL" value="https://edigate1.trade.gov.tw/web-service/web-service.asp"/>
+            <set name="GVRFT-X201_WS_ID" value="weblogic1"/>
+            <set name="GVRFT-X201_WS_PASSWORD" value="web/logic1"/>
+            <set name="GVRFT-X201_WS_ENABLED" value="true"/>
+			<set name="GVRCI_BAN" value="03748403"/>
+			<set name="GVRCI_NAME" value="標檢局"/>
+			<set name="GVRCI_WS_URL" value=""/>
+			<set name="GVRCI_WS_ID" value=""/>
+			<set name="GVRCI_WS_PASSWORD" value=""/>
+			<set name="GVRCI_WS_ENABLED" value="false"/>
+			<set name="GVRVP_BAN" value="83862735"/>
+			<set name="GVRVP_NAME" value="防檢局"/>
+			<set name="GVRVP_WS_URL" value="http://www.baphiq.gov.tw/ws/TradeStatus.asmx"/>
+			<set name="GVRVP_WS_ID" value="baphiq"/>
+			<set name="GVRVP_WS_PASSWORD" value="baphiqservice"/>
+			<set name="GVRVP_WS_ENABLED" value="true"/>
+			<set name="CUSTOMS_BAN" value="03732205"/>
+			<set name="CUSTOMS_NAME" value="海關"/>
+			<set name="CUSTOMS_WS_URL" value="https://tfq.customs.gov.tw/ws/CustomsStatus.jws"/>
+			<set name="CUSTOMS_WS_ID" value="tvuser"/>
+			<set name="CUSTOMS_WS_PASSWORD" value="tvtvuser"/>
+			<set name="CUSTOMS_WS_ENABLED" value="true"/>
+			<set name="NVAN_AP_ID" value="TNVAN"/>
+			<set name="IVCC_AP_ID" value="TIVCC"/>
+			<set name="ARC_TRSFILE_IP" value="pnarcrs.test.tradevan.com.tw"/>
+			<set name="ARC_TRSFILE_PORT" value="8803"/>
+			<set name="ARC2JMS_DIR" value="/APNVAN/WEBLOGIC/APNVAN_V3/data/arc2jms"/> 
+			<!--<set name="ARC2JMS_DIR" value="D:\\Java\\workspace\\APNVAN_V3\\data\\arc2jms"/>-->
+			<set name="NVAN" value="TNVAN"/>
+			<set name="IVCC" value="TIVCC"/>
+			<set name="DS_ARCUPLOADDIR" value="/TNVANCOM/SFTP/UKF/ARC"/>  
+			<set name="BG_ARCUPLOADDIR" value="/PNVANCOM/SFTP/UKF/ARC"/> 
+		 	<set name="UPS_USER" value="16632571:23219388"/>
+		 	<set name="FDX_USER" value="23416579"/>
+		 	<set name="DHL_USER" value="04690055"/>
+            <set name="TNT_USER" value="86378307"/>
+			<set name="WHC_USER" value="00842848"/>
+		 	
+		 <!-- Axway主機更換需更動IP -->
+		 	<set name="AGI_SESSION_SERVICE_URL" value="http://10.89.8.192:6080/cyclone/services/SessionService?wsdl"/>
+		 	<set name="AGI_RESUBMIT_SERVICE_URL" value="http://10.89.8.192:6080/cyclone/services/MessageResubmitService?wsdl"/>
+		 	<set name="AGI_WEB_SERVICE_USER" value="admin"/>
+		 	<set name="AGI_WEB_SERVICE_PWD" value="Secret1"/>
+		 	
+		 	<set name="JSCAPE_DOMAIN" value="NGSC_FTP" />
+		 	<set name="JSCAPE_CONF_PATH" value="/APNVAN/def/jscape/client.cfg" />
+		 	<set name="JSCAPE_LOGIN_PATH" value="/PNGSC/ftp/%domain%/" />
+		 	
+		 	<set name="CUSTOMS_WS_URL2" value="http://gqws.sw.nat.gov.tw/APGQWS/services/GQWS?wsdl" />
+		 	
+			<!-- uts webservice -->
+		 	<set name="UTS_WEBSERVICE_URL1" value="http://vngscuts.intranet.com.tw/APUTS/services/UTSTransform?wsdl" />
+			<set name="UTS_WEBSERVICE_URL2" value="http://10.89.8.19:8221/APUTS/services/UTSTransform?wsdl" />
+			<!-- uts new webservice -->
+			<set name="UTS_NEW_WEBSERVICE_URL1" value="http://vngscuts.intranet.com.tw/APUTS_1.1.0/services/UTSTransform?wsdl" />
+			<set name="UTS_NEW_WEBSERVICE_URL2" value="http://10.89.8.19:8221/APUTS_1.1.0/services/UTSTransform?wsdl" />
+			<!-- uts new webservice -->
+			<set name="UTS_RESTFUL_WEBSERVICE_URL1" value="http://10.89.8.19:8221/APUTS_API/UTSAPI/" />
+			<set name="UTS_RESTFUL_WEBSERVICE_URL2" value="http://vngscuts.intranet.com.tw/APUTS_API/UTSAPI/" />
+			<!-- uts get export file dir -->
+            <set name="UTS_DOWNLOAD_DIR" value="/PUTS" />
+            <set name="UTS_EXPORT_TEMPLATE_DIR" value="/PNVAN/data/UTS/EXPORT_TEMPLATE/" /> 
+			
+			<!-- uts transform account/password -->
+            <set name="UTS_TRANSFORM_ACCOUNT" value="pnvanmgr" />
+            <set name="UTS_TRANSFORM_PASSWORD" value="tvpnvanmgr" />
+			
+			<!--  文字客服URL -->
+            <set name="WEB_CHAT_URL" value="https://vwebchat.tradevan.com.tw/index.php/" />
+			
+			<!--  MQ切換寄信 ,mailserver設定 -->
+			<set name="MAIL_SERVER" value="csmail2.tradevan.com.tw" />
+			<set name="MQ_ACTIVE_USER_URL" value="https://vngschelp.tradevan.com.tw:6280/activateUser" />
+            <set name="TRUST_KEYSTORE" value="/APNVAN/JAVA/conf/pnvanAPI/springRSkeyStore" />
+            <set name="TRUST_KEYSTORE_PWD" value="111111" />
+            <set name="MQ_REST_PORT" value="9453" />
+            
+            
+			<!-- gen report-xls -->
+			<set name="XLS_APPEND_URL" value="https://127.0.0.1:9455/xlsAppendVal" />
+		 	<set name="PNVAN_API_SERVICE_USER" value="admin"/>
+		 	<set name="PNVAN_API_SERVICE_PWD" value="tvadmin"/>	
+			<set name="OUTPUTPATH" value="/APNVAN/WEBLOGIC/APNVAN_V3/data/downloads/"/>	
+			
+			<!-- UpdateMsgHold -->
+		 	<set name="UPDATE_MSG_URL" value="https://127.0.0.1:9455/UpdateMsgStatusRS/updateStatus" />		 	
+        </settings>
+        
+    </application>
+	
+	<!--20131204新增for BG -->
+	<application id="NGSC">
+        <property name="encoding" value="UTF-8"/>
+        <property name="struts2-config" value="conf/struts2.xml"/>
+        <property name="log-config" value="conf/logging.xml"/>
+        <property name="default-logger" value="apLogger"/>
+        <property name="xdao-config" value="conf/xdao.xml"/>
+        <property name="default-conn-id" value = "pngscBgConn"/>
+        <property name="context-config" value="conf/saab_context.xml"/>
+        <property name="login-result" value="/"/>
+        <property name="escape-pattern" value="/*.*"/>
+        <property name="permission-config" value="conf/authorization.xml"/>
+        <settings>
+            <set name="SITA_BACKUP_HUB" value="CCS_F_SITA_O_01" />
+        </settings>
+    </application>
+    
+</tradevan-framework>

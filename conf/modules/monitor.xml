@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="monitor" namespace="/modules/monitor" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="time-action-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">time-action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="time-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">time-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+                
+        <action name="QryWsmPartySchdlr" class="com.tradevan.helpdesk.action.wsm.QryWsmPartySchdlrAction">
+            <result name="listWsmPartySchdlr" >/modules/monitor/pages/QryWsmPartySchdlr.jsp</result>
+            <result name="listWsmPartySchdlrDetails" >/modules/monitor/pages/QryWsmPartySchdlrDtl.jsp</result>
+        </action>
+        
+        <action name="MainWsmPartySchdlr" class="com.tradevan.helpdesk.action.wsm.MainWsmPartySchdlrAction">
+            <result name="mainWsmPartySchdlr" >/modules/monitor/pages/MainWsmPartySchdlr.jsp</result>
+        </action>
+        
+        <action name="MainWsmNotifyUser" class="com.tradevan.helpdesk.action.wsm.MainWsmNotifyUserAction">
+            <result name="mainWsmNotifyUser" >/modules/monitor/pages/MainWsmNotifyUser.jsp</result>
+        </action>
+        
+        <action name="MainWsmNotifyGroup" class="com.tradevan.helpdesk.action.wsm.MainWsmNotifyGroupAction">
+            <result name="mainWsmNotifyGroup" >/modules/monitor/pages/MainWsmNotifyGroup.jsp</result>
+        </action>
+        
+        <action name="MainWsmPartyExcluded" class="com.tradevan.helpdesk.action.wsm.MainWsmPartyExcludedAction">
+            <result name="mainWsmPartyExcluded" >/modules/monitor/pages/MainWsmPartyExcluded.jsp</result>
+        </action>
+        
+        <action name="MainWsmTransportDef" class="com.tradevan.helpdesk.action.wsm.MainWsmTransportDefAction">
+            <result name="listWsmTransportDef" >/modules/monitor/pages/ListWsmTransportDef.jsp</result>
+            <result name="mainWsmTransportDef" >/modules/monitor/pages/MainWsmTransportDef.jsp</result>
+        </action>
+        
+        <action name="OvertimeCustomer" class="com.tradevan.helpdesk.action.monitor.MnrOvertimeAction">
+            <result name="showovertimecustomer" type="time-action-layout">/modules/monitor/pages/OvertimeCustomer.jsp</result>
+        </action>
+        
+        <action name="ConnectionStatus" class="com.tradevan.helpdesk.action.monitor.MnrConnStatAction">
+            <result name="showconnectionstatus"  type="time-action-layout">/modules/monitor/pages/ConnectionStatus.jsp</result>
+        </action>
+        
+        <action name="LastestConnection" class="com.tradevan.helpdesk.action.monitor.MnrLastestConnAction">
+            <result name="showlastestconnection"  type="time-layout">/modules/monitor/pages/LastestConnection.jsp</result>
+        </action>
+        
+        <action name="MailboxStatistices" class="com.tradevan.helpdesk.action.monitor.MnrMailboxStatAction">
+            <result name="showmailboxstatistices"  type="time-layout">/modules/monitor/pages/MailboxStatistices.jsp</result>
+        </action>
+        
+        <action name="SLACustomers" class="com.tradevan.helpdesk.action.monitor.MnrSLACustAction">
+            <result name="showslacustomers"  type="time-layout">/modules/monitor/pages/SLACustomers.jsp</result>
+        </action>
+        
+        <!-- 2013/08/09 新增新Monitor以配合新的資料庫 -->
+        <action name="QryNewWsmPartySchdlr" class="com.tradevan.helpdesk.action.wsm.QryNewWsmPartySchdlrAction">
+            <result name="listWsmPartySchdlr" >/modules/monitor/pages/QryNewWsmPartySchdlr.jsp</result>
+            <result name="listWsmPartySchdlrDetails" >/modules/monitor/pages/QryNewWsmPartySchdlrDtl.jsp</result>
+        </action>
+        
+        <action name="MainNewWsmPartySchdlr" class="com.tradevan.helpdesk.action.wsm.MainNewWsmPartySchdlrAction">
+            <result name="mainWsmPartySchdlr" >/modules/monitor/pages/MainNewWsmPartySchdlr.jsp</result>
+        </action>
+        
+        <action name="MainNewWsmNotifyUser" class="com.tradevan.helpdesk.action.wsm.MainNewWsmNotifyUserAction">
+            <result name="mainWsmNotifyUser" >/modules/monitor/pages/MainNewWsmNotifyUser.jsp</result>
+        </action>
+        
+        <action name="MainNewWsmNotifyGroup" class="com.tradevan.helpdesk.action.wsm.MainNewWsmNotifyGroupAction">
+            <result name="mainWsmNotifyGroup" >/modules/monitor/pages/MainNewWsmNotifyGroup.jsp</result>
+        </action>
+        
+        <action name="MainNewWsmPartyExcluded" class="com.tradevan.helpdesk.action.wsm.MainNewWsmPartyExcludedAction">
+            <result name="mainWsmPartyExcluded" >/modules/monitor/pages/MainNewWsmPartyExcluded.jsp</result>
+        </action>
+        
+        <action name="MainNewWsmTransportDef" class="com.tradevan.helpdesk.action.wsm.MainNewWsmTransportDefAction">
+            <result name="listWsmTransportDef" >/modules/monitor/pages/ListNewWsmTransportDef.jsp</result>
+            <result name="mainWsmTransportDef" >/modules/monitor/pages/MainNewWsmTransportDef.jsp</result>
+        </action>
+        
+         <!--    <action name="MainNewWsmProcessor" class="com.tradevan.helpdesk.action.wsm.MainNewWsmProcessorAction">
+            <result name="mainNewWsmProcessor" >/modules/monitor/pages/MainNewWsmSchdlr.jsp</result>
+           
+        </action>
+          <action name="MainMonStatist" class="com.tradevan.helpdesk.action.wsm.MainMonStatistAction">
+            <result name="mainmonstatist" >/modules/monitor/pages/MainMonStatist.jsp</result>
+           
+              <result name="mainmonstatistjson" >/modules/monitor/pages/MainMonStatist.jsp</result>
+           
+        </action>-->
+        
+     
+              <action name="MonitorHostInfo" class="com.tradevan.helpdesk.action.monitor.MonitorHostInfoAction">
+            <result name="monitorhost" >/modules/monitor/pages/MonitorHostInfo.jsp</result>
+
+           
+              
+           
+        </action>
+        
+           <action name="MonitorConnectLogInfo" class="com.tradevan.helpdesk.action.monitor.MonitorConnectLogInfoAction">
+            <result name="monitorconnectlog" >/modules/monitor/pages/MonitorConnectLogInfo.jsp</result>
+ 
+        </action>
+        
+                   <action name="MonitorProcessInfo" class="com.tradevan.helpdesk.action.monitor.MonitorProcessInfoAction">
+            <result name="monitorprocess" >/modules/monitor/pages/MonitorProcessInfo.jsp</result>
+ 
+        </action>
+		      <action name="MonitorProcessStatus" class="com.tradevan.helpdesk.action.monitor.MonitorProcessStatusAction">
+            <result name="monitorprocessstatus" >/modules/monitor/pages/MonitorProcessStatus.jsp</result>
+			  <result name="monitorprocessstatusupdate" type="json"></result>
+ 
+        </action>
+		
+		      <action name="Im5105" class="com.tradevan.helpdesk.action.monitor.Im5105Action">
+            <result name="im5105" >/modules/monitor/pages/Im5105.jsp</result>
+ 
+        </action>
+		
+		             
+           <action name="MonitorMonthBilling" class="com.tradevan.helpdesk.action.monitor.MonitorMonthBillingAction">
+            <result name="monitormonthbilling" >/modules/monitor/pages/MonitorMonthBilling.jsp</result>
+ 
+        </action>
+        
+        
+                  <action name="MonitorDayBillingTransportCash" class="com.tradevan.helpdesk.action.monitor.MonitorDayBillingTransportCashAction">
+            <result name="monitordaybillingtransportcash" >/modules/monitor/pages/MonitorDayBillingTransportCash.jsp</result>
+ 
+        </action>
+        
+        
+                
+                  <action name="MonitorDayBillingDiff" class="com.tradevan.helpdesk.action.monitor.MonitorDayBillingDiffAction">
+            <result name="monitordaybillingdiff" >/modules/monitor/pages/MonitorDayBillingDiff.jsp</result>
+ 
+        </action>
+		
+		     
+          <action name="MonitorPartyAlertTrainingData" class="com.tradevan.helpdesk.action.monitor.MonitorPartyAlertTrainingDataAction">
+            <result name="lisrmonitorpartyalerttrainingdata">/modules/monitor/pages/MonitorPartyAlertTrainingData.jsp</result>
+            <result name="ajaxQry" type="json">
+                <param name="root">partyAlertTrainingList</param>
+            </result>
+
+            <result name="ajaxUpd" type="json"></result>
+        </action>
+		
+		<action name="MonitorProcessEfficiency"
+			class="com.tradevan.helpdesk.action.monitor.MonitorProcessEfficiencyAction">
+			<result name="monitorprocessefficiency">/modules/monitor/pages/MonitorProcessEfficiency.jsp
+			</result>
+		</action>
+		
+		
+	     <!-- 20181102 MQ執行腳本 -->
+        <action name="DoScript"
+            class="com.tradevan.helpdesk.action.tool.DoScriptAction">
+            <result name="DoScript">/modules/tool/pages/DoScript.jsp</result>
+                <result name="dojson" type="json"></result>
+        </action>
+        
+        
+        
+    </package>
+    
+</struts>

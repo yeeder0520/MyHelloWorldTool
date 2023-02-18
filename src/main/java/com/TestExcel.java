@@ -23,10 +23,5 @@ public class TestExcel {
         EncryptionInfo info = new EncryptionInfo(fs);
         Decryptor d = Decryptor.getInstance(info);
         d.verifyPassword(password);
-
-        FileOutputStream fos = new FileOutputStream(dest);
-        d.writeData(fos);
-        fos.close();
-        fis.close();
     }
 }

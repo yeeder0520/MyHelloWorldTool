@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 儲存所有 SQL statements -->
+<taurus-xdao>
+    <sql-template>        
+        <!-- 查詢VanTransformerRef跟VanTransformerSup資料 時的 WHERE 條件 -->
+		<conditions id="VanTransformerRegTemplate.queryVanTransformerInfo.Conditions" logic="AND">
+			<condition key="TRANSFORMER_ID" ignoreEmpty="true">
+				a.TRANSFORMER_ID = ${TRANSFORMER_ID}
+			</condition>
+			<condition key="TRANSFORMER_NAME" ignoreEmpty="true" quote="false">
+				a.TRANSFORMER_NAME LIKE '%${TRANSFORMER_NAME}%'
+			</condition>
+			<condition key="MDC_MSG_TYPE" ignoreEmpty="true">
+				b.MDC_MSG_TYPE = ${MDC_MSG_TYPE}
+			</condition>
+			<condition>
+				a.TRANSFORMER_ID = b.TRANSFORMER_ID(+) 
+			</condition>
+		</conditions>
+		<!-- 查詢VanTransformerRef跟VanTransformerSup資料 -->
+        <template id="VanTransformerRegTemplate.queryVanTransformerInfo" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanTransformerReg">
+            <![CDATA[
+              SELECT a.* , b.MDC_MSG_TYPE
+              FROM VAN_TRANSFORMER_REG a, VAN_TRANSFORMER_SUP b
+              WHERE #{VanTransformerRegTemplate.queryVanTransformerInfo.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 時的 WHERE 條件 -->
+        <conditions id="QryConnectionLogTemplate.queryConnectionLogs.Conditions" logic="AND">
+			<condition key="PARTY_ID" ignoreEmpty="true">
+				a.PARTY_ID = ${PARTY_ID}
+			</condition>
+			<condition key="CONNECTION_ID" ignoreEmpty="true">
+				a.CONNECTION_ID = ${CONNECTION_ID}
+			</condition>
+			<condition key="CONNECT_TYPE" ignoreEmpty="true">
+				a.CONNECT_TYPE = ${CONNECT_TYPE}
+			</condition>
+			<condition key="MESSAGE_ID" ignoreEmpty="true">
+				a.MESSAGE_ID = ${MESSAGE_ID}
+			</condition>
+			<condition key="STATUS" ignoreEmpty="true">
+				a.STATUS = ${STATUS}
+			</condition>
+			<condition key="DIALOGUE_ID" ignoreEmpty="true">
+				a.DIALOGUE_ID = ${DIALOGUE_ID}
+			</condition>
+			<condition key="IN_OUT_TYPE" ignoreEmpty="true">
+				a.IN_OUT_TYPE = ${IN_OUT_TYPE}
+			</condition>
+			<condition key="CONNECT_TYPE" ignoreEmpty="true">
+				a.CONNECT_TYPE = ${CONNECT_TYPE}
+			</condition>
+			<condition key="HOST_ADDRESS" ignoreEmpty="true">
+				a.HOST_ADDRESS = ${HOST_ADDRESS}
+			</condition>
+			<condition key="REMOTE_ADDRESS" ignoreEmpty="true">
+				a.REMOTE_ADDRESS = ${REMOTE_ADDRESS}
+			</condition>
+			<condition key="CHAR_COUNT" ignoreEmpty="true">
+				a.CHAR_COUNT &gt;= ${CHAR_COUNT}
+			</condition>
+			<condition key="DOC_COUNT" ignoreEmpty="true">
+				a.DOC_COUNT &gt;= ${DOC_COUNT}
+			</condition>
+			<condition key="START_DTS">
+				a.CONNECT_DTS &gt;= ${START_DTS}
+			</condition>
+			<condition key="END_DTS">
+				a.CONNECT_DTS &lt;= ${END_DTS}
+			</condition>
+			<condition>
+				a.CONNECTION_ID = b.CONNECTION_ID(+)
+			</condition>
+			<condition key="QRY_COUNT">
+				ROWNUM &lt;= ${QRY_COUNT}
+			</condition>
+		</conditions>
+        		<!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 -->
+        <template id="QryConnectionLogTemplate.queryConnectionLogs" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanConnectionLog">
+            <![CDATA[
+              SELECT a.* ,  b.EVENT_DTS
+              FROM VAN_CONNECTION_LOG a , VAN_SYS_EVENT_LOG b
+              WHERE #{QryConnectionLogTemplate.queryConnectionLogs.Conditions}
+              ORDER BY a.CONNECT_DTS
+            ]]>
+            </statement>
+        </template>
+		
+		<template id="QryVanDsmsMailboxTemplate.queryRedoInfo" type="select">
+			<statement resultClass="com.tradevan.commons.collection.DataObject">
+            <![CDATA[
+              SELECT c.ID, a.PARTY_ID , a.SENDER_ID , a.RECEIVER_ID,a.DOC_TYPE_ID , a.DOC_FORMAT, a.MESSAGE_ID , a.MESSAGE_SUB_ID,
+              				a.RTG_SEQ_NO, a.SERVICE_ID , a.PROCESS_ID ,  a.MESSAGE_TYPE , a.MESSAGE_SUB_TYPE , a.FLOW_TYPE , a.VAS_SEQ_NO , a.CLI_FILE_NAME , 
+              				c.PARTNER_ID, b.IN_DOCUMENT, d.ACTION_ID , d.CONN_SRC_ID , d.CONN_DES_ID , d.ACK_MARK , c.BILLING_STATUS , 
+              				e.EXT_ARG_ID7, e.EXT_ARG_VAL7, e.EXT_ARG_ID8, e.EXT_ARG_VAL8,e.EXT_ARG_ID9, e.EXT_ARG_VAL9,
+              				e.EXT_ARG_ID10, e.EXT_ARG_VAL10,e.EXT_ARG_ID11, e.EXT_ARG_VAL11, e.EXT_ARG_ID12, e.EXT_ARG_VAL12,
+              				e.EXT_ARG_ID13, e.EXT_ARG_VAL13,	e.EXT_ARG_ID14, e.EXT_ARG_VAL14,e.EXT_ARG_ID15, e.EXT_ARG_VAL15
+              FROM VAN_DSMS_MAILBOX a, VAN_DSMS_MAILBOX_LOB b, VAN_PARTY_ALTN c , VAN_SERVICE_ROUTING d , VAN_MSG_LOG_EXT e
+              WHERE a.MESSAGE_ID = ${MESSAGE_ID} AND a.MESSAGE_SUB_ID =${MESSAGE_SUB_ID} AND
+              				a.MESSAGE_ID = b.MESSAGE_ID AND a.MESSAGE_SUB_ID = b.MESSAGE_SUB_ID AND 
+              				a.RTG_SEQ_NO = d.RTG_SEQ_NO AND a.MESSAGE_ID = e.MESSAGE_ID(+) AND a.MESSAGE_SUB_ID = e.MESSAGE_SUB_ID(+) AND
+              				(a.SENDER_ID = c.ID or a.RECEIVER_ID = c.ID)  
+              				
+            ]]>	
+			</statement>
+		</template>
+     <!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 時的 WHERE 條件(當有MessageId 及ConnectionId的情況) -->
+        <conditions id="QryConnectionLogTemplate.queryConnectionLogsWithMAndC.Conditions" logic="OR">
+			<condition key="CONNECTION_ID" ignoreEmpty="false">
+				a.CONNECTION_ID = ${CONNECTION_ID}
+			</condition>
+			<condition key="MESSAGE_ID" ignoreEmpty="false">
+				a.MESSAGE_ID = ${MESSAGE_ID}
+			</condition>
+		</conditions>
+        		<!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 -->
+        <template id="QryConnectionLogTemplate.queryConnectionLogsWithMAndC" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanConnectionLog">
+            <![CDATA[
+              SELECT a.* ,  b.EVENT_DTS
+              FROM VAN_CONNECTION_LOG a , VAN_SYS_EVENT_LOG b
+              WHERE (#{QryConnectionLogTemplate.queryConnectionLogsWithMAndC.Conditions}) AND a.CONNECTION_ID = b.CONNECTION_ID(+) AND ROWNUM <= ${QRY_COUNT}
+              ORDER BY a.CONNECT_DTS
+            ]]>
+            </statement>
+        </template>
+  <!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 時的 WHERE 條件(當有MessageId的情況) -->
+        <conditions id="QryConnectionLogTemplate.queryConnectionLogsWithMOrC.Conditions" logic="AND">
+			<condition key="MESSAGE_ID" ignoreEmpty="true">
+				a.MESSAGE_ID = ${MESSAGE_ID}
+			</condition>
+			<condition key="CONNECTION_ID" ignoreEmpty="true">
+				a.CONNECTION_ID = ${CONNECTION_ID}
+			</condition>
+		</conditions>
+        		<!-- 查詢Connection Log與SysEventLog對應ConnectionId的資料 -->
+        <template id="QryConnectionLogTemplate.queryConnectionLogsWithMOrC" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanConnectionLog">
+            <![CDATA[
+              SELECT a.* ,  b.EVENT_DTS
+              FROM VAN_CONNECTION_LOG a , VAN_SYS_EVENT_LOG b
+              WHERE #{QryConnectionLogTemplate.queryConnectionLogsWithMOrC.Conditions} AND a.CONNECTION_ID = b.CONNECTION_ID(+) AND ROWNUM <= ${QRY_COUNT}
+              ORDER BY a.CONNECT_DTS
+            ]]>
+            </statement>
+        </template>		
+		<template id="QryVanDsmsMailboxTemplate.queryRedoInfo" type="select">
+			<statement resultClass="com.tradevan.commons.collection.DataObject">
+            <![CDATA[
+              SELECT c.ID, a.PARTY_ID , a.SENDER_ID , a.RECEIVER_ID,a.DOC_TYPE_ID , a.DOC_FORMAT, a.MESSAGE_ID , a.MESSAGE_SUB_ID,
+              				a.RTG_SEQ_NO, a.SERVICE_ID , a.PROCESS_ID ,  a.MESSAGE_TYPE , a.MESSAGE_SUB_TYPE , a.FLOW_TYPE , a.VAS_SEQ_NO , a.CLI_FILE_NAME , 
+              				c.PARTNER_ID, b.IN_DOCUMENT, d.ACTION_ID , d.CONN_SRC_ID , d.CONN_DES_ID , d.ACK_MARK , c.BILLING_STATUS , 
+              				e.EXT_ARG_ID7, e.EXT_ARG_VAL7, e.EXT_ARG_ID8, e.EXT_ARG_VAL8,e.EXT_ARG_ID9, e.EXT_ARG_VAL9,
+              				e.EXT_ARG_ID10, e.EXT_ARG_VAL10,e.EXT_ARG_ID11, e.EXT_ARG_VAL11, e.EXT_ARG_ID12, e.EXT_ARG_VAL12,
+              				e.EXT_ARG_ID13, e.EXT_ARG_VAL13,	e.EXT_ARG_ID14, e.EXT_ARG_VAL14,e.EXT_ARG_ID15, e.EXT_ARG_VAL15
+              FROM VAN_DSMS_MAILBOX a, VAN_DSMS_MAILBOX_LOB b, VAN_PARTY_ALTN c , VAN_SERVICE_ROUTING d , VAN_MSG_LOG_EXT e
+              WHERE a.MESSAGE_ID = ${MESSAGE_ID} AND a.MESSAGE_SUB_ID =${MESSAGE_SUB_ID} AND
+              				a.MESSAGE_ID = b.MESSAGE_ID AND a.MESSAGE_SUB_ID = b.MESSAGE_SUB_ID AND 
+              				a.RTG_SEQ_NO = d.RTG_SEQ_NO AND a.MESSAGE_ID = e.MESSAGE_ID(+) AND a.MESSAGE_SUB_ID = e.MESSAGE_SUB_ID(+) AND
+              				(a.SENDER_ID = c.ID or a.RECEIVER_ID = c.ID)  
+              				
+            ]]>	
+			</statement>
+		</template>       
+
+  <!-- 查詢MSHNonReply 時的 WHERE 條件 -->
+        <conditions id="QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions" logic="AND">
+			<condition key="SENDER_ID" ignoreEmpty="true">
+				a.SENDER_ID = ${SENDER_ID}
+			</condition>
+			<condition key="RECEIVER_ID" ignoreEmpty="true">
+				a.RECEIVER_ID = ${RECEIVER_ID}
+			</condition>
+			<condition key="ACTION" ignoreEmpty="true">
+				a.DOC_TYPE_ID = ${ACTION}
+			</condition>
+			<condition key="START_DTS">
+				a.acpt_dts &gt;= ${START_DTS}
+			</condition>
+			<condition key="END_DTS">
+				a.acpt_dts &lt;= ${END_DTS}
+			</condition>
+		</conditions>
+		<template id="QryMSHNonReplyTemplate.qryNonReplyMsgLogWithoutAction" type="select">
+			<statement resultClass="com.tradevan.helpdesk.bean.XENIMsgLog">
+            <![CDATA[
+            SELECT a.MESSAGE_ID , a.MESSAGE_SUB_ID, a.SENDER_ID , a.RECEIVER_ID, a.ACTION,
+                               a.EXT_ARG_VAL1, a.ACPT_DTS
+ 						FROM (
+						SELECT a.MESSAGE_ID , a.MESSAGE_SUB_ID, a.SENDER_ID , a.RECEIVER_ID, a.DOC_TYPE_ID ACTION,
+						       b.EXT_ARG_VAL1, a.ACPT_DTS
+						  FROM van_dsms_mailbox a, van_msg_log_ext b, msid_info c, msh_message_log d
+						WHERE (#{QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions})
+						   AND a.doc_type_id IN
+						          ('X101',
+						           'X201_01',
+						           'X201_2',
+						           'X201_03',
+						           'X201_04',
+						           'X201_05',
+						           'X201_06',
+						           'X201_07',
+						           'X301',
+						           'X303',
+						           'X304',
+						           'X401'
+						          )
+						   AND a.message_id = b.message_id
+						   AND a.message_sub_id = b.message_sub_id
+						   AND a.message_id = SUBSTR (c.tid, 0, 9)
+						   AND a.message_sub_id = SUBSTR (c.tid, 10)
+						   AND c.message_id = d.message_id
+						   AND d.status = 'C'
+						   AND b.ext_arg_val1 NOT IN (
+						          SELECT ext_arg_val1
+						            FROM van_msg_log_ext e, van_dsms_mailbox f
+						           WHERE e.ext_arg_val1 = b.ext_arg_val1
+						             AND e.message_id = f.message_id
+						             AND e.message_sub_id = f.message_sub_id
+						             AND f.party_id = 'tfs0001')
+						UNION
+						SELECT  a.MESSAGE_ID , a.MESSAGE_SUB_ID , a.SENDER_ID, a.RECEIVER_ID,
+						       a.DOC_TYPE_ID ACTION, b.EXT_ARG_VAL1, a.ACPT_DTS
+						  FROM van_dsms_mailbox a, van_msg_log_ext b, msid_info c, msh_message_log d
+						WHERE (#{QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions})
+						   AND a.receiver_id != '83862735'
+						   AND a.doc_type_id IN ('X801', '5701')
+						   AND a.message_id = b.message_id
+						   AND a.message_id = SUBSTR (c.tid, 0, 9)
+						   AND a.message_sub_id = SUBSTR (c.tid, 10)
+						   AND c.message_id = d.message_id
+						   AND d.status = 'C'
+						   AND (c.DUPENTRY is null or c.DUPENTRY != 'Y')
+						   AND b.ext_arg_val1 NOT IN (
+						          SELECT ext_arg_val1
+						            FROM van_msg_log_ext e, van_dsms_mailbox f
+						           WHERE e.ext_arg_val1 = b.ext_arg_val1
+						             AND e.message_id = f.message_id
+						             AND e.message_sub_id = f.message_sub_id
+						             AND f.sender_id != 'TVCBFSTWTPE00001-0004'
+						             AND f.party_id = 'tfs0001')
+						  UNION
+						      SELECT  a.MESSAGE_ID , a.MESSAGE_SUB_ID, a.SENDER_ID , a.RECEIVER_ID, a.DOC_TYPE_ID ACTION,
+                               b.EXT_ARG_VAL1, a.ACPT_DTS
+                          FROM van_dsms_mailbox a, van_msg_log_ext b, msid_info c, msh_message_log d
+                         WHERE (#{QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions})
+						   AND  a.acpt_dts >= '20110318' AND a.acpt_dts <= '20110406999999999'
+                          AND a.receiver_id = 'TVCBFSTWTPE00001-0012'
+                           AND a.doc_type_id IN ('CM02','CM03','CM04')
+                           AND a.message_id = b.message_id
+                           AND a.message_id = SUBSTR (c.tid, 0, 9)
+                           AND a.message_sub_id = SUBSTR (c.tid, 10)
+                           AND c.message_id = d.message_id
+                           AND d.status = 'C'
+                           AND (c.DUPENTRY is null or c.DUPENTRY != 'Y')
+                           AND b.ext_arg_val1 NOT IN (
+                                  SELECT ext_arg_val1
+                                    FROM van_msg_log_ext e, van_dsms_mailbox f
+                                   WHERE e.ext_arg_val1 = b.ext_arg_val1
+                                     AND e.message_id = f.message_id
+                                     AND e.message_sub_id = f.message_sub_id
+                                     AND f.sender_id != 'TVCBFSTWTPE00001-0002'
+                                     AND f.party_id = 'tfs0001')
+						 ) a 
+						 ORDER BY a.ACPT_DTS
+            ]]>	
+			</statement>
+		</template>      
+		<template id="QryMSHNonReplyTemplate.qryNonReplyMsgLogWithAction" type="select">
+			<statement resultClass="com.tradevan.helpdesk.bean.XENIMsgLog">
+            <![CDATA[
+						SELECT  a.MESSAGE_ID , a.MESSAGE_SUB_ID , a.SENDER_ID , a.RECEIVER_ID, a.DOC_TYPE_ID ACTION,
+						       b.EXT_ARG_VAL1, a.ACPT_DTS
+						  FROM van_dsms_mailbox a, van_msg_log_ext b, msid_info c, msh_message_log d
+						WHERE (#{QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions})
+						   AND a.message_id = b.message_id
+						   AND a.message_sub_id = b.message_sub_id
+						   AND a.message_id = SUBSTR (c.tid, 0, 9)
+						   AND a.message_sub_id = SUBSTR (c.tid, 10)
+						   AND c.message_id = d.message_id
+						   AND d.status = 'C'
+						   AND b.ext_arg_val1 NOT IN (
+						          SELECT ext_arg_val1
+						            FROM van_msg_log_ext e, van_dsms_mailbox f
+						           WHERE e.ext_arg_val1 = b.ext_arg_val1
+						             AND e.message_id = f.message_id
+						             AND e.message_sub_id = f.message_sub_id
+						             AND f.party_id = 'tfs0001')
+						 ORDER BY a.ACPT_DTS
+            ]]>	
+			</statement>
+		</template>
+		<template id="QryMSHNonReplyTemplate.qryNonReplyMsgLogWithActionX801" type="select">
+			<statement resultClass="com.tradevan.helpdesk.bean.XENIMsgLog">
+            <![CDATA[
+						SELECT  a.MESSAGE_ID , a.MESSAGE_SUB_ID , a.SENDER_ID , a.RECEIVER_ID, a.DOC_TYPE_ID ACTION,
+						       b.EXT_ARG_VAL1, a.ACPT_DTS
+						  FROM van_dsms_mailbox a, van_msg_log_ext b, msid_info c, msh_message_log d
+						WHERE (#{QryMSHNonReplyTemplate.qryNonReplyMsgLog.Conditions})
+						   AND a.message_id = b.message_id
+						   AND a.message_sub_id = b.message_sub_id
+						   AND a.message_id = SUBSTR (c.tid, 0, 9)
+						   AND a.message_sub_id = SUBSTR (c.tid, 10)
+						   AND c.message_id = d.message_id
+						   AND d.status = 'C'
+						   AND (c.DUPENTRY is null or c.DUPENTRY != 'Y')
+						   AND b.ext_arg_val1 NOT IN (
+						          SELECT ext_arg_val1
+						            FROM van_msg_log_ext e, van_dsms_mailbox f
+						           WHERE e.ext_arg_val1 = b.ext_arg_val1
+						             AND e.message_id = f.message_id
+						             AND e.message_sub_id = f.message_sub_id
+						             AND f.sender_id != 'TVCBFSTWTPE00001-0004'
+						             AND f.party_id = 'tfs0001')
+						 ORDER BY a.ACPT_DTS
+            ]]>	
+			</statement>
+		</template>   
+		
+		<template id="MainVanServiceRoutingTemplate.getMaxRegSeqNo" type="select">
+			<statement resultClass="com.tradevan.helpdesk.bean.VanServiceRouting">
+            <![CDATA[
+						SELECT  MAX(RTG_SEQ_NO)  AS RTG_SEQ_NO
+						FROM VAN_SERVICE_ROUTING
+            ]]>	
+			</statement>
+		</template>
+
+		   <!-- 查詢WsmPartySchedulerExt資料 時的 WHERE 條件 -->
+        <conditions id="WsmPartySchedulerExt.querySchedulers.Conditions" logic="AND">
+            <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID=${SCHEDULER_ID}
+            </condition>
+            <condition key="ENABLED" ignoreEmpty="true">
+                a.ENABLED=${ENABLED}
+            </condition>
+            <condition key="ERRLOG_FLAG" ignoreEmpty="true">
+                a.ERRLOG_FLAG=${ERRLOG_FLAG}
+            </condition>
+            <condition key="MSGLOG_FLAG" ignoreEmpty="true">
+                a.MSGLOG_FLAG=${MSGLOG_FLAG}
+            </condition>
+            <condition key="ENABLED_WORKDAY" ignoreEmpty="true">
+                a.ENABLED_WORKDAY=${ENABLED_WORKDAY}
+            </condition>
+            <condition key="ENABLED_WORKHOUR" ignoreEmpty="true">
+                a.ENABLED_WORKHOUR=${ENABLED_WORKHOUR}
+            </condition>
+            <condition key="ENABLED_SYS_EXC" ignoreEmpty="true">
+                a.ENABLED_SYS_EXC=${ENABLED_SYS_EXC}
+            </condition>
+            <condition key="ENABLED_CTM_EXC" ignoreEmpty="true">
+                a.ENABLED_CTM_EXC=${ENABLED_CTM_EXC}
+            </condition>
+            <condition key="QRY_V1" ignoreEmpty="true">
+                a.QRY_V1=${QRY_V1}
+            </condition>
+            <condition key="QRY_V2" ignoreEmpty="true">
+                a.QRY_V2=${QRY_V2}
+            </condition>
+            <condition key="QRY_V3" ignoreEmpty="true">
+                a.QRY_V3=${QRY_V3}
+            </condition>
+            <condition key="QRY_V4" ignoreEmpty="true">
+                a.QRY_V4=${QRY_V4}
+            </condition>
+            <condition key="QRY_V5" ignoreEmpty="true">
+                a.QRY_V5=${QRY_V5}
+            </condition>
+            <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = b.SCHEDULER_ID
+            </condition>
+            <condition key="DEFAULT_FLAG">
+                a.DEFAULT_FLAG != 'Y'
+            </condition>
+            <condition key="EXT_FLAG">
+                b.EXT_FLAG = 'Y'
+            </condition>
+        </conditions>
+        <!-- 查詢WsmPartySchedulerExt資料 -->
+        <template id="WsmPartySchedulerExt.querySchedulers" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartySchedulerExt">
+            <![CDATA[
+              SELECT a.* 
+              FROM WSM_PARTY_SCHEDULER_EXT a , WSM_SCHEDULER b
+              WHERE #{WsmPartySchedulerExt.querySchedulers.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢WsmPartySchedulerExt資料 時的 WHERE 條件 -->
+        <conditions id="WsmPartySchedulerExt.detailSchedulers.Conditions" logic="AND">
+           <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID=${SCHEDULER_ID}
+           </condition>
+           <condition key="REF_ID" ignoreEmpty="true">
+                a.REF_ID=${REF_ID}
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID=b.SCHEDULER_ID
+           </condition>
+        </conditions>
+         <!-- 查詢WsmPartySchedulerExt資料 -->
+        <template id="WsmPartySchedulerExt.detailSchedulers" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartySchedulerExt">
+            <![CDATA[
+              SELECT a.* , b.SCHEDULER_NAME,
+              b.QRY_N1,b.QRY_N2,b.QRY_N3,b.QRY_N4,b.QRY_N5
+              FROM WSM_PARTY_SCHEDULER_EXT a , WSM_SCHEDULER b
+              WHERE #{WsmPartySchedulerExt.detailSchedulers.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢WsmPartySchedulerExt資料 時的 WHERE 條件 -->
+        <conditions id="WsmPartySchedulerExt.qrySchedulers.Conditions" logic="AND">
+           <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID = ${SCHEDULER_ID}
+           </condition>
+           <condition key="REF_ID" ignoreEmpty="true">
+                a.REF_ID = ${REF_ID}
+           </condition>
+           <condition key="QRY_V1" ignoreEmpty="true">
+                a.QRY_V1 = ${QRY_V1}
+           </condition>
+           <condition key="DEFAULT_FLAG">
+                a.DEFAULT_FLAG!='Y'
+           </condition>
+           <condition key="EXT_FLAG">
+                b.EXT_FLAG='Y'
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID=b.SCHEDULER_ID
+           </condition>
+        </conditions>
+         <!-- 查詢WsmPartySchedulerExt資料 -->
+        <template id="WsmPartySchedulerExt.qrySchedulers" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartySchedulerExt">
+            <![CDATA[
+              SELECT a.REF_ID,b.*
+              FROM WSM_PARTY_SCHEDULER_EXT a , WSM_SCHEDULER b
+              WHERE #{WsmPartySchedulerExt.qrySchedulers.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢VanPartyProf資料 時的 WHERE 條件 -->
+        <conditions id="VanPartyProf.qryProfSchedulers.Conditions" logic="AND">
+           <condition key="PARTY_ID">
+                a.PARTY_ID = b.LOGONID
+           </condition>
+           <condition key="PARTY_ID" ignoreEmpty="true">
+                a.PARTY_ID = c.LOGONID
+           </condition>
+           <condition key="PARTY_ID" ignoreEmpty="true">
+                a.PARTY_ID = d.CUSTOMERID
+           </condition>
+        </conditions>
+         <!-- 查詢VanPartyProf資料 -->
+        <template id="VanPartyProf.qrySchedulers" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanPartyProf">
+		   <![CDATA[
+              SELECT a.*
+              FROM VAN_PARTY_PROF a , CUSTMAXCONN b, CUSTMAXMSGS c, CUSTRAWMSGNUM d
+              WHERE #{VanPartyProf.qryProfSchedulers.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢WsmPartyTransport資料時的where條件 -->
+        <conditions id="WsmPartyTransport.queryTransSchedulers.Conditions" logic="AND">
+           <condition key="DEFAULT_FLAG" ignoreEmpty="true">
+                b.DEFAULT_FLAG = ${DEFAULT_FLAG}
+           </condition>
+           <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID = ${SCHEDULER_ID}
+           </condition>
+           <condition key="CONNECTION_ID" ignoreEmpty="true">
+                a.CONNECTION_ID = ${CONNECTION_ID}
+           </condition>
+           <condition key="REF_ID" ignoreEmpty="true">
+                a.REF_ID = ${REF_ID}
+           </condition>
+           <condition key="PROTOCOL_ID" ignoreEmpty="true">
+                a.PROTOCOL_ID = ${PROTOCOL_ID}
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = b.SCHEDULER_ID
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = c.SCHEDULER_ID
+           </condition>
+           <condition key="REF_ID">
+                a.REF_ID = b.REF_ID
+           </condition>
+           <condition key="EXT_FLAG">
+                c.EXT_FLAG = 'Y'
+           </condition>
+        </conditions>
+        <!-- 查詢WsmPartyTransport資料 -->
+        <template id="WsmPartyTransport.queryTransSchedulers" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartyTransport">
+            <![CDATA[
+              SELECT a.*
+              FROM WSM_PARTY_TRANSPORT a , WSM_PARTY_SCHEDULER_EXT b, WSM_SCHEDULER c
+              WHERE #{WsmPartyTransport.queryTransSchedulers.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢WsmPartyTransport資料時的where條件 -->
+        <conditions id="WsmPartyTransport.qryWsmTransportDefbyPKey.Conditions" logic="AND">
+           <condition key="DEFAULT_FLAG" ignoreEmpty="true">
+                b.DEFAULT_FLAG = ${DEFAULT_FLAG}
+           </condition>
+           <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID = ${SCHEDULER_ID}
+           </condition>
+           <condition key="CONNECTION_ID" ignoreEmpty="true">
+                a.CONNECTION_ID = ${CONNECTION_ID}
+           </condition>
+           <condition key="REF_ID" ignoreEmpty="true">
+                a.REF_ID = ${REF_ID}
+           </condition>
+           <condition key="PROTOCOL_ID" ignoreEmpty="true">
+                a.PROTOCOL_ID = ${PROTOCOL_ID}
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = b.SCHEDULER_ID
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = c.SCHEDULER_ID
+           </condition>
+           <condition key="REF_ID">
+                a.REF_ID = b.REF_ID
+           </condition>
+           <condition key="EXT_FLAG">
+                c.EXT_FLAG = 'Y'
+           </condition>
+        </conditions>
+        <!-- 查詢WsmPartyTransport資料 -->
+        <template id="WsmPartyTransport.qryWsmTransportDefbyPKey" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartyTransport">
+            <![CDATA[
+              SELECT DISTINCT a.PROTOCOL_ID
+              FROM WSM_PARTY_TRANSPORT a , WSM_PARTY_SCHEDULER_EXT b, WSM_SCHEDULER c
+              WHERE #{WsmPartyTransport.qryWsmTransportDefbyPKey.Conditions}
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 查詢WsmPartyTransport資料時的where條件 -->
+        <conditions id="WsmPartyTransport.detailWsmTransport.Conditions" logic="AND">
+           <condition key="SCHEDULER_ID" ignoreEmpty="true">
+                a.SCHEDULER_ID = ${SCHEDULER_ID}
+           </condition>
+           <condition key="REF_ID" ignoreEmpty="true">
+                a.REF_ID = ${REF_ID}
+           </condition>
+           <condition key="CONNECTION_ID" ignoreEmpty="true">
+                a.CONNECTION_ID = ${CONNECTION_ID}
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = b.SCHEDULER_ID
+           </condition>
+           <condition key="SCHEDULER_ID">
+                a.SCHEDULER_ID = c.SCHEDULER_ID
+           </condition>
+        </conditions>
+         <!-- 查詢WsmPartyTransport資料 -->
+        <template id="WsmPartyTransport.detailWsmTransport" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartyTransport">
+            <![CDATA[
+              SELECT a.* , c.SCHEDULER_NAME 
+              FROM WSM_PARTY_TRANSPORT a , WSM_PARTY_SCHEDULER_EXT b, WSM_SCHEDULER c
+              WHERE #{WsmPartyTransport.detailWsmTransport.Conditions}
+            ]]>
+            </statement>
+        </template>       
+          <!-- 查詢VanDsmsMailbox資料 -->
+        <template id="QryVanMsgLogDetailTemplate.queryVanMsgLogDetailWithConId" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT a.*
+                    FROM van_dsms_mailbox a,
+                      (SELECT DISTINCT message_id, message_sub_id
+                   FROM van_msg_log_detail  WHERE CONNECTION_ID = ${CONNECTION_ID}) b
+                 WHERE a.message_id = b.message_id AND a.message_sub_id = b.message_sub_id
+
+            ]]>
+            </statement>
+        </template>    
+          <template id="QryTestReportTemplate.queryVanMailboxWithCompaId" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT m.cli_file_name, m.party_id, m.sender_id, m.acpted_party_id,m.dlvred_party_id,
+              m.receiver_id, m.doc_type_id, m.acpt_dts,m.dlvr_dts
+              FROM van_party_prof a, van_dsms_mailbox m, van_party_altn n
+              WHERE a.company_id = ${COMPANY_ID}
+                AND n.party_id = a.party_id
+                AND (   (n.ID = m.sender_id AND m.parent_message_id IS NOT NULL)
+                OR (n.ID = m.receiver_id)
+                )
+                 AND m.service_id = ${SERVICE_ID}
+                AND m.acpt_dts >= ${START_DTS}
+                AND m.acpt_dts <= ${END_DTS}
+
+            ]]>
+            </statement>
+        </template> 
+              <template id="QryTestReportTemplate.queryVanMailboxWithCompaIdAndReciv" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT m.cli_file_name, m.party_id, m.sender_id, m.acpted_party_id,m.dlvred_party_id,
+              m.receiver_id, m.doc_type_id, m.acpt_dts,m.dlvr_dts
+              FROM van_party_prof a, van_dsms_mailbox m, van_party_altn n
+              WHERE a.company_id = ${COMPANY_ID}
+                AND n.party_id = a.party_id
+                AND (   (n.ID = m.sender_id AND m.parent_message_id IS NOT NULL and m.receiver_id=${CMTID})
+                OR (n.ID = m.receiver_id and m.sender_id=${CMTID})
+                )
+                 AND m.service_id = ${SERVICE_ID}
+                AND m.acpt_dts >= ${START_DTS}
+                AND m.acpt_dts <= ${END_DTS}
+
+            ]]>
+            </statement>
+        </template> 
+         <template id="QryTestReportTemplate.queryVanMailboxWithPartyIdRec" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT m.cli_file_name, m.party_id, m.sender_id, m.acpted_party_id,m.dlvred_party_id,
+              m.receiver_id, m.doc_type_id, m.acpt_dts,m.dlvr_dts
+              FROM  van_dsms_mailbox m
+              WHERE  ((m.party_id = ${PARTY_ID} AND m.parent_message_id IS NOT NULL  and m.receiver_id=${CMTID})
+                OR (m.dlvred_party_id=${PARTY_ID} and m.sender_id=${CMTID})
+                )
+                 AND m.service_id = ${SERVICE_ID}
+                AND m.acpt_dts >= ${START_DTS}
+                AND m.acpt_dts <= ${END_DTS}
+
+            ]]>
+            </statement>
+        </template>       
+         <template id="QryTestReportTemplate.queryVanMailboxWithPartyId" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT m.cli_file_name, m.party_id, m.sender_id, m.acpted_party_id,m.dlvred_party_id,
+              m.receiver_id, m.doc_type_id, m.acpt_dts,m.dlvr_dts
+              FROM  van_dsms_mailbox m
+              WHERE  ((m.party_id = ${PARTY_ID} AND m.parent_message_id IS NOT NULL)
+                OR (m.dlvred_party_id=${PARTY_ID})
+                )
+                 AND m.service_id = ${SERVICE_ID}
+                AND m.acpt_dts >= ${START_DTS}
+                AND m.acpt_dts <= ${END_DTS}
+
+            ]]>
+            </statement>
+        </template>       
+        
+          
+          <template id="QryTestReportTemplate.queryVanMailboxWithAll" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanDsmsMailbox">
+            <![CDATA[
+              SELECT DISTINCT party_id FROM  van_dsms_mailbox m where  m.service_id = ${SERVICE_ID} 
+              AND m.acpt_dts >= ${START_DTS}
+                AND m.acpt_dts <= ${END_DTS}
+
+            ]]>
+            </statement>
+        </template>    
+          <template id="QryTestReportTemplate.queryPartyProf" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanPartyProf">
+            <![CDATA[
+              select * from VAN_PARTY_PROF  where PARTY_ID =${PARTY_ID}
+
+            ]]>
+            </statement>
+        </template>    
+                  <template id="QryTestReportTemplate.queryPartyProfCom" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanPartyProf">
+            <![CDATA[
+              select * from VAN_PARTY_PROF  where COMPANY_ID =${COMPANY_ID}
+
+            ]]>
+            </statement>
+        </template> 
+        <!-- 查詢WsmScheduler資料時的where條件 -->
+         <!-- <conditions id="WsmScheduler.qrySchedulerName.Conditions" logic="AND">
+           <condition key="EXT_FLAG" ignoreEmpty="true">
+                EXT_FLAG = 'Y'
+           </condition>
+        </conditions>-->
+         <!-- 查詢WsmScheduler資料 -->
+        <!-- <template id="WsmScheduler.qrySchedulerName" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmPartyTransport">
+            <![CDATA[
+              SELECT WSM_SCHEDULER.SCHEDULER_NAME 
+              FROM WSM_SCHEDULER
+              WHERE #{WsmScheduler.qrySchedulerName.Conditions}
+            ]]>
+            </statement>
+        </template>      -->  
+        
+         <!-- 查詢VanUserMsg資料 時的 WHERE 條件 -->
+       
+        <conditions id="VanUserMsg.query.Conditions1" logic="AND">           
+           <condition key="ACPT_DTS" ignoreEmpty="false">
+                1=1
+           </condition>
+           <condition key="STATUS" ignoreEmpty="true">
+                A.STATUS=${STATUS}
+           </condition>                    
+           <condition key="EXT_ARG_VAL1" ignoreEmpty="false">
+                B.EXT_ARG_VAL1 IN (${EXT_ARG_VAL1})
+           </condition>                      
+        </conditions>
+        
+        <conditions id="VanUserMsg.query.Conditions2" logic="AND">           
+           <condition key="ACPT_DTS" ignoreEmpty="false">
+                1=1
+           </condition>
+           <condition key="STATUS" ignoreEmpty="true">
+                A.STATUS=${STATUS}
+           </condition>                
+           <condition key="EXT_ARG_VAL2" ignoreEmpty="false">
+                B.EXT_ARG_VAL2 IN (${EXT_ARG_VAL2})
+           </condition>                   
+        </conditions>
+      
+         <!-- 查詢VanUserMsg資料for文件別5201,5262 -->
+        <template id="VanUserMsg.query1" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanUserMsg">
+            <![CDATA[
+              SELECT A.ACPTED_PARTY_ID, A.ACPT_DTS, A.DLVR_DTS, A.DLVRED_PARTY_ID, 
+              A.DOC_TYPE_ID, A.STATUS, B.EXT_ARG_VAL1 DATA_MSG, SUBSTR(A.FILE_NAME, INSTR(A.FILE_NAME, '/', -1) + 1) FILE_NAME
+			  FROM VAN_DSMS_MAILBOX A
+			  JOIN VAN_MSG_LOG_EXT B ON A.MESSAGE_ID=B.MESSAGE_ID AND A.MESSAGE_SUB_ID = B.MESSAGE_SUB_ID
+			  WHERE #{VanUserMsg.query.Conditions1}			
+			  AND A.ACPTED_PARTY_ID not like 'TAN%' 
+			  AND A.DLVRED_PARTY_ID not like 'TAN%'
+			  AND (A.ACPTED_PARTY_ID = ${DLVRED_PARTY_ID} OR A.DLVRED_PARTY_ID = ${DLVRED_PARTY_ID})
+			  AND A.SERVICE_ID in ('HUBCMT', 'TV2CMT', 'NSCS01')		 
+		      ORDER by B.EXT_ARG_VAL1, A.ACPT_DTS, A.DLVR_DTS
+            ]]>
+            </statement>
+        </template>
+        
+         <!-- 查詢VanUserMsg資料for文件別5203 -->
+        <template id="VanUserMsg.query2" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanUserMsg">
+            <![CDATA[
+              SELECT A.ACPTED_PARTY_ID, A.ACPT_DTS, A.DLVR_DTS, A.DLVRED_PARTY_ID, 
+              A.DOC_TYPE_ID, A.STATUS, B.EXT_ARG_VAL2 DATA_MSG, SUBSTR(A.FILE_NAME, INSTR(A.FILE_NAME, '/', -1) + 1) FILE_NAME
+			  FROM VAN_DSMS_MAILBOX A
+			  JOIN VAN_MSG_LOG_EXT B ON A.MESSAGE_ID=B.MESSAGE_ID AND A.MESSAGE_SUB_ID = B.MESSAGE_SUB_ID
+			  WHERE #{VanUserMsg.query.Conditions2}
+			  AND A.ACPTED_PARTY_ID not like 'TAN%' 
+			  AND A.DLVRED_PARTY_ID not like 'TAN%'
+			  AND (A.ACPTED_PARTY_ID = ${DLVRED_PARTY_ID} OR A.DLVRED_PARTY_ID = ${DLVRED_PARTY_ID})
+			  AND A.SERVICE_ID in ('HUBCMT', 'TV2CMT', 'NSCS01')
+		      ORDER by B.EXT_ARG_VAL2, A.ACPT_DTS, A.DLVR_DTS
+            ]]>
+            </statement>
+        </template>
+        
+       
+		        <template id="VanSysObjMtdModel.queryForSetCMTArgs"
+                        type="select">
+                        <statement resultClass="com.tradevan.helpdesk.bean.VanSysObjMtd">
+            <![CDATA[
+                                SELECT OBJECT_ID, ARG_VALUE
+                                FROM VAN_SYS_OBJ_MTD
+                                WHERE ARG_ID = ${ARG_ID_RECEIVERID} or ARG_ID = ${ARG_ID_SERVICEID}
+            ]]>
+                        </statement>
+                </template>
+        
+		
+		
+        <template id ="UTSMapperMapping.queryForRecommendation" type="select">
+        	<statement resultClass="com.tradevan.helpdesk.bean.uts.UTSMapperMapping">
+        	<![CDATA[
+				SELECT M_SEQ_I.MAPPER_ID,M_SEQ_I.MAPPER_VER,
+				        I.IMPORT_MAPPER_ID,I.IMPORT_LAYER_ID,I.IMPORT_ITEM_ID,I.IMP_VER,
+				        E.EXPORT_MAPPER_ID,E.EXPORT_LAYER_ID,E.EXPORT_ITEM_ID,E.EXP_VER
+				FROM UTS_MAPPER_EXE_SEQ M_SEQ_I,
+				     UTS_MAPPER_EXE_SEQ M_SEQ_E,
+				     UTS_IMPORT_ITEM I,
+				     UTS_EXPORT_ITEM E,
+				     UTS_MAPPER_MAPPING MP,
+				     UTS_GROUP_MAPPER GM,
+				     UTS_GROUP_USER U
+				WHERE U.USER_ID = ${USER_ID}
+				    AND M_SEQ_I.MAPPER_ID = ${MAPPER_ID}
+				    AND M_SEQ_I.MAPPER_VER = ${MAPPER_VER}
+				    AND I.IMPORT_LAYER_ID = ${IMPORT_LAYER_ID}
+				    AND I.IMPORT_ITEM_ID = ${IMPORT_ITEM_ID}
+				    AND U.GROUP_ID = GM.GROUP_ID 
+				    AND GM.MAPPER_ID = M_SEQ_I.MAPPER_ID		    
+				    AND M_SEQ_I.IO_TYPE = 'I' 
+				    AND M_SEQ_I.IO_MAPPER_ID = I.IMPORT_MAPPER_ID
+				    AND M_SEQ_I.IO_MAPPER_VER = I.IMP_VER	    
+				    AND M_SEQ_I.MAPPER_ID = M_SEQ_E.MAPPER_ID
+				    AND M_SEQ_I.MAPPER_VER = M_SEQ_E.MAPPER_VER
+				    AND M_SEQ_E.IO_TYPE = 'O'
+				    AND M_SEQ_E.IO_MAPPER_ID = E.EXPORT_MAPPER_ID
+				    AND M_SEQ_E.IO_MAPPER_VER = E.EXP_VER
+   					AND ((M_SEQ_I.MAPPER_ID = MP.MAPPER_ID
+				    AND MP.IMPORT_LAYER_ID = I.IMPORT_LAYER_ID
+				    AND MP.IMPORT_ITEM_ID = I.IMPORT_ITEM_ID   
+                            AND MP.EXPORT_ITEM_ID = E.EXPORT_ITEM_ID )
+                   		OR LOWER(E.EXPORT_ITEM_ID) = LOWER(I.IMPORT_ITEM_ID))
+				GROUP BY M_SEQ_I.MAPPER_ID,M_SEQ_I.MAPPER_VER,M_SEQ_E.EXE_SEQ,
+				        I.IMPORT_MAPPER_ID,I.IMPORT_LAYER_ID,I.IMPORT_ITEM_ID,I.IMP_VER,
+				        E.EXPORT_MAPPER_ID,E.EXPORT_LAYER_ID,E.EXPORT_ITEM_ID,E.EXP_VER,E.ITEM_SEQ
+                ORDER BY M_SEQ_E.EXE_SEQ,E.ITEM_SEQ
+        	]]>
+        	</statement>
+        </template>
+        
+        
+        <template id ="VanSysCode.queryTypeIdByCodeData2" type="select">
+        	<statement resultClass="com.tradevan.helpdesk.bean.VanSysCode">
+        	<![CDATA[
+				SELECT C2.* 
+					FROM VAN_SYS_CODE C1, VAN_SYS_CODE C2
+				WHERE C1.CODE_DATA2 = ${CODE_DATA2}
+					AND C1.CODE_ID = C2.TYPE_ID
+        	]]>
+        	</statement>
+        </template>
+                <template id="QryVanDsmsMailboxTemplate.queryRedoResult" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanRedoResult">
+            <![CDATA[
+                SELECT   M1.PARTY_ID, M1.MESSAGE_ID, M1.MESSAGE_SUB_ID, M1.ACPT_DTS, M1.STATUS,
+                         M2.MESSAGE_ID AS NEW_MESSAGE_ID, M2.MESSAGE_SUB_ID AS NEW_MESSAGE_SUB_ID, M2.ACPT_DTS AS NEW_ACPT_DTS, M2.STATUS AS NEW_STATUS,
+                         (SELECT OPERATOR_ID
+                            FROM VAN_SYS_EVENT_LOG S
+                           WHERE M1.MESSAGE_ID = S.MESSAGE_ID
+                             AND M1.MESSAGE_SUB_ID = S.MESSAGE_SUB_ID
+                             AND S.ERROR_CODE = 'I003'
+                             AND M2.MESSAGE_ID = S.MESSAGE2) AS OPERATOR_ID
+                    FROM VAN_DSMS_MAILBOX M1, VAN_DSMS_MAILBOX M2
+                   WHERE M1.ACPT_DTS >= ${START_DTS}
+                     AND M1.ACPT_DTS <= ${END_DTS}
+                     AND M1.MESSAGE_ID = M2.PARENT_MESSAGE_ID
+                     AND M1.MESSAGE_SUB_ID = M2.PARENT_MESSAGE_SUB_ID
+                     AND M2.MESSAGE_SUB_TYPE = 'R'
+ORDER BY M1.ACPT_DTS
+            ]]>
+            </statement>
+        </template>
+        <template id="JMSImport.query" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.VanServiceRouting">
+            <![CDATA[
+SELECT SERVICE_ID,NOTE1
+  FROM VAN_SERVICE_ROUTING
+ WHERE SERVICE_ID LIKE ${SERVICE_ID}
+        AND NOTE1 LIKE ${NOTE1}
+        AND MESSAGE_FORMAT = 'F'
+        AND (
+            ( PROCESS_ID = 'I' -- DS INBOUND
+                AND CONN_SRC_ID = 'NIL'
+                AND CONN_DES_ID = 'DS_JMS_Q'
+                AND SRC_SYS_TYPE = 'DS'
+            )
+            OR (PROCESS_ID = 'O' -- DS OUTBOUND
+                AND CONN_SRC_ID = 'DISPATCH_Q'
+                AND CONN_DES_ID = 'DS_Q'
+                AND SRC_SYS_TYPE = 'JMS'
+            )
+            OR (PROCESS_ID IS NULL -- PMC INBOUND
+                AND CONN_SRC_ID = 'DISPATCH_Q'
+                AND CONN_DES_ID = 'JMS_Q'
+                AND SRC_SYS_TYPE = 'JMS'
+            )
+            OR (PROCESS_ID IS NULL -- PMC OUTBOUND
+                AND CONN_SRC_ID = 'DISPATCH_Q'
+                AND CONN_DES_ID IN ('B2BI_Q','DS_Q')
+                AND SRC_SYS_TYPE = 'JMS'
+            )
+        )
+        GROUP BY SERVICE_ID,NOTE1
+        ORDER BY SERVICE_ID,NOTE1
+            ]]>
+            </statement>
+        </template>
+        <template id="JMSImport.qryForJmsNotifyUser" type="select">
+            <statement resultClass="com.tradevan.helpdesk.bean.WsmNotifyUser">
+            <![CDATA[
+SELECT  U.USER_ID, U.EMAIL
+FROM WSM_PARTY_TRANSPORT T, WSM_NOTIFY_GROUP G, WSM_NOTIFY_USER U
+WHERE T.SCHEDULER_ID = ${SCHEDULER_ID}
+    AND T.REF_ID = ${REF_ID}
+    AND T.PROTOCOL_ID = 'EMAIL'
+    AND T.ARG01 = G.GROUP_ID
+    AND G.USER_ID = U.USER_ID
+            ]]>
+            </statement>
+        </template>
+	</sql-template>
+</taurus-xdao>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taurus-xdao>
+    <!--
+        #{$dataobject} 表示DataObject物件
+        #{id} 表示參照到template中的id。
+        ${key} 表示參照程式所帶入Map或DataObject物件的key所取出的值。 
+                 若取出的值為Collection物件，則會以逗號(,)為分隔所組成的字串。
+                             若Collection物件所放的是String物件，則會自動將字串前後加上單引號。
+     -->
+    <sql-template>
+        <!-- <conditoins> tag
+            id: conditions識別碼，於template中欲參照時的id。
+            logic: 指定複合<condition>的邏輯運算 
+            ignoreEmpty: true | false。 若Condition的value為null或空字串，該Condition是否略過。預設值為false。
+         -->
+        <!-- <condition> tag
+           key: Map或DataObject物件以key所取出的值，若取出的值為Collection物件，則會以逗號(,)為分隔所組成的字串。
+                                若為Collection物件所放的是String物件，則會自動將字串前後加上單引號。
+           quote: true | false | auto，配合key屬性使用。若為 true，則會在取出的值前後加上單引號。
+                    若取出的值為Collection物件，則會在每個element前後加上單引號。
+                                    若為auto，則會自動判斷取出的值是不是String類別，若為String則自動加上單引號。預設值為auto。
+           ignoreValue:依key從Map物件中取出的值，轉成物件後，與ignoreValue以RegExp比對是否要略過，配合key屬性使用。
+           ignoreEmpty: true | false，是否略過空字串，配合key屬性使用。預設值為false。
+           ref: 參照至別的conditions設定。
+           const: 此屬性設定sql為固定值，不參照任何template id或Map中key。
+        -->
+        <conditions id="cd1" logic="OR">
+            <condition key="name" quote="false">name like '${name}%'</condition>
+            <condition key="class" quote="true" ignoreEmpty="true">class in (${class})</condition>
+            <condition ref="cd2"/>
+            <condition const="const">age = 28</condition>
+        </conditions>
+        
+        <conditions id="cd2" logic="AND">
+            <!-- birthday >= startDate -->
+            <condition key="startDate" ignoreValue="[A-F]*" ignoreEmpty="true">
+                birthday&gt;=${startDate}
+            </condition>
+            <!-- birthday <= endDate9999 -->
+            <condition key="endDate" quote="false">birthday&lt;='${endDate}9999'</condition>
+            
+        </conditions>
+        
+        <!-- <fields> tag
+             id: fields識別碼，於insert, update template欲參照時的識別碼。
+         -->
+        <!-- <field> tag
+         key: Map或DataObject物件以key所取出的值，
+         name: 欄位名稱，若無設定name時，則以key名稱為欄位名稱。
+         ignoreValue: 依key從Map或DataObject物件中取出的值，轉成物件後，與ignoreValue以RegExp比對是否要略過，配合key屬性使用。
+         ignoreEmpty: true | false，是否略過空字串，配合key屬性使用。預設值為false。
+         value: 欄位的值，若設定此屬性，則key取出的值無效，quote設定也無效。 
+         quote: true | false | auto，配合key屬性使用。若為 true，則會在取出的值前後加上單引號。
+                    若取出的值為Collection物件，則會在每個element前後加上單引號。
+                                   若為auto，則會自動判斷取出的值是不是String類別，若為String則自動加上單引號。預設值為auto。
+                  XdaoConnection的preparedMode=true時，quote設定則無效。
+         -->
+        <fields id="updateField">
+            <field key="id" name="ID" quote="true"/>
+            <field key="name" name="NAME" ignoreValue="[c,d,f]" ignoreEmtpy="true"/>
+            <field key="age" name="AGE" value="age+1" quote="false"/>
+        </fields>
+        
+         <!-- <template> tag
+         id: template的ID，程式呼叫時帶入此ID。
+         sqlTimeout: SQL執行 timeout 的時間。
+         type: 執行的SQL指令類型，select, insert, delete, update。
+         autoCommit: true | false。執行完每個statement時，是否要自動commit。預設為true。
+                     若設為false，則在所有的statement執行完後才會commit。
+         autoRollback: true | false。執行statement有誤時，是否要自動rollback。 預設為true。
+         autoClose: true | false。執行完所有的statement後，是否自動關閉Connection。 預設為true。
+                                       若autoClose為false，在commit/rollback或是select之後，Connection不會關閉，設定時應注意。
+         -->
+         
+        <!--  select template -->
+        <template id="t1" sqlTimeout="" type="select">
+            <!-- <statement> tag
+             id: 執行statement後的結果，存放於Map中的key值。
+             hander: 執行statement後，欲執行的handler類別的方法。
+             -->
+            <statement id="user" handler="sample.util.Format.formateData">
+                select * from user where #{cd1}
+            </statement>
+            <statement id="order">select * from order where id=${id}</statement>
+            <!-- conditions與fields與前述用法相同 -->
+            <conditions id="cd1" logic="OR" ignoreEmpty="true">
+	            <condition key="name" quote="false">name like '${name}%'</condition>
+	            <condition key="class" quote="true">class in (${class})</condition>
+	            <condition ref="cd2"/>
+	            <condition const="const">age = 28</condition>
+            </conditions>
+        </template>
+        
+        <template id="field"><statement>id, name, age, birthday</statement></template>
+        <template id="allField"><statement>*</statement></template>
+        
+        <template id="where"><statement>id='${id}' and name='${name}'</statement></template>
+        
+        <template id="pagedao">
+            <statement>
+        SELECT * FROM (SELECT ROWNUM AS my_rownum,table_a.* FROM(${sql}) table_a WHERE ROWNUM &lt;=${start_row})
+        WHERE my_rownum &gt; ${end_row}
+            </statement>
+        </template>
+        
+        <template id="subQuery" sqlTimeout="" type="select">
+            <statement>
+            select #{field} from user where #{where}
+            </statement>
+        </template>
+        
+        <template id="t2" type="select">
+            <statement>select * from user, ${otherTable} where id in #{subQuery}</statement>
+        </template>
+        
+        <template id="q1">
+            <statement>select #{allField} from user where #{$dataobject}</statement>
+        </template>
+        
+        <!-- update template -->
+        <template id="t3" type="update">
+            <statement id="">update user set name=${name} where id='${id}'</statement>
+            <fields id="">
+	            <field key="id" name="ID" quote="true"/>
+	            <field key="name" name="NAME" ignoreValue="[c,d,f]" ignoreEmtpy="true"/>
+	            <field key="age" name="AGE" value="age+1" quote="false"/>
+	        </fields>
+        </template>
+        <template id="t4" type="update">
+            <statement>update user set #{$dataobject} where id=${id}</statement>
+        </template>
+        <template id="t5" type="update">
+            <statement>update user set age=age+1, xxx=(#{sql}), #{updateField} where id=${id}</statement>
+        </template>
+        
+        <!-- insert template -->
+        <template id="transactionSample" type="insert" autoCommit="false">
+            <statement id="1">insert into ${table} #{$dataobject}</statement>
+            <statement id="2">insert into ${table} (id, name, age) value(${id}, ${name}, ${age});</statement>
+        </template>
+        
+        <template id="ins1" type="insert">
+            <statement>insert into ${table} #{$dataobject}</statement>
+        </template>
+        
+        <template id="ins2" type="insert">
+            <statement>insert into ${table} (id, name, age) value(${id}, ${name}, ${age});</statement>
+        </template>
+        
+        <!-- delete template -->
+        <template id="d1" type="delete">
+            <statement>delete from user where #{where}</statement>
+        </template>
+        <!-- <transaction> tag 
+                 設定多組template為一個transaction。
+         id: trasaction識別碼。
+         -->
+        <!-- Transaction template -->
+        <transaction id="t">
+            <!--
+             ref: 欲參照的template ID。Template若有設定autoCommit/autoRollback/autoClose，則無效。
+             savepoint: 設定是否將ID也設為savepoint，即後續要rollback時的ID。
+             rollbackTo: 設定rollack時所要回復的點(template id)，該template必須設定savepoint=true。
+                         rollback至指定的savepoint後，將會commit並結束整個transaction。
+             -->
+            <template ref="ins1" savepoint="true"/>
+            <template ref="d1" rollbackTo="ins1"/>
+            <template id="xxx" type="insert">
+                <statement>insert into order #{$dataobject}</statement>
+            </template>
+            <template id="ddd" type="insert">
+                <statement>insert into detail #{$dataobject}</statement>
+            </template>
+            <template id="tt">
+                <statement>update orderstatus set status='0' where id=${id}</statement>
+            </template>
+        </transaction>
+    </sql-template>
+    
+    <procedure-template>
+        <!-- Store Procedure template -->
+        <template id="s1">
+            <statement id="c1">{call MySQP1(${id}, ${name})}</statement>
+            <!--
+	                定義資料回傳的資料型別，用於Stored Procedure。 
+	         -->
+            <out-parameter id="c1">
+	            <parameter name="id" type="VARCHAR"/>
+	            <parameter name="name" type="VARCHAR"/>
+            </out-parameter>
+        </template>
+        
+        <template id="s2">
+            <statement>{call MySQP2(${id}, ${name})}</statement>
+        </template>
+    </procedure-template>
+</taurus-xdao>

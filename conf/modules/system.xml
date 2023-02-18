@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="system" namespace="/modules/system" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+               <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        		
+        <action name="VanSysCode" class="com.tradevan.helpdesk.action.system.VanSysCodeAction">
+            <result name="listvansyscodes" >/modules/system/pages/ListVanSysCode.jsp</result>
+            <result name="viewvansyscodes" >/modules/system/pages/ViewVanSysCode.jsp</result>
+            <result name="editvansyscodes" >/modules/system/pages/EditVanSysCode.jsp</result>
+        </action>
+        
+        <action name="MainVanTransformerReg" class="com.tradevan.helpdesk.action.system.MainVanTransformerRegAction">
+			<result name="mainvantransformerreg">/modules/system/pages/MainVanTransformerReg.jsp</result>
+		</action> 
+		
+        <action name="MainMdcMsgMappingDef" class="com.tradevan.helpdesk.action.system.MainMdcMsgMappingDefAction">
+        	<result name="mainMDCMsgMappingDef">/modules/system/pages/MainMDCMsgMappingDef.jsp</result>
+        </action>
+		
+        <action name="VanSysObjProf" class="com.tradevan.helpdesk.action.system.VanSysObjProfAction">
+			<result name="mainvansysobjprof">/modules/system/pages/MainVanSysObjProf.jsp</result>
+		</action>
+        		
+		<action name="VanSysObjArg" class="com.tradevan.helpdesk.action.system.VanSysObjArgAction">
+			<result name="mainvansysobjarg">/modules/system/pages/MainVanSysObjArg.jsp</result>
+		</action>        		
+        
+        <action name="VanSysObjMtd" class="com.tradevan.helpdesk.action.system.VanSysObjMtdAction">
+			<result name="mainvansysobjmtd">/modules/system/pages/MainVanSysObjMtd.jsp</result>
+		</action>  
+   
+        <action name="SysCode" class="com.tradevan.helpdesk.action.system.SysCodeAction">
+            <result name="listsyscodes" >/modules/system/pages/ListSysCode.jsp</result>
+            <result name="viewsyscodes" >/modules/system/pages/ViewSysCode.jsp</result>
+            <result name="editsyscodes" >/modules/system/pages/EditSysCode.jsp</result>
+        </action>
+        
+        <action name="CCSSysCode" class="com.tradevan.helpdesk.action.system.CCSSysCodeAction">
+            <result name="ccsListSysCodes" >/modules/system/pages/CCSListSysCode.jsp</result>
+            <result name="ccsViewSysCodes" >/modules/system/pages/CCSViewSysCode.jsp</result>
+            <result name="ccsEditSysCodes" >/modules/system/pages/CCSEditSysCode.jsp</result>
+        </action>     		
+  	<action name="DBSwitch" class="com.tradevan.helpdesk.action.system.DBSwitchAction">
+          <result name="dbswitch">/modules/system/pages/DBSwitch.jsp</result>
+        </action> 
+        
+        <action name="Notification" class="com.tradevan.helpdesk.action.system.NotificationAction">
+          <result name="notification">/modules/system/pages/Notification.jsp</result>
+          <result name="viewNotification">/modules/system/pages/ViewNotification.jsp</result>
+          <result name="listnotify" type="emptyFoot-layout">/modules/system/pages/LoginNotification.jsp</result>
+        </action>
+    </package>
+    
+</struts>

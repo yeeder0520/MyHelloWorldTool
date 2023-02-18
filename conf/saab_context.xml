@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="com.tradevan.saab.service.LoginService" 
+          class="com.tradevan.saab.service.impl.LoginServiceImpl" scope="prototype">        
+    </bean>
+
+    <bean id="com.tradevan.saab.service.RoleService" 
+          class="com.tradevan.saab.service.impl.RoleServiceImpl" scope="prototype">        
+    </bean>
+    
+    <bean id="com.tradevan.saab.service.OrganizationService" 
+          class="com.tradevan.saab.service.impl.OrganizationServiceImpl" scope="prototype">        
+    </bean>
+
+    <bean id="com.tradevan.saab.service.UserService" 
+          class="com.tradevan.saab.service.impl.UserServiceImpl" scope="prototype">        
+    </bean>
+    
+    <bean id="com.tradevan.saab.model.SaabBaseModel" 
+          class="com.tradevan.saab.model.SaabBaseModel" scope="prototype">
+    </bean>
+    
+    <bean id="com.tradevan.saab.model.MenuModel" 
+          class="com.tradevan.saab.model.impl.MenuModelImpl" scope="prototype">     
+          <property name="tableName" value="menu_data"/>    
+    </bean>
+
+    <bean id="com.tradevan.saab.model.PrivilegeModel" 
+          class="com.tradevan.saab.model.impl.PrivilegeModelImpl" scope="prototype"> 
+          <property name="tableName" value="privilege_data"/>       
+    </bean>
+    
+    <bean id="com.tradevan.saab.model.RoleModel" 
+          class="com.tradevan.saab.model.impl.RoleModelImpl" scope="prototype">
+          <property name="tableName" value="role_data"/>          
+    </bean>
+    
+    <bean id="com.tradevan.saab.model.OrganizationModel" 
+          class="com.tradevan.saab.model.impl.OrganizationModelImpl" scope="prototype">    
+    </bean>
+    <bean id="com.tradevan.saab.model.PermissionModel" 
+          class="com.tradevan.saab.model.impl.PermissionModelImpl" scope="prototype">     
+          <property name="permissionMode" value="all"/><!-- role | org | all -->
+    </bean>
+    
+    <bean id="com.tradevan.saab.model.UserModel" 
+          class="com.tradevan.saab.model.impl.UserModelImpl" scope="prototype">
+          <property name="tableName" value="user_data"/>
+    </bean>
+
+	<bean id="com.tradevan.saab.model.impl.AvailableModelImpl"
+	  	  class="com.tradevan.saab.model.impl.AvailableModelImpl" scope="prototype">
+	</bean>
+
+</beans>

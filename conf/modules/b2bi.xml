@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="b2bi" namespace="/modules/b2bi" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        		
+        <action name="QryXENIMsgLog" class="com.tradevan.helpdesk.action.b2bi.QryXENIMsgLogAction">
+            <result name="listmsglogs" >/modules/b2bi/pages/QryXENIMsgLog.jsp</result>
+            <result name="listmsglogdtls" >/modules/b2bi/pages/QryXENIMsgLogDtl.jsp</result>
+            <result name="viewmsg" >/modules/b2bi/pages/ViewXENIMsg.jsp</result>
+			<result name="listwsinfo" >/modules/b2bi/pages/QryWSInfo.jsp</result>
+			<result name="errordetail" >/modules/b2bi/pages/QryXENIMsgLogStatus.jsp</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/b2bi/pages/OpRstXENIMsg.jsp</result>
+        </action>
+        <action name="QryXENIAPKeys" class="com.tradevan.helpdesk.action.b2bi.QryXENIMsgLogAction">
+            <result name="listmsglogs" >/modules/b2bi/pages/QryXENIAPKeys.jsp</result>
+            <result name="listmsglogdtls" >/modules/b2bi/pages/QryXENIAPKeysDtl.jsp</result>
+            <result name="viewmsg" >/modules/b2bi/pages/ViewXENIAPKeys.jsp</result>
+            <result name="listwsinfo" >/modules/b2bi/pages/QryAPKeysWSInfo.jsp</result>
+			<result name="errordetail" >/modules/b2bi/pages/QryXENIMsgLogStatus.jsp</result>
+            <result name="opresult" type="emptyFoot-layout">/modules/b2bi/pages/OpRstXENIMsg.jsp</result>
+        </action>
+		<action name="QryVBNLogSummary" class="com.tradevan.helpdesk.action.b2bi.QryVBNLogSummaryAction">
+			<result name="listvbnlogsummary">/modules/b2bi/pages/QryVBNLogSummary.jsp</result>
+			<result name="listlogdetail">/modules/b2bi/pages/QryVBNLogDtl.jsp</result>
+			<result name="listbuslogdetail">/modules/b2bi/pages/QryVBNBusLogDtl.jsp</result>
+			<result name="listmsglogdetail">/modules/b2bi/pages/QryVBNMsgLogDtl.jsp</result>
+			<result name="dnldvbnlogsummary" type="redirect">${url}</result>
+			<result name="viewvbnlogsummary">/modules/b2bi/pages/ViewVBNMsg.jsp</result>		
+		</action>
+		<action name="QryVBNMsgLog" class="com.tradevan.helpdesk.action.b2bi.QryVBNMsgLogAction">
+			<result name="listvbnmsglog">/modules/b2bi/pages/QryVBNMsgLog.jsp</result>
+		</action>
+		<action name="QryVBNBusLog" class="com.tradevan.helpdesk.action.b2bi.QryVBNBusLogAction">
+			<result name="listvbnbuslog">/modules/b2bi/pages/QryVBNBusLog.jsp</result>
+		</action>
+		<action name="QryAgiMsgLog" class="com.tradevan.helpdesk.action.b2bi.QryAgiMsgLogAction">
+			<result name="listagimsglog">/modules/b2bi/pages/QryAgiMsgLog.jsp</result>
+			<result name="listagimsglogdtls">/modules/b2bi/pages/QryAgiMsgLogDtl.jsp</result>
+			<result name="viewmsg">/modules/b2bi/pages/ViewAgiMsgContent.jsp</result>
+			<result name="opresult" type="emptyFoot-layout">/modules/b2bi/pages/OpRstAgiMsgLog.jsp</result>
+            <result name="download" type="stream">
+                <param name="contentType">text/csv;charset=utf-8</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+		</action>
+    </package>
+</struts>

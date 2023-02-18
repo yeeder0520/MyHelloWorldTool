@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="archive" namespace="/modules/archive" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        		
+        <action name="MainApArcProf" class="com.tradevan.helpdesk.action.archive.MainApArcProfAction">
+            <result name="mainaparcprof" >/modules/archive/pages/MainApArcProf.jsp</result>
+            <result name="listaparcprof" >/modules/archive/pages/ListApArcProf.jsp</result>
+            <result name="next" type="chain">
+				<param name="actionName">MainApArcKeys</param>
+				<param name="method">search</param>
+			</result>
+        </action>
+                
+        <action name="MainApArcKeys" class="com.tradevan.helpdesk.action.archive.MainApArcKeysAction">
+            <result name="mainaparckeys" >/modules/archive/pages/MainApArcKeys.jsp</result>
+            <result name="listaparckeys" >/modules/archive/pages/ListApArcKeys.jsp</result>
+            <result name="back" type="chain">
+				<param name="actionName">MainApArcProf</param>
+				<param name="method">search</param>
+			</result>
+        </action>
+        
+    </package>
+    
+</struts>

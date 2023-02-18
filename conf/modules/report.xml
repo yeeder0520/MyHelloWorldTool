@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="report" namespace="/modules/report"
+		extends="ap-default">
+		<result-types>
+			<result-type name="default-layout"
+				class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+				<param name="layout">action-layout</param>
+				<param name="bodyName">body</param>
+			</result-type>
+			<result-type name="emptyFoot-layout"
+				class="com.tradevan.framework.view.TilesLayoutResult"
+				default="false">
+				<param name="layout">main-layout</param>
+				<param name="bodyName">body</param>
+			</result-type>
+			<result-type name="emptyFoot-layout-big5"
+				class="com.tradevan.framework.view.TilesLayoutResult"
+				default="false">
+				<param name="layout">main-layout-big5</param>
+				<param name="bodyName">body</param>
+			</result-type>
+		</result-types>
+
+		<action name="QryDailyConnRpt"
+			class="com.tradevan.helpdesk.action.rpt.QryDailyConnRptAction">
+			<result name="qrydailyconnrpt">/modules/report/pages/QryDailyConnRpt.jsp
+			</result>
+		</action>
+		<action name="QryDailyTransRpt"
+			class="com.tradevan.helpdesk.action.rpt.QryDailyTransRptAction">
+			<result name="qrydailytransrpt">/modules/report/pages/QryDailyTransRpt.jsp
+			</result>
+		</action>
+		<action name="QryMSHRpt"
+			class="com.tradevan.helpdesk.action.message.QryMSHRptAction">
+			<result name="qrymshrpt">/modules/report/pages/QryMSHRpt.jsp</result>
+		</action>
+		<action name="RptHistory"
+			class="com.tradevan.helpdesk.action.rpt.RptHistoryAction">
+			<result name="listrpt" type="emptyFoot-layout">/modules/report/pages/HisRpt.jsp
+			</result>
+			<result name="viewrpt" type="emptyFoot-layout-big5">/modules/report/pages/ViewRpt.jsp
+			</result>
+		</action>
+		<action name="TestReport"
+			class="com.tradevan.helpdesk.action.rpt.TestReportAction">
+			<result name="lisTestRpt">/modules/report/pages/QryTestRpt.jsp</result>
+			<result name="dnldTestRpt" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">docFile</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		<action name="QryVanUserMsg"
+			class="com.tradevan.helpdesk.action.rpt.QryVanUserMsgAction">
+			<result name="qryvanusermsg">/modules/report/pages/QryVanUserMsg.jsp</result>
+			<result name="dnldUserMsgRpt" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">docFile</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+
+
+
+
+
+		<!-- 20200605 報表產製 -->
+		<action name="AppendXls"
+			class="com.tradevan.helpdesk.action.rpt.AppendXlsAction">
+			<result name="appendXls">/modules/report/pages/AppendXls.jsp</result>
+		</action>
+
+	</package>
+</struts>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taurus-xdao>
+    <sql-template>
+<!-- ===== UserModel ===== -->    
+        <!-- 取得使用者限制的IP -->
+        <template id="UserModel.getIpList" type="select">
+            <statement>
+            <![CDATA[select RESTRICTED_IP from USER_RESTRICTED_IP where USER_ID=${USER_ID}]]>
+            </statement>
+        </template>
+        
+       <!-- 取得使用者設定的角色 -->
+       <template id="UserModel.getRoles" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabRole">
+            <![CDATA[
+                select r.* from USER_ROLE u, ROLE_DATA r 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                      r.APP_ID=${APP_ID} and u.ROLE_ID=r.ROLE_ID
+             ]]>
+             </statement>
+        </template> 
+         <!-- 取得使用者設定的組織 -->
+        <template id="UserModel.getOrganizations" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabOrganization">
+            <![CDATA[
+                select o.* from USER_ORGANIZATION u, ORG_DATA o 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                      o.APP_ID=${APP_ID} and u.ORG_ID=o.ORG_ID
+             ]]>
+             </statement>
+        </template> 
+        <!-- 取得使用者設定的權限 -->
+       <template id="UserModel.getPrivileges" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+            select p.* from USER_PRIVILEGE u, PRIVILEGE_DATA p 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='P' and
+                      p.APP_ID=${APP_ID} and u.PRIVILEGE_ID=p.PRIVILEGE_ID
+            ]]>
+            </statement>
+       </template> 
+       
+       <!-- 取得使用者設定的選單 -->
+       <template id="UserModel.getMenus" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+                select m.* from USER_PRIVILEGE u, (#{MENU_PRIVILEGE}) m 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='M' and
+                      u.PRIVILEGE_ID=m.PRIVILEGE_ID
+            ]]>
+            </statement>
+        </template>
+<!-- ===== RoleModel ===== -->
+        <!-- 取得角色的所有使用者 -->
+        <template id="RoleModel.getUsers" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabUser">
+            <![CDATA[
+                select r.* from USER_ROLE u, USER_DATA r 
+                where u.APP_ID=${APP_ID} and u.ROLE_ID=${ROLE_ID} and u.USER_ID=r.USER_ID
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得角色設定的選單 -->
+        <template id="RoleModel.getMenus" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+                select m.* from ROLE_PRIVILEGE r, (#{MENU_PRIVILEGE}) m 
+                where r.APP_ID=${APP_ID} and r.ROLE_ID=${ROLE_ID} and r.TYPE='M' and 
+                      r.PRIVILEGE_ID=m.PRIVILEGE_ID
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得角色設定的權限 -->
+        <template id="RoleModel.getPrivileges" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+                select p.* from ROLE_PRIVILEGE r, PRIVILEGE_DATA p 
+                where r.APP_ID=${APP_ID} and r.ROLE_ID=${ROLE_ID} and r.TYPE='P' and 
+                      p.APP_ID=${APP_ID} and r.PRIVILEGE_ID=p.PRIVILEGE_ID
+            ]]>
+            </statement>
+        </template>
+
+<!-- ===== OrganizationModel ===== -->
+        <!-- 取得組織的所有使用者 -->
+        <template id="OrganizationModel.getUsers" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabUser">
+            <![CDATA[
+                select r.* from USER_ORGANIZATION u, USER_DATA r 
+                where u.APP_ID=${APP_ID} and u.ORG_ID=${ORG_ID} and u.USER_ID=r.USER_ID
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得組織設定的選單 -->
+        <template id="OrganizationModel.getMenus" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+                select m.* from ORG_PRIVILEGE r, (#{MENU_PRIVILEGE}) m 
+                where r.APP_ID=${APP_ID} and r.ORG_ID=${ORG_ID} and r.TYPE='M' and 
+                      r.PRIVILEGE_ID=m.PRIVILEGE_ID
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得組織設定的權限 -->
+        <template id="OrganizationModel.getPrivileges" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+                select p.* from ORG_PRIVILEGE r, PRIVILEGE_DATA p 
+                where r.APP_ID=${APP_ID} and r.ORG_ID=${ORG_ID} and r.TYPE='P' and 
+                      p.APP_ID=${APP_ID} and r.PRIVILEGE_ID=p.PRIVILEGE_ID
+            ]]>
+            </statement>
+        </template> 
+        
+        <!-- 取得組織設定的角色 -->
+        <template id="OrganizationModel.getRoles" type="select">
+        	<statement resultClass="com.tradevan.saab.bean.SaabRole">
+            <![CDATA[
+                select r.* from ORG_ROLE o, ROLE_DATA r 
+                where o.APP_ID=${APP_ID} and o.ORG_ID=${ORG_ID} and 
+                      r.APP_ID=${APP_ID} and o.ROLE_ID=r.ROLE_ID
+             ]]>
+             </statement>
+        </template>       
+        
+<!-- ===== PermissionModel ===== -->
+        <!-- 取得角色可用的選單 (STATUS=A，不包含繼承關係) -->
+        <template id="PermissionModel.getRoleMenus" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">rp.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+            select m.* from ROLE_PRIVILEGE rp, (#{MENU_PRIVILEGE}) m 
+            where rp.APP_ID=${APP_ID} and #{IN_ROLE_ID} and rp.PRIVILEGE_ID=m.PRIVILEGE_ID 
+                  and rp.TYPE='M' and m.STATUS='A' 
+            order by m.MENU_ORDER, m.LEFT_POS      
+            ]]>
+            </statement>
+        </template>
+
+        <!-- 取得角色可用的權限 (STATUS=A，不包含繼承關係)-->
+        <template id="PermissionModel.getRolePrivileges" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">rp.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+            select p.* from ROLE_PRIVILEGE rp, PRIVILEGE_DATA p
+            where rp.APP_ID=${APP_ID} and p.APP_ID=${APP_ID} and #{IN_ROLE_ID} and rp.PRIVILEGE_ID=p.PRIVILEGE_ID 
+                  and rp.TYPE='P' and p.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得使用者所屬角色(包含所有繼承關係的角色) -->
+        <template id="PermissionModel.getUserRoles" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabRole">
+            <![CDATA[
+                select distinct b.* 
+                from (select r.LEFT_POS,r.RIGHT_POS from USER_ROLE u, ROLE_DATA r 
+                      where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                            r.APP_ID=${APP_ID} and u.ROLE_ID=r.ROLE_ID) a,
+                      ROLE_DATA b
+                where b.APP_ID=${APP_ID} and b.LEFT_POS<=a.LEFT_POS and b.RIGHT_POS >= a.RIGHT_POS
+                      and b.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得使用者所屬角色底下的所有子角色(不包含自己本身角色) -->
+        <template id="PermissionModel.getUserSubRoles" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabRole">
+            <![CDATA[
+                select distinct b.* 
+                from (select r.LEFT_POS,r.RIGHT_POS from USER_ROLE u, ROLE_DATA r 
+                      where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                            r.APP_ID=${APP_ID} and u.ROLE_ID=r.ROLE_ID) a,
+                      ROLE_DATA b
+                where b.APP_ID=${APP_ID} and b.LEFT_POS > a.LEFT_POS and b.RIGHT_POS < a.RIGHT_POS
+                      and b.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得使用者的Menu (包含直接指定、指定角色的Menu、角色繼承的Menu)-->
+        <!-- 若角色Parent的EXT_PRIVILEGE=N，則須另外處理，不使用此template -->
+        <template id="PermissionModel.getUserMenus" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+            select distinct p.C_NAME, p.E_NAME, p.DESCRIPTION, p.STATUS, p.BUILD_DATE, a.* from (
+                select m.* from USER_PRIVILEGE u, MENU_DATA m 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='M' and 
+                      m.APP_ID=${APP_ID} and u.PRIVILEGE_ID=m.MENU_ID
+                union
+                select distinct m.* 
+                from (#{USER_ALL_ACTIVE_ROLE}) r, ROLE_PRIVILEGE rp, MENU_DATA m
+                where r.ROLE_ID=rp.ROLE_ID and rp.APP_ID=${APP_ID} and m.APP_ID=${APP_ID} and 
+                      rp.TYPE='M' and rp.PRIVILEGE_ID=m.MENU_ID
+            ) a, PRIVILEGE_DATA p
+            where p.APP_ID=${APP_ID} and a.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+            order by a.MENU_ORDER, a.LEFT_POS
+            ]]>
+            </statement>
+        </template>
+        <!-- 取得使用者與角色設定的Menu -->
+        <template id="PermissionModel.getUserRoleMenus" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">rp.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+            select distinct p.C_NAME, p.E_NAME, p.DESCRIPTION, p.STATUS, p.BUILD_DATE, a.* from (
+                select m.* from USER_PRIVILEGE u, MENU_DATA m 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='M' and
+                      m.APP_ID=${APP_ID} and u.PRIVILEGE_ID=m.MENU_ID
+                union
+	            select m.* from ROLE_PRIVILEGE rp, MENU_DATA m 
+	            where rp.APP_ID=${APP_ID} and #{IN_ROLE_ID} and rp.PRIVILEGE_ID=m.PRIVILEGE_ID 
+	                  and rp.TYPE='M' and m.APP_ID=${APP_ID}
+            )a , PRIVILEGE_DATA p
+            where p.APP_ID=${APP_ID} and a.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+            order by a.MENU_ORDER, a.LEFT_POS
+            ]]>
+            </statement>
+        </template>
+        <!-- 取得使用者與組織設定的Menu -->
+        <template id="PermissionModel.getUserOrgMenus" type="select">
+            <conditions id="IN_ORG_ID" logic="AND">
+                <condition key="ORG_ID" quote="true" ignoreEmpty="true">rp.ORG_ID IN (${ORG_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabMenu">
+            <![CDATA[
+            select distinct p.C_NAME, p.E_NAME, p.DESCRIPTION, p.STATUS, p.BUILD_DATE, a.* from (
+                select m.* from USER_PRIVILEGE u, MENU_DATA m 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='M' and
+                      m.APP_ID=${APP_ID} and u.PRIVILEGE_ID=m.MENU_ID
+                union
+                select m.* from ORG_PRIVILEGE rp, MENU_DATA m 
+                where rp.APP_ID=${APP_ID} and #{IN_ORG_ID} and rp.PRIVILEGE_ID=m.PRIVILEGE_ID 
+                      and rp.TYPE='M' and m.APP_ID=${APP_ID}
+            )a , PRIVILEGE_DATA p
+            where p.APP_ID=${APP_ID} and a.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+            order by a.MENU_ORDER, a.LEFT_POS
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得使用者的Privilege (包含直接指定、指定角色的Privilege、角色繼承的Privilege)-->
+        <!-- 若角色Parent的EXT_PRIVILEGE=N，則須另外處理，不使用此template -->
+        <template id="PermissionModel.getUserPrivileges" type="select">
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+            select distinct a.* from (
+                select p.* from USER_PRIVILEGE u, PRIVILEGE_DATA p 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='P' and
+                      p.APP_ID=${APP_ID} and u.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+                union
+                select distinct p.* 
+                from (#{USER_ALL_ACTIVE_ROLE}) r, ROLE_PRIVILEGE rp, PRIVILEGE_DATA p
+                where r.ROLE_ID=rp.ROLE_ID and rp.APP_ID=${APP_ID} and p.APP_ID=${APP_ID} 
+                      and rp.TYPE='P' and rp.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+            ) a
+            ]]>
+            </statement>
+        </template>
+        <!-- 取得使用者與角色設定的Privilege -->
+        <template id="PermissionModel.getUserRolePrivileges" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">rp.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+            select distinct a.* from (
+                select p.* from USER_PRIVILEGE u, PRIVILEGE_DATA p 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='P' and
+                      p.APP_ID=${APP_ID} and u.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+                union
+                select p.* from ROLE_PRIVILEGE rp, PRIVILEGE_DATA p 
+                where rp.APP_ID=${APP_ID} and #{IN_ROLE_ID} and rp.PRIVILEGE_ID=p.PRIVILEGE_ID 
+                      and rp.TYPE='P' and p.STATUS='A'
+            )a 
+            ]]>
+            </statement>
+        </template>
+        <!-- 取得使用者與組織設定的Privilege -->
+        <template id="PermissionModel.getUserOrgPrivileges" type="select">
+            <conditions id="IN_ORG_ID" logic="AND">
+                <condition key="ORG_ID" quote="true" ignoreEmpty="true">rp.ORG_ID IN (${ORG_ID})</condition>
+            </conditions>
+            <statement resultClass="com.tradevan.saab.bean.SaabPrivilege">
+            <![CDATA[
+            select distinct a.* from (
+                select p.* from USER_PRIVILEGE u, PRIVILEGE_DATA p 
+                where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and u.TYPE='P' and
+                      p.APP_ID=${APP_ID} and u.PRIVILEGE_ID=p.PRIVILEGE_ID and p.STATUS='A'
+                union
+                select p.* from ORG_PRIVILEGE rp, PRIVILEGE_DATA p 
+                where rp.APP_ID=${APP_ID} and p.APP_ID=${APP_ID} and #{IN_ORG_ID} and rp.PRIVILEGE_ID=p.PRIVILEGE_ID 
+                      and rp.TYPE='P' and p.STATUS='A'
+            )a 
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得角色有繼承Privilege的Parent ID -->
+        <template id="PermissionModel.getRoleExtParentId" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">r.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement>
+            <![CDATA[
+                select distinct r.PARENT_ID from ROLE_DATA r 
+                where r.APP_ID=${APP_ID} and #{IN_ROLE_ID} and r.PARENT_ID <>'' and r.PARENT_ID IS NOT NULL
+                      and r.EXT_PRIVILEGE='Y' and r.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+                
+        <!-- 取得Role所繼承的Parent的ID  -->
+        <template id="PermissionModel.getExtendsRoleId" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">r.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement>
+            <![CDATA[
+            select distinct b.ROLE_ID 
+            from (select r.ROLE_ID,r.LEFT_POS,r.RIGHT_POS,r.EXT_PRIVILEGE from ROLE_DATA r 
+                      where r.APP_ID=${APP_ID} and #{IN_ROLE_ID} and EXT_PRIVILEGE='Y') a,
+                  ROLE_DATA b
+            where b.APP_ID=${APP_ID} and b.LEFT_POS < a.LEFT_POS and b.RIGHT_POS > a.RIGHT_POS and b.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 計算使用者的角色中EXT_PRIVILEGE=N的數量 (for User)-->
+        <template id="PermissionModel.countExtPrivFoUser" type="select">
+            <statement>
+            <![CDATA[
+                select count(*) NUM
+                from (select r.LEFT_POS,r.RIGHT_POS from USER_ROLE u, ROLE_DATA r 
+                      where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                            r.APP_ID=${APP_ID} and u.ROLE_ID=r.ROLE_ID) a,
+                      ROLE_DATA b
+                where b.APP_ID=${APP_ID} and b.LEFT_POS < a.LEFT_POS and b.RIGHT_POS > a.RIGHT_POS
+                      and b.STATUS='A' and b.EXT_PRIVILEGE='N'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 計算角色中EXT_PRIVILEGE=N的數量(for Role) -->
+        <template id="PermissionModel.countExtPrivFoRole" type="select">
+            <conditions id="IN_ROLE_ID" logic="AND">
+                <condition key="ROLE_ID" quote="true" ignoreEmpty="true">r.ROLE_ID IN (${ROLE_ID})</condition>
+            </conditions>
+            <statement>
+            <![CDATA[
+                select count(*) NUM
+                from (select r.LEFT_POS,r.RIGHT_POS from ROLE_DATA r 
+                      where r.APP_ID=${APP_ID} and #{IN_ROLE_ID}) a,
+                      ROLE_DATA b
+                where b.APP_ID=${APP_ID} and b.LEFT_POS < a.LEFT_POS and b.RIGHT_POS > a.RIGHT_POS
+                      and b.STATUS='A' and b.EXT_PRIVILEGE='N'
+            ]]>
+            </statement>
+        </template>
+        
+        <!-- 取得使用者擁有組織的角色 -->
+        <template id="PermissionModel.getUserOrgRoles" type="select">
+        	<statement>
+            <![CDATA[
+                select distinct b.ROLE_ID 
+                from USER_ORGANIZATION a, ORG_ROLE b
+                where a.USER_ID=${USER_ID} 
+                      and a.APP_ID=${APP_ID} and b.APP_ID=${APP_ID} and
+                      a.ORG_ID=b.ORG_ID                 
+            ]]>
+            </statement>
+        </template>
+<!-- ********共用SQL******** -->
+                
+        <!-- Menu與Privilege的join -->
+        <template id="MENU_PRIVILEGE" type="select">
+            <statement>
+                select p.C_NAME, p.E_NAME, p.DESCRIPTION, p.STATUS, p.BUILD_DATE, m.*
+                from MENU_DATA m, PRIVILEGE_DATA p 
+                where m.APP_ID=${APP_ID} and p.APP_ID=${APP_ID} and m.PRIVILEGE_ID=p.PRIVILEGE_ID 
+            </statement>
+        </template>
+        
+        <!-- 取得使用者的所有Role (for getUserMenus, getUserPrivileges) -->
+        <template id="USER_ALL_ACTIVE_ROLE" type="select">
+            <statement>
+            <![CDATA[
+            select distinct b.* 
+            from (select r.ROLE_ID,r.LEFT_POS,r.RIGHT_POS,r.EXT_PRIVILEGE from USER_ROLE u, ROLE_DATA r 
+                      where u.APP_ID=${APP_ID} and u.USER_ID=${USER_ID} and 
+                            r.APP_ID=${APP_ID} and u.ROLE_ID=r.ROLE_ID) a,
+                  ROLE_DATA b
+            where b.APP_ID=${APP_ID} and (b.ROLE_ID=a.ROLE_ID or a.EXT_PRIVILEGE='Y')
+                  and b.LEFT_POS<=a.LEFT_POS and b.RIGHT_POS >= a.RIGHT_POS and b.STATUS='A'
+            ]]>
+            </statement>
+        </template>
+
+<!-- =========not finish=========== -->
+
+<!-- ==========AvailableModel============  -->
+		<!-- 取得鎖在階層底下組織 -->
+		<template id="AvailableModel.getAvailableOrgs" type="select">
+			<statement resultClass="com.tradevan.saab.bean.SaabOrganization">
+            <![CDATA[
+                select distinct b.* 
+                from (select o.LEFT_POS,o.RIGHT_POS from USER_ORGANIZATION uo, ORG_DATA o 
+                      where uo.APP_ID=${APP_ID} and uo.USER_ID=${USER_ID} and 
+                            o.APP_ID=${APP_ID} and uo.ORG_ID=o.ORG_ID) a,
+                      ORG_DATA b
+                where b.APP_ID=${APP_ID} and b.LEFT_POS >= a.LEFT_POS and b.RIGHT_POS <= a.RIGHT_POS
+                      and b.STATUS='A'
+            ]]>
+            </statement>
+		</template>       
+<!-- ==================== -->
+
+    </sql-template>
+</taurus-xdao>

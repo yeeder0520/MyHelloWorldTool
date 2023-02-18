@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="dsuser" namespace="/modules/dsuser" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="subSetMsgFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">msgFoot-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        		
+        <action name="MainCustProf" class="com.tradevan.helpdesk.action.dsuser.MainCustProfAction">
+            <result name="maincustprof" >/modules/dsuser/pages/MainCustProf.jsp</result>
+        </action>
+        <action name="MainCustIndial" class="com.tradevan.helpdesk.action.dsuser.MainCustIndialAction">
+            <result name="maincustindial" >/modules/dsuser/pages/MainCustIndial.jsp</result>
+        </action>
+		<action name="MainCustOutdial" class="com.tradevan.helpdesk.action.dsuser.MainCustOutdialAction">
+            <result name="mainCustOutdial" >/modules/dsuser/pages/MainCustOutdial.jsp</result>
+            <result name="listCustOutdial" >/modules/dsuser/pages/ListCustOutdial.jsp</result>
+        </action>
+        <action name="MainCustAltn" class="com.tradevan.helpdesk.action.dsuser.MainCustAltnAction">
+        	<result name="maincustaltn">/modules/dsuser/pages/MainCustAltn.jsp</result>
+        </action>
+        <action name="MainCustSpProcess" class="com.tradevan.helpdesk.action.dsuser.MainCustSpProcessAction">
+        	<result name="maincustspprocess">/modules/dsuser/pages/MainCustSpProcess.jsp</result>
+        	<result name="listCustSpProcess">/modules/dsuser/pages/ListCustSpProcess.jsp</result>
+        </action>
+        <action name="QryCustProf" class="com.tradevan.helpdesk.action.dsuser.QryCustProfAction">
+        	<result name="listcustdetails">/modules/dsuser/pages/ListCustAllInfo.jsp</result>
+        	<result name="listcustprofs">/modules/dsuser/pages/QryCustProf.jsp</result>
+        </action>
+        <action name="QryCustAltn" class="com.tradevan.helpdesk.action.dsuser.QryCustAltnAction">
+        	<result name="qrymaincustaltn">/modules/dsuser/pages/QryCustAltn.jsp</result>
+        	<result name="opresult">/modules/dsuser/pages/OpCustAltn.jsp</result>
+        	<result name="detail">/modules/dsuser/pages/QryCustAltnDtl.jsp</result>
+        </action>
+        <action name="QryCustSpProcess" class="com.tradevan.helpdesk.action.dsuser.QryCustSpProcessAction">
+        	<result name="qryspprocess">/modules/dsuser/pages/QryCustSpProcess.jsp</result>
+        	<result name="detail">/modules/dsuser/pages/QryCustSpProcessDtl.jsp</result>
+        </action>
+        <action name="MainCustCCSProf" class="com.tradevan.helpdesk.action.dsuser.MainCustCCSProfAction">
+        	<result name="mainCustCCSProf">/modules/dsuser/pages/MainCustCCSProf.jsp</result>
+        </action>
+         <action name="MainCustCCSLine" class="com.tradevan.helpdesk.action.dsuser.MainCustCCSLineAction">
+        	<result name="mainCustCCSLine">/modules/dsuser/pages/MainCustCCSLine.jsp</result>
+        </action>
+        <action name="MainCCS" class="com.tradevan.helpdesk.action.ccs.MainCCSAction">
+            <result name="mainccs" >/modules/dsuser/pages/MainCCS.jsp</result>
+        </action>
+        <action name="MainFTPConf" class="com.tradevan.helpdesk.action.ccs.MainFTPConfAction">
+            <result name="mainftpconf" >/modules/dsuser/pages/MainFTPConf.jsp</result>
+        </action>
+        <action name="MainMATIPConf" class="com.tradevan.helpdesk.action.ccs.MainMATIPConfAction">
+        	<result name="mainmatipconf">/modules/dsuser/pages/MainMATIPConf.jsp</result>
+        </action>
+    <action name="MainMsgTableDef" class="com.tradevan.helpdesk.action.pmsg.MainMsgTableDefAction">         
+            <result name="mainmsgtabledef" >/modules/dsuser/pages/MainMsgTableDef.jsp</result>
+        </action>
+        
+        <action name="MainProtocolDef" class="com.tradevan.helpdesk.action.pmsg.MainProtocolDefAction">         
+            <result name="mainprotocoldef" >/modules/dsuser/pages/MainProtocolDef.jsp</result>
+            <result name="listprotocoldef" >/modules/dsuser/pages/ListProtocolDef.jsp</result>            
+        </action>
+        
+        <action name="MainMsgMappingDef" class="com.tradevan.helpdesk.action.pmsg.MainMsgMappingDefAction">         
+            <result name="mainmsgmappingdef" >/modules/dsuser/pages/MainMsgMappingDef.jsp</result>
+        </action>
+        
+        <action name="MainCustProfDef" class="com.tradevan.helpdesk.action.pmsg.MainCustProfDefAction">         
+            <result name="maincustprofdef" >/modules/dsuser/pages/MainCustProfDef.jsp</result>
+			<result name="next" type="chain">
+				<param name="actionName">${actionName}</param>
+				<param name="method">search</param>
+			</result>
+        </action>
+        
+        <action name="MainCustTransportDef" class="com.tradevan.helpdesk.action.pmsg.MainCustTransportDefAction">         
+            <result name="maincusttransportdef" >/modules/dsuser/pages/MainCustTransportDef.jsp</result>       
+            <result name="listcusttransportdef" >/modules/dsuser/pages/ListCustTransportDef.jsp</result>
+			<result name="next" type="chain">
+				<param name="actionName">MainCustSubscribeDef</param>
+				<param name="method">search</param>
+			</result>
+			<result name="back" type="chain">
+				<param name="actionName">MainCustProfDef</param>
+				<param name="method">preUpdate</param>
+			</result>
+        </action>
+        
+        <action name="MainCustSubscribeDef" class="com.tradevan.helpdesk.action.pmsg.MainCustSubscribeDefAction">         
+            <result name="maincustsubscribedef" >/modules/dsuser/pages/MainCustSubscribeDef.jsp</result>
+            <result name="maincustsubscribedefforap" >/modules/dsuser/pages/MainCustSubscribeDefForAp.jsp</result>    
+            <result name="opresult" >/modules/dsuser/pages/OpCustSubscribeDef.jsp</result>     
+            <result name="listcustsubscribedef" >/modules/dsuser/pages/ListCustSubscribeDef.jsp</result>
+			<result name="next" type="chain">
+				<param name="actionName">MainCustSubscribeDefExt</param>
+				
+			</result>
+			<result name="back" type="chain">
+				<param name="actionName">${actionName}</param>
+				<param name="method">search</param>
+			</result>
+        </action>
+        
+        
+        
+             <action name="MainCustSubscribeDefExt" class="com.tradevan.helpdesk.action.pmsg.MainCustSubscribeDefExtAction">         
+            <result name="maincustsubscribedefext" >/modules/dsuser/pages/MainCustSubscribeDefExt.jsp</result>
+              
+            <result name="opresult" >/modules/dsuser/pages/OpCustSubscribeDef.jsp</result>     
+            <result name="listcustsubscribedefext" >/modules/dsuser/pages/ListCustSubscribeDefExt.jsp</result>
+            <result name="next" type="chain">
+                <param name="actionName">MainCustSubscribeSchedule</param>
+                <param name="method">search</param>
+            </result>
+            <result name="back" type="chain">
+                <param name="actionName">MainCustSubscribeDef</param>
+                <param name="method">search</param>
+            </result>
+        </action>
+
+        <action name="MainCustSubscribeSchedule" class="com.tradevan.helpdesk.action.pmsg.MainCustSubscribeScheduleAction">
+            <result name="maincustsubscribeschedule" >/modules/dsuser/pages/MainCustSubscribeSchedule.jsp</result>
+            <result name="back" type="chain">
+				<param name="actionName">MainCustSubscribeDef</param>
+				<param name="method">preUpdate</param>
+            </result>       
+        </action> 
+        
+        <action name="QryCustSubscribeDef" class="com.tradevan.helpdesk.action.pmsg.QryCustSubscribeDefAction">         
+            <result name="qrycustsubscribedef" >/modules/dsuser/pages/QryCustSubscribeDef.jsp</result>
+            <result name="listsubscribedefdetails" >/modules/dsuser/pages/ListCustSubscribeDefAllInfo.jsp</result>
+			<result name="next" type="chain">
+				<param name="actionName">MainCustSubscribeDef</param>
+				<param name="method">preUpdate</param>
+			</result>
+        </action>
+        <action name="MainMSHAgency" class="com.tradevan.helpdesk.action.dsuser.MainMSHAgencyAction">
+        	<result name="mainmshagency">/modules/dsuser/pages/MainMSHAgency.jsp</result>
+        </action>
+          <action name="MainMSHMonReply" class="com.tradevan.helpdesk.action.dsuser.MainMSHMonReplyAction">
+          	<result name="mainmshmomreply">/modules/dsuser/pages/MainMSHMonReply.jsp</result>
+          </action>
+          
+          <action name="MainSubscribeSetting" class="com.tradevan.helpdesk.action.pmsg.MainSubscribeSettingAction">
+			<result name="mainSubscribeSetting" type="subSetMsgFoot-layout">/modules/dsuser/pages/MainSubscribeSetting.jsp</result>
+			<result name="listSubscribeSetting">/modules/dsuser/pages/ListSubscribeSetting.jsp</result>
+			<result name="dnldsubsetting" type="stream">
+       			<param name="contentType">application/octet-stream</param>
+       			<param name="contentDisposition">attachment;filename="${fileName}"</param>
+            	<param name="inputName">docFile</param>
+            	<param name="bufferSize">1024</param>   
+           </result>
+          </action>
+    </package>
+    
+</struts>

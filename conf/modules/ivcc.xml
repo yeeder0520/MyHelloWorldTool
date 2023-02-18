@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="ivcc" namespace="/modules/ivcc" extends="ap-default">
+        <result-types>
+            <result-type name="default-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="true">
+                <param name="layout">action-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+            <result-type name="emptyFoot-layout" class="com.tradevan.framework.view.TilesLayoutResult" default="false">
+                <param name="layout">main-layout</param>
+                <param name="bodyName">body</param>
+            </result-type>
+        </result-types>
+        
+		<action name="MainNotifyUser" class="com.tradevan.helpdesk.action.ivcc.MainNotifyUserAction">
+			<result name="qrymainnotifyuser">/modules/ivcc/pages/MainNotifyUser.jsp</result>
+		</action>
+
+		<action name="MainNotifyGroup" class="com.tradevan.helpdesk.action.ivcc.MainNotifyGroupAction">
+			<result name="qrymainnotifygroup">/modules/ivcc/pages/MainNotifyGroup.jsp</result>
+		</action>
+		
+		<action name="MainNotifyList" class="com.tradevan.helpdesk.action.ivcc.MainNotifyListAction">
+			<result name="qrymainnotifylist">/modules/ivcc/pages/MainNotifyList.jsp</result>
+		</action>
+		
+		<action name="VasHubList" class="com.tradevan.helpdesk.action.ivcc.VasHubListAction">
+			<result name="qryhublist">/modules/ivcc/pages/MainHubList.jsp</result>
+		</action>
+		
+		<action name="MainDsHubInit2" class="com.tradevan.helpdesk.action.ivcc.MainDsHubInit2Action">
+			<result name="qrymaindshubinit2">/modules/ivcc/pages/MainDsHubInit2.jsp</result>
+			<result name="next"  type="chain">
+				<param name="actionName">MainMsgRelTbl</param>
+				<param name="method">search</param>
+			</result>
+		</action>	
+		
+		<action name="MainMsgRelTbl" class="com.tradevan.helpdesk.action.ivcc.MainMsgRelTblAction">
+			<result name="qrymsgreltbl">/modules/ivcc/pages/MainMsgRelTbl.jsp</result>
+		</action>
+
+    </package>
+    
+</struts>

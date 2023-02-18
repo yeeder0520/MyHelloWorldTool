@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taurus-xdao>
+		<data-source id="pngscDS" class="com.tradevan.taurus.xdao.ds.JdbcDataSource" type="oracle" loadOnStart="true">
+<!--		
+                <property name="jndi-name" value="PNGSCPool"/>
+                <property name="context-factory" value="weblogic.jndi.WLInitialContextFactory"/> 
+                <property name="provider-url" value="t3://localhost:8005"/>
+                <property name="auth-handler" value="com.tradevan.taurus.xdao.handler.EncryptAuthHandler"/>
+                <property name="encrypted" value="true"/>
+                <property name="auth-file" value="/APNVAN/def/orapass"/>
+                <property name="application-id" value="APNVAN"/>
+                <property name="auth-user" value="dsPNGSC"/>
+-->
+		<property name="jdbc-driver" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbc-url" value="jdbc:oracle:thin:@172.31.70.61:1521:T01A" />
+		<property name="user" value="PNGSCMGR" />
+		<property name="password" value="TVPNGSCMGR" />
+
+		<!-- Connection Pool -->
+		<property name="pool-size" value="4" />   <!-- Connection Pool大小 -->
+		<property name="wait-time" value="-1" /> <!-- 取Connection時的等待時間(秒) -->
+		<property name="validation-sql" value="select 1 from dual" /> <!-- 使用DBCP預防pool中連線已死 -->
+		<property name="test-borrow" value="true" />
+	</data-source>
+	
+	<connections defaultMaxRow="500" defaultPageSize="20" defaultSqlTimeout="90" logger="XdaoLogger" logConfig="conf/logging.xml">
+		<connection id="ngscDS" dataSource="pngscDS" logger="CommonLogger">
+			<property name="max-row" value="100" />
+			<property name="page-size" value="10" />
+			<property name="sql-timeout" value="180" />
+			<property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8"/>
+            <property name="jvm-encoding" value="UTF-8"/>
+			<property name="field-case-sensitive" value="false" />
+			<property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+			<property name="keep-data-type" value="true" />
+			<property name="skip-null-value" value="true" />
+			<property name="null-to-string" value="true" />
+		</connection>
+	</connections>
+	<template-config>
+      
+    </template-config>
+</taurus-xdao>

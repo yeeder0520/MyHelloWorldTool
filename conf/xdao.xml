@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taurus-xdao>
+    <!-- **************************************** -->
+    <!-- *             Data Source              *-->
+    <!-- **************************************** -->
+    <!-- Oracle Test Environment -->
+    <data-source id="ngscDS" class="com.tradevan.taurus.xdao.ds.JdbcDataSource" type="oracle" loadOnStart="true">
+        <property name="jdbc-driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbc-url" value="jdbc:oracle:thin:@10.89.1.11:1520:V01A"/>
+        <property name="user" value="PNGSCMGR"/>
+        <property name="password" value="TVPNGSCMGR"/>
+        <property name="pool-size" value="4"/>
+        <property name="wait-time" value="-1"/>
+        <property name="validation-sql" value="select 1 from dual"/>
+        <property name="test-borrow" value="true"/>
+    </data-source>
+
+
+    <!-- **************************************** -->
+    <!-- *             Connections              *-->
+    <!-- **************************************** -->
+    <connections defaultMaxRow="500" defaultPageSize="20" defaultSqlTimeout="90" logger="XdaoLogger" logConfig="conf/logging.xml">
+        <connection id="pngscConn" dataSource="ngscDS" logger="CommonLogger">
+            <property name="max-row" value="100" />
+            <property name="page-size" value="10" />
+            <property name="sql-timeout" value="180" />
+            <property name="show-sql" value="true" />
+            <property name="db-encoding" value="UTF-8"/>
+            <property name="jvm-encoding" value="UTF-8"/>
+            <property name="field-case-sensitive" value="false" />
+            <property name="data-class" value="com.tradevan.commons.collection.DataObject" />
+            <property name="keep-data-type" value="false" />
+            <property name="skip-null-value" value="true" />
+            <property name="null-to-string" value="true" />
+        </connection>
+
+        <template-config>
+            <template file="conf/ngsc_sql.xml"/>
+            <template file="conf/billing_sql.xml"/>
+            <template file="conf/ngsc_report_sql.xml"/>
+        </template-config>
+    </connections>
+</taurus-xdao>

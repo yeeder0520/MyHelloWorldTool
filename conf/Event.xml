@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+    <!-- 定義應用系統自訂的Error Code -->
+    <Event id="AP">
+        <Description>應用系統異常</Description>
+        <Code value="51801" level="E">
+            <Msg>資料庫連線異常!</Msg>
+            <Instruction>請洽系統管理員</Instruction>
+        </Code>
+    </Event>
+    <!-- Default -->
+    <Event id="Default" level="E">
+        <Description>系統發生異常!</Description>
+    </Event>
+    <!-- 定義Exception要顯示的訊息 -->
+    <Event id="Exception" level="E">
+        <Code value="com.tradevan.taurus.xdao.XdaoException" level="E">
+            <Msg>資料庫操作發生錯誤!</Msg>
+        </Code>
+    </Event>
+    
+    <!-- 定義發生Oracle錯誤時，該ORA代碼要顯示的訊息 -->
+    <Event id="ORA" level="E">
+        <Description>資料庫操作發生錯誤!</Description>
+        <Code value="01013" level="E">
+            <Msg>資料庫查詢逾時</Msg>
+        </Code>
+    </Event>
+    
+    <!-- 定義 Action發生錯誤時，要顯示的訊息 -->
+    <Event id="LoginAction" level="E">
+        <Descripton>系統發生錯誤!</Descripton>
+        <Code value="login" level="E">
+            <Msg>登入發生錯誤! 請洽系統管理員!</Msg>
+        </Code>
+    </Event>
+</Events>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="outside" namespace="/modules/outside" extends="ap-default">    
+        	
+        <action name="QryTVG2G" class="com.tradevan.helpdesk.action.b2bi.QryXENIMsgLogAction">
+            <interceptor-ref name="guest"></interceptor-ref>
+            	<result name="listmsglogs" type="tiles">.outside.g2g</result>
+            	<result name="listwsinfo" type="tiles">.outside.g2gdtl</result>
+        </action>
+        
+        <action name="QryMSH" class="com.tradevan.helpdesk.action.message.QryMSHAction">
+            <interceptor-ref name="guest"></interceptor-ref>
+		         <result name="qrymsh" type="tiles">.outside.qrymsh</result>
+		         <result name="qryg2g" type="tiles">.outside.qryg2g</result>
+		         <result name="qryb2g" type="tiles">.outside.qryb2g</result>
+        </action>
+        
+    </package>
+</struts>
