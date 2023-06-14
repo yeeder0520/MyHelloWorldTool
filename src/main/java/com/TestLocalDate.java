@@ -1,7 +1,10 @@
 package com;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 /**
  * @author YeeDer
@@ -10,13 +13,17 @@ import java.time.format.DateTimeFormatter;
  **/
 public class TestLocalDate {
     public static void main(String[] args) {
-        LocalDate localDate = LocalDate.of(2022, 8, 26);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, -12);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Timestamp endDate = new Timestamp(calendar.getTimeInMillis());
+        System.out.println("endDate = " + endDate);
 
-        while (localDate.isBefore(LocalDate.of(2022, 10, 3))){
-            localDate = localDate.plusDays(1);
-            String yyyyMMdd = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"))+"0000";
-            System.out.println("qingmingDate = " + yyyyMMdd );
-        }
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.add(Calendar.DATE, -7);
+        Timestamp startDate = new Timestamp(calendar.getTimeInMillis());
+        System.out.println("startDate = " + startDate);
 
     }
 }

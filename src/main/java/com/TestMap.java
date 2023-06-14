@@ -16,10 +16,16 @@ public class TestMap {
         resultMap.put("BB","22");
         resultMap.put("CC","33");
 
-        resultMap.forEach((key,value) ->{
-            System.out.println("key = " + key);
+//        resultMap.forEach((key,value) ->{
+//            System.out.println("key = " + key);
+//            System.out.println("value = " + value);
+//        });
+
+
+        for (Map.Entry<String, String> stringStringEntry : resultMap.entrySet()) {
+            String value = stringStringEntry.getValue();
             System.out.println("value = " + value);
-        });
+        }
 
     }
 }
